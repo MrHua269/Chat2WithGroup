@@ -1,7 +1,0 @@
-#进群请求选择，ACCEPT为同意，DROP为拒绝，请勿更改成其他值
-JoinRequestSelector: "ACCEPT"
-#群号，部分指令判断部分引用了该键值
-group: 1073135029
-ChatServerPort: 192
-GroupToGame: "true"
-EnableInvite: "true"

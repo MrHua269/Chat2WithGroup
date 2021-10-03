@@ -1,0 +1,12 @@
+server\natural\events\onGroupMessage.class
+server\natural\ChatServer\BaseServer.class
+server\natural\ChatServer\ConnectHandler.class
+server\natural\events\AddToTheGroup.class
+server\natural\ChatServer\InitChatServer.class
+server\natural\ChatServer\BaseServer$1.class
+server\natural\Utils.class
+server\natural\events\RequestSelectorListener.class
+server\natural\Main.class
+server\natural\command\CommandSystemInfo.class
+server\natural\command\CommandInvite.class
+server\natural\command\CommandSMG.class

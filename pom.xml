@@ -76,7 +76,7 @@
             <artifactId>AmazingBot</artifactId>
             <version>20210830_111543</version>
             <scope>system</scope>
-            <systemPath>${project.basedir}/libs/AmazingBot_20210830_111543.jar</systemPath>
+            <systemPath>F:/Documents/Chat2WithGroup/lib/AmazingBot.jar</systemPath>
         </dependency>
     </dependencies>
 

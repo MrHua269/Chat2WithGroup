@@ -2,6 +2,7 @@ package server.natural.command;
 
 import me.albert.amazingbot.bot.Bot;
 import org.bukkit.ChatColor;
+import org.bukkit.Sound;
 import org.bukkit.command.CommandExecutor;
 import org.bukkit.command.CommandSender;
 import org.bukkit.entity.Player;
@@ -14,6 +15,7 @@ public class CommandSMG implements CommandExecutor {
         if(commandSender instanceof Player){
             if(args[0]!=null&&args.length==1){
             Bot.getApi().sendGroupMsg(String.valueOf(Utils.config.getLong("group")),commandSender.getName() + "->" + args[0]);
+            ((Player) commandSender).playSound(((Player) commandSender).getLocation(), Sound.BLOCK_DISPENSER_LAUNCH, 1F , 0F);
             commandSender.sendMessage("消息发送成功!");
             return true;
             }else{

@@ -14,13 +14,13 @@ public class CommandSMG implements CommandExecutor {
         if(commandSender instanceof Player){
             if(args[0]!=null&&args.length==1){
             Bot.getApi().sendGroupMsg(String.valueOf(Utils.config.getLong("group")),commandSender.getName() + "->" + args[0]);
-            commandSender.sendMessage("消息发送成功!");
+            commandSender.sendMessage("Message send finished!");
             return true;
             }else{
-                commandSender.sendMessage("错误的用法,正确用法:");
+                commandSender.sendMessage("Wrong way to use,the right way is:");
                 return false;
             }
-        }else{commandSender.sendMessage(ChatColor.RED+"您不是人:)");}
+        }else{commandSender.sendMessage(ChatColor.RED+"You are not a player:)");}
         return true;
     }
 }

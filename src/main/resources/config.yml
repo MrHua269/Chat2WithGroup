@@ -3,3 +3,5 @@ JoinRequestSelector: "ACCEPT"
 #群号，部分指令判断部分引用了该键值
 group: 1073135029
 ChatServerPort: 192
+GroupToGame: "true"
+EnableInvite: "true"

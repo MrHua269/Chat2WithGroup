@@ -16,3 +16,9 @@
         - "load"
       usage: /systeminfo
       description: "获取服务器负载状况"
+    botinvite:
+      aliases:
+        - "botinvite"
+        - "inviteplayeringroup"
+      usage: /botinvite
+      description: "邀请服务器玩家"

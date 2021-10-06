@@ -19,9 +19,9 @@ public class CommandSystemInfo implements CommandExecutor {
             sender.sendMessage("Memory committed : "+MemMX.getHeapMemoryUsage().getCommitted());
             sender.sendMessage("Memory heap : "+MemMX.getHeapMemoryUsage().getMax());
             sender.sendMessage("Memory init"+MemMX.getHeapMemoryUsage().getInit());
-            sender.sendMessage("System load average : "+ManagementFactory.getOperatingSystemMXBean().getSystemLoadAverage());
-            sender.sendMessage("Server version : "+ Bukkit.getServer().getVersion());
-            sender.sendMessage("View distance : "+Bukkit.getServer().getViewDistance());
+            sender.sendMessage("服务器负载状态 : "+ManagementFactory.getOperatingSystemMXBean().getSystemLoadAverage());
+            sender.sendMessage("服务器版本 : "+ Bukkit.getServer().getVersion());
+            sender.sendMessage("视距 : "+Bukkit.getServer().getViewDistance());
             sender.sendMessage("##################################################");
 
         }else{

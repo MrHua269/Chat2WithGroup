@@ -9,11 +9,16 @@ import server.natural.Utils;
 public class AddToTheGroup implements Listener {
     //当有新群员进群时执行
     @EventHandler
-    public void onUserJoinGroup(GroupMemberJoinEvent e) {
+    public void onNewMemberJoinGroup(GroupMemberJoinEvent e) {
         String newUserID = e.getEvent().getUser().getNameCard();
-        if(e.getEvent().getGroupId() == Utils.config.getLong("group")){
+        if(e.getEvent().getGroupId() == Utils.groupID){
         Bot.getApi().sendGroupMsg(String.valueOf(e.getEvent().getGroupId()), "欢迎我们的一位新成员！" + newUserID);
         Bot.getApi().sendGroupMsg(String.valueOf(e.getEvent().getGroupId()), "ta的QQ号为" + e.getEvent().getUser().getId());
+        Bot.getApi().sendGroupMsg(String.valueOf(e.getEvent().getGroupId()), "获取白名单请咨询群主!! ");//指定群的新成员入群的处理方法
+        }else {
+            Bot.getApi().sendGroupMsg(String.valueOf(e.getEvent().getGroupId()), "欢迎我们的一位新成员！" + newUserID);
+            Bot.getApi().sendGroupMsg(String.valueOf(e.getEvent().getGroupId()), "ta的QQ号为" + e.getEvent().getUser().getId());
+                //其他非指定群的加群处理方法
         }
     }
     @EventHandler
@@ -22,8 +27,8 @@ public class AddToTheGroup implements Listener {
     }
     //当群员退群时执行
     @EventHandler
-    public void onUserLeaveGroup(GroupMemberLeaveEvent e){
-        if(e.getEvent().getGroupId() == Utils.config.getLong("group")) {
+    public void onMemberLeaveGroup(GroupMemberLeaveEvent e){
+        if(e.getEvent().getGroupId() == Utils.groupID) {
             Bot.getApi().sendGroupMsg(String.valueOf(e.getEvent().getGroupId()), "糟糕了，我们的群丢了一名宝贵的群员，请我们珍惜我们在这个群的每时每秒....");
             Bot.getApi().sendGroupMsg(String.valueOf(e.getEvent().getGroupId()), "离群人的名字" + e.getEvent().getUser().getNameCard());
             Bot.getApi().sendGroupMsg(String.valueOf(e.getEvent().getGroupId()), "离群人的QQ" + e.getEvent().getUser().getId());

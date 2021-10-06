@@ -20,7 +20,7 @@ public class Main extends JavaPlugin {
     public void onEnable() {
         try{
          getLogger().info(ChatColor.GREEN + "欢迎使用ChatWithGroup");
-         int configver = 1;
+         int configver = 2;   //指定插件配置的版本
          int getconfigver = getConfig().getInt("config-version");
          saveDefaultConfig();
          Thread.sleep(1000);

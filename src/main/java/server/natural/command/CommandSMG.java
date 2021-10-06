@@ -14,7 +14,7 @@ public class CommandSMG implements CommandExecutor {
     public boolean onCommand(@NotNull CommandSender commandSender, @NotNull org.bukkit.command.Command command, @NotNull String s, @NotNull String[] args) {
         if(commandSender instanceof Player){
             if(args[0]!=null&&args.length==1){
-            Bot.getApi().sendGroupMsg(String.valueOf(Utils.config.getLong("group")),commandSender.getName() + "->" + args[0]);
+            Bot.getApi().sendGroupMsg(Utils.group, commandSender.getName() + "->" + args[0]);
             ((Player) commandSender).playSound(((Player) commandSender).getLocation(), Sound.BLOCK_DISPENSER_LAUNCH, 1F , 0F);
             commandSender.sendMessage("消息发送成功!");
             return true;

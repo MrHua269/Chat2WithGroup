@@ -9,9 +9,9 @@ import org.bukkit.entity.Player;
 import org.jetbrains.annotations.NotNull;
 
 import static server.natural.Utils.config;
+import static server.natural.Utils.group;
 
 public class CommandInvite implements CommandExecutor {
-    String group = String.valueOf(config.getLong("group"));
     @Override
     public boolean onCommand(@NotNull CommandSender sender, @NotNull Command command, @NotNull String label, @NotNull String[] args){
         if (sender instanceof Player){

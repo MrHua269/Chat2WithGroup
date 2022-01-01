@@ -1,0 +1,23 @@
+#进群请求选择，ACCEPT为同意，DROP为拒绝，请勿更改成其他值
+JoinRequestSelector: "ACCEPT"
+#群号，部分指令判断部分引用了该键值
+group: 1073135029
+ChatServerPort: 192
+GroupToGame: "true"
+EnableInvite: "true"
+#Encrypt key of chat server
+EncryptKey: 2333333
+#{0}:NameCard,{1}:ID
+MessageOfQuitGroup:
+  - "糟糕了，我们的群丢了一名宝贵的群员，请我们珍惜我们在这个群的每时每秒...."
+  - "离群人的名字:{0}"
+  - "离群人的QQ:{1}"
+#{0}:NameCard,{1}:ID
+MessageOfJoinGroup:
+  - "欢迎我们的一位新成员！:{0}"
+  - "ta的QQ号为:{1}"
+#{0}:NameCard,{1}:ID
+MessageOnReply:
+  - "有什么事不能到群里问吗，你这么找我这个傻逼机器人我很为难的好吧"
+MessageRepeatLimit: 50
+CoolDownTime: 20

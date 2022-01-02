@@ -9,17 +9,16 @@ import org.bukkit.entity.Player;
 import org.jetbrains.annotations.NotNull;
 
 import static server.natural.Utils.config;
-import static server.natural.Utils.group;
 
 public class CommandInvite implements CommandExecutor {
+    String group = String.valueOf(config.getLong("group"));
     @Override
     public boolean onCommand(@NotNull CommandSender sender, @NotNull Command command, @NotNull String label, @NotNull String[] args){
         if (sender instanceof Player){
-            sender.sendMessage("邀请成功");
-            Bot.getApi().sendGroupMsg(group,"玩家" + sender.getName() + "邀请你们来服务器玩耍");
+            Bot.getApi().sendGroupMsg(group,"The Player " + sender.getName() + "invite you guys to our server to play");
             return true;
         }else{
-            sender.sendMessage(ChatColor.RED + "你不是人");
+            sender.sendMessage(ChatColor.RED + "You are not a player");
             return true;
 
         }

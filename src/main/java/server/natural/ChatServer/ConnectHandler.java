@@ -18,20 +18,20 @@ public class ConnectHandler extends SimpleChannelInboundHandler<String> implemen
     public static ChannelGroup channels = new DefaultChannelGroup(GlobalEventExecutor.INSTANCE);
     @Override
     protected void channelRead0(ChannelHandlerContext ctx, String msg) {
-        Bukkit.getLogger().info(ChatColor.LIGHT_PURPLE +"Channel sent message: "+"["+ctx.channel().remoteAddress().toString()+"]:"+msg);
-        channels.writeAndFlush("["+ctx.channel().remoteAddress().toString()+"]:"+msg);
-        Bukkit.getServer().broadcastMessage("[ChatServerClient:"+ctx.channel().remoteAddress().toString()+"]:"+msg);
-        Bot.getApi().sendGroupMsg(String.valueOf(Utils.config.getLong("group")),"[ChatServerClient:"+ctx.channel().remoteAddress().toString()+"]:"+msg);
+        Bukkit.getLogger().info(ChatColor.LIGHT_PURPLE +"Channel sent message: "+"<"+ctx.channel().remoteAddress().toString()+">"+msg);
+        channels.writeAndFlush("<"+ctx.channel().remoteAddress().toString()+">"+msg);
+        Bukkit.getServer().broadcastMessage("<client:"+ctx.channel().remoteAddress().toString()+">"+msg);
+        Bot.getApi().sendGroupMsg(String.valueOf(Utils.config.getLong("group")),"<client:"+ctx.channel().remoteAddress().toString()+">"+msg);
     }
     @EventHandler
     public void onUserChat(GroupMessageEvent e){
         if(e.getGroupID() == Utils.config.getLong("group")){
-            channels.writeAndFlush("[QQ" + e.getEvent().getSenderName()+"("+ e.getUserID()+")"+"]:" + e.getMsg());
+            channels.writeAndFlush("<QQ" + e.getEvent().getSenderName()+"("+ e.getUserID()+")"+">" + e.getMsg());
         }
     }
     @EventHandler
     public void OnMessage(AsyncPlayerChatEvent e){
-        channels.writeAndFlush("["+"Player:"+e.getPlayer().getName()+"]:"+e.getMessage());
+        channels.writeAndFlush("<"+"Player:"+e.getPlayer().getName()+">"+e.getMessage());
     }
     @Override
     public void channelActive(ChannelHandlerContext ctx){

@@ -21,7 +21,7 @@ public class CommandSMG implements CommandExecutor {
                 return false;
             }
         }else{
-            Bot.getApi().sendGroupMsg(String.valueOf(Utils.config.getLong("group")),  "Server->" + args[0]);
+            Bot.getApi().sendGroupMsg(String.valueOf(Utils.config.getLong("group")),  "Server Manager(Console)->" + args[0]);
         }
         return true;
     }

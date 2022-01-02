@@ -28,7 +28,7 @@ public class AddToTheGroup implements Listener {
     @EventHandler
     public void onReplyMessage(TempMessageEvent e){
         Utils.executor.execute(() -> {
-            List list = Utils.config.getList("MessageOnReply");
+            List list = Utils.config.getList("ReplyMessageOnTemp");
             for (int i=0;i<list.size();i++){
                 //todo Check bugs and fix
                 e.response(e.getEvent().getSenderName() + list);

@@ -8,7 +8,7 @@ import org.bukkit.command.CommandSender;
 import org.jetbrains.annotations.NotNull;
 import java.lang.management.ManagementFactory;
 import java.lang.management.MemoryMXBean;
-
+// This need to clean because it is not a part of ChatWithGroup , maybe wangxyper you can make a single plugin on it:)
 public class CommandSystemInfo implements CommandExecutor {
     private final MemoryMXBean MemMX = ManagementFactory.getMemoryMXBean();
     @Override

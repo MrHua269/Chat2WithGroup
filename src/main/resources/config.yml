@@ -1,9 +1,10 @@
-#进群请求选择，ACCEPT为同意，DROP为拒绝，请勿更改成其他值
-JoinRequestSelector: "ACCEPT"
+#进群请求选择，ACCEPT为同意，DROP为拒绝，NOTHING为不做处理，勿更改成其他值
+JoinRequestSelector: "NOTHING"
 #群号，部分指令判断部分引用了该键值
 group: 1073135029
+owner: 3181474546
 ChatServerPort: 192
-GroupToGame: "true"
+EnableGroupToGame: "true"
 EnableInvite: "true"
 #Encrypt key of chat server
 EncryptKey: 2333333
@@ -17,7 +18,7 @@ MessageOfJoinGroup:
   - "欢迎我们的一位新成员！:{0}"
   - "ta的QQ号为:{1}"
 #{0}:NameCard,{1}:ID
-MessageOnReply:
+ReplyMessageOnTemp:
   - "有什么事不能到群里问吗，你这么找我这个傻逼机器人我很为难的好吧"
 MessageRepeatLimit: 50
 CoolDownTime: 20

@@ -9,7 +9,7 @@ import org.bukkit.entity.Player;
 import org.jetbrains.annotations.NotNull;
 
 import static server.natural.Utils.config;
-
+//This one need to add the CoolDownTime because some silly bitch may use it to send some useless 's message
 public class CommandInvite implements CommandExecutor {
     String group = String.valueOf(config.getLong("group"));
     @Override

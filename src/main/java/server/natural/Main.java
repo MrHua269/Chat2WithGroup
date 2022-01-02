@@ -41,7 +41,8 @@ public class Main extends JavaPlugin {
              Objects.requireNonNull(Bukkit.getPluginCommand("botinvite")).setExecutor(new CommandInvite());
 
          }
-         getLogger().info(ChatColor.GREEN + "Every Thing is Ready Now");
+         getLogger().info(ChatColor.GREEN + "Ready!");
+         getLogger().info(ChatColor.GREEN + "The Version of CWG(ChatWithGroup) is 1.3.1");
         }catch(Exception ignored){}
     }
     @Override

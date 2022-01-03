@@ -17,7 +17,8 @@ public class RequestSelectorListener implements Listener {
             } else if (Objects.equals(Utils.config.getString("JoinRequestSelector"), "DROP")) {
                 e.getEvent().reject();
             } else if (Objects.equals(Utils.config.getString("JoinRequestSelector"), "NOTHING")){
-
+                e.getEvent().getFromNick();
+                e.getEvent().getGroupId();
             }
             else {
                 Bukkit.getLogger().warning(ChatColor.RED + "错误的配置文件！");

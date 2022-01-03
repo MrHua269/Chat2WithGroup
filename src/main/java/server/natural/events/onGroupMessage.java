@@ -6,7 +6,7 @@ import org.bukkit.event.EventHandler;
 import org.bukkit.event.Listener;
 import server.natural.Utils;
 
-
+//todo make player can open it or stop it
 public class onGroupMessage implements Listener {
     @EventHandler
     public void onGroupMessageEvent(GroupMessageEvent event){

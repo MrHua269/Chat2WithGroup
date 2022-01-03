@@ -1,6 +1,6 @@
   name: ChatWithGroup
   main: server.natural.Main
-  version: "1.3.1 -hotfix"
+  version: "1.3.2"
   api-version: 1.17
   author: [Jerry , wangxyper]
   commands:
@@ -10,12 +10,6 @@
         - "sendmessagetogroup"
       usage: "/smg <要发送的信息>" # 用法
       description: "发送信息给群里的人" # 描述
-    systeminfo:
-      aliases:
-        - "si"
-        - "load"
-      usage: /systeminfo
-      description: "获取服务器负载状况"
     botinvite:
       aliases:
         - "botinvite"

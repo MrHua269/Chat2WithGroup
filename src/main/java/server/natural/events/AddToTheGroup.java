@@ -1,6 +1,5 @@
 package server.natural.events;
 
-import me.albert.amazingbot.AmazingBot;
 import me.albert.amazingbot.bot.Bot;
 import me.albert.amazingbot.events.*;
 import org.bukkit.event.EventHandler;

@@ -24,13 +24,14 @@ public class Main extends JavaPlugin {
          Thread.sleep(3000);
          Bukkit.getPluginManager().registerEvents(new ConnectHandler(),this);
          InitChatServer.Init("0.0.0.0",Utils.config.getInt("ChatServerPort"));
-         boolean tmp = new Boolean(getConfig().getString("GroupToGame"));
-         boolean tmp1 = new Boolean(getConfig().getString("EnableInvite"));
-         int cfver = new Integer(getConfig().getInt("config-ver"));
+         boolean tmp = Boolean.parseBoolean(getConfig().getString("GroupToGame"));
+         boolean tmp1 = Boolean.parseBoolean(getConfig().getString("EnableInvite"));
+         int cfver = getConfig().getInt("config-ver");
          getLogger().info(ChatColor.LIGHT_PURPLE + "Register Event Listener...");
-         if(tmp == true){
+         if(tmp){
              Bukkit.getPluginManager().registerEvents(new onGroupMessage(), this);
          }
+         //Check the "config-ver" and advise the owner to update the config.yml
          if(cfver != 1){
              getLogger().warning("ChatWithGroup get some problem on config.yml , plz delete it and the plugin will fix it automatically");
              getLogger().warning("plugin will start after 10 seconds");
@@ -43,13 +44,14 @@ public class Main extends JavaPlugin {
          getLogger().info(ChatColor.LIGHT_PURPLE + "Register the Command of this Plugin");
          Objects.requireNonNull(Bukkit.getPluginCommand("smg")).setExecutor(new CommandSMG());
 //         Objects.requireNonNull(Bukkit.getPluginCommand("systeminfo")).setExecutor(new CommandSystemInfo());
-         if(tmp1 == true){
+         if(tmp1){
              Objects.requireNonNull(Bukkit.getPluginCommand("botinvite")).setExecutor(new CommandInvite());
 
          }
          getLogger().info(ChatColor.GREEN + "Ready!");
-         getLogger().info(ChatColor.GREEN + "The Version of CWG(ChatWithGroup) is 1.3.1 -hotfix");
+         getLogger().info(ChatColor.GREEN + "The Version of CWG(ChatWithGroup) is 1.3.2");
          getLogger().info(ChatColor.GREEN + "This Version is released by Jerry!");
+         //Advise the owner to update the config.yml again
          if(cfver != 1){
              getLogger().warning("My config may have some problem, plz fix it...");
          }
@@ -60,4 +62,5 @@ public class Main extends JavaPlugin {
         getLogger().info("Goodbye and See You Next Time");
         //this.saveConfig();
     }
+
 }

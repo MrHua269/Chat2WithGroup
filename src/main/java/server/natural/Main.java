@@ -50,6 +50,9 @@ public class Main extends JavaPlugin {
          getLogger().info(ChatColor.GREEN + "Ready!");
          getLogger().info(ChatColor.GREEN + "The Version of CWG(ChatWithGroup) is 1.3.1 -hotfix");
          getLogger().info(ChatColor.GREEN + "This Version is released by Jerry!");
+         if(cfver != 1){
+             getLogger().warning("My config may have some problem, plz fix it...");
+         }
         }catch(Exception ignored){}
     }
     @Override

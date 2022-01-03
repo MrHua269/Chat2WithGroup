@@ -6,7 +6,7 @@
 
     <groupId>ChatWithGroup</groupId>
     <artifactId>ChatWithGroup</artifactId>
-    <version>1.3.1</version>
+    <version>1.3.1 -hotfix</version>
     <packaging>jar</packaging>
 
     <name>ChatWithGroup</name>

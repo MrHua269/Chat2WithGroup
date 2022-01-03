@@ -12,6 +12,7 @@ import java.util.concurrent.ConcurrentHashMap;
 
 public class AntiChatRepeating implements Listener {
     //todo complete the codes
+    //todo Make it can be able to don't open
     //warning : Beta stat may has bug
     private static Map<Player,Integer> integerHashMap = new ConcurrentHashMap<Player,Integer>();
     private static Map<Player,Boolean> booleanHashMap = new ConcurrentHashMap<Player,Boolean>();

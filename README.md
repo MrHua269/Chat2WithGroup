@@ -1,4 +1,4 @@
-# Chat2WithGroup
+# ChatWithGroup (CWG)
 基于Natural服务器的ChatWithGroup改进的插件
 # 注意事项
 本插件基于 AmazingBot 请在 Releases 里下载AmazingBot-*.jar 后放到libs文件夹里

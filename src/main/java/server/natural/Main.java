@@ -7,11 +7,9 @@ import server.natural.ChatServer.ConnectHandler;
 import server.natural.ChatServer.InitChatServer;
 import server.natural.command.CommandInvite;
 import server.natural.command.CommandSMG;
-//import server.natural.command.CommandSystemInfo;
 import server.natural.events.AddToTheGroup;
 import server.natural.events.RequestSelectorListener;
 import server.natural.events.onGroupMessage;
-
 
 import java.util.Objects;
 
@@ -23,6 +21,7 @@ public class Main extends JavaPlugin {
          saveDefaultConfig();
          Thread.sleep(3000);
          Bukkit.getPluginManager().registerEvents(new ConnectHandler(),this);
+         //register Events and Commands
          InitChatServer.Init("0.0.0.0",Utils.config.getInt("ChatServerPort"));
          boolean tmp = Boolean.parseBoolean(getConfig().getString("GroupToGame"));
          boolean tmp1 = Boolean.parseBoolean(getConfig().getString("EnableInvite"));

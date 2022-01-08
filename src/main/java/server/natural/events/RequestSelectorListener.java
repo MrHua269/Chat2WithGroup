@@ -1,4 +1,5 @@
 package server.natural.events;
+
 import me.albert.amazingbot.bot.Bot;
 import me.albert.amazingbot.events.GroupRequestJoinEvent;
 import org.bukkit.Bukkit;
@@ -6,6 +7,7 @@ import org.bukkit.ChatColor;
 import org.bukkit.event.EventHandler;
 import org.bukkit.event.Listener;
 import server.natural.Utils;
+
 import java.util.Objects;
 public class RequestSelectorListener implements Listener {
     //当有用户请求进群时执行
@@ -14,11 +16,12 @@ public class RequestSelectorListener implements Listener {
         Utils.executor.execute(() -> {
             if (Objects.equals(Utils.config.getString("JoinRequestSelector"), "ACCEPT")) {
                 e.getEvent().accept();
+                //Accept him
             } else if (Objects.equals(Utils.config.getString("JoinRequestSelector"), "DROP")) {
                 e.getEvent().reject();
+                //Reject him
             } else if (Objects.equals(Utils.config.getString("JoinRequestSelector"), "NOTHING")){
-                e.getEvent().getFromNick();
-                e.getEvent().getGroupId();
+                //Do nothing
             }
             else {
                 Bukkit.getLogger().warning(ChatColor.RED + "错误的配置文件！");

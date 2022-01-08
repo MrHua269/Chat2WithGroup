@@ -5,7 +5,7 @@ import org.bukkit.configuration.file.FileConfiguration;
 import java.util.concurrent.ArrayBlockingQueue;
 import java.util.concurrent.ThreadPoolExecutor;
 import java.util.concurrent.TimeUnit;
-
+//Create a Utils class make the Events or Commands can read config in config.yml
 public class Utils {
     public static FileConfiguration config = Bukkit.getPluginManager().getPlugin("ChatWithGroup").getConfig();
     public static ThreadPoolExecutor executor = new ThreadPoolExecutor(4,Integer.MAX_VALUE,Long.MAX_VALUE, TimeUnit.DAYS,new ArrayBlockingQueue<>(100));

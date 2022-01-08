@@ -7,8 +7,7 @@ owner: 3181474546
 ChatServerPort: 192
 EnableGroupToGame: "true"
 EnableInvite: "true"
-#Encrypt key of chat server
-EncryptKey: 2333333
+
 #{0}:NameCard,{1}:ID
 MessageOfQuitGroup:
   - "糟糕了，我们的群丢了一名宝贵的群员，请我们珍惜我们在这个群的每时每秒...."
@@ -23,3 +22,6 @@ ReplyMessageOnTemp:
   - "有什么事不能到群里问吗，你这么找我这个傻逼机器人我很为难的好吧"
 MessageRepeatLimit: 50
 CoolDownTime: 20
+#ChatServerConfig:
+EncryptKey: "hj7x89H$yuBI0456"
+EncryptIV: "NIfb&95GUY86Gfgh"

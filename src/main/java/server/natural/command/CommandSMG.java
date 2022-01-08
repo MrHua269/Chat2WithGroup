@@ -1,6 +1,7 @@
 package server.natural.command;
 
 import me.albert.amazingbot.bot.Bot;
+import org.bukkit.ChatColor;
 import org.bukkit.command.CommandExecutor;
 import org.bukkit.command.CommandSender;
 import org.bukkit.entity.Player;
@@ -16,7 +17,6 @@ public class CommandSMG implements CommandExecutor {
             commandSender.sendMessage("Message send finished!");
             return true;
             }else{
-                //When player uses the command in a wrong way ,we will advise him like this
                 commandSender.sendMessage("Wrong way to use,the right way is:");
                 return false;
             }

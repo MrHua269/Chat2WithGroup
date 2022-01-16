@@ -16,10 +16,12 @@ public class CommandInvite implements CommandExecutor {
     @Override
     public boolean onCommand(@NotNull CommandSender sender, @NotNull Command command, @NotNull String label, @NotNull String[] args){
         if (sender instanceof Player){
-            Bot.getApi().sendGroupMsg(group,"The Player " + sender.getName() + "invite you guys to our server to play");
+//            Bot.getApi().sendGroupMsg(group,"The Player " + sender.getName() + "invite you guys to our server to play");
+            Bot.getApi().sendGroupMsg(group,"玩家" + sender.getName() + "邀请你们去服务器玩");
             return true;
+
         }else{
-            sender.sendMessage(ChatColor.RED + "You are not a player");
+            sender.sendMessage(ChatColor.RED + "你不是一个玩家");
             return true;
 
         }

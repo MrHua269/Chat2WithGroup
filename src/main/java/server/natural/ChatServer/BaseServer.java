@@ -10,6 +10,7 @@ import io.netty.channel.socket.nio.NioServerSocketChannel;
 import io.netty.handler.codec.string.StringDecoder;
 import io.netty.handler.codec.string.StringEncoder;
 import org.bukkit.Bukkit;
+//todo 汉化
 public class BaseServer implements Runnable{
     public static Thread thread = null;
     ChannelInitializer<SocketChannel> channel = new ChannelInitializer<SocketChannel>() {

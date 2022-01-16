@@ -16,12 +16,14 @@ public class CommandStopChatServer implements CommandExecutor {
         if (commandSender.isOp()){
             //Stop the chat server
             BaseServer.thread.interrupt();
-            Bukkit.getLogger().info(ChatColor.RED+"Chat server stopped!");
-            //start the chat server after 10 seconds
+            commandSender.sendMessage(ChatColor.RED+"聊天服务器暂停!");
+            //start the chat server then start
             new Thread(() -> {
                 try {
-                    Thread.sleep(100000);
+                    int sleeptime = Utils.config.getInt("StartAfterStop") * 1000;
+                    Thread.sleep(sleeptime);
                     InitChatServer.Init("0.0.0.0", Utils.config.getInt("ChatServerPort"));
+                    commandSender.sendMessage(ChatColor.GREEN + "聊天服务器重新开启");
                 } catch (InterruptedException e) {
                     e.printStackTrace();
                 }

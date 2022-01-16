@@ -6,7 +6,7 @@ import org.bukkit.ChatColor;
 import java.util.concurrent.ArrayBlockingQueue;
 import java.util.concurrent.ThreadPoolExecutor;
 import java.util.concurrent.TimeUnit;
-
+//todo 汉化
 public class InitChatServer {
     //A simple class can init the server
     public static void Init(String host,int port){

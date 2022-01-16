@@ -22,8 +22,9 @@ public class RequestSelectorListener implements Listener {
             }
             else {
                 Bukkit.getLogger().warning(ChatColor.RED + "错误的配置文件！");
-                Bot.getApi().sendPrivateMsg(Utils.config.getString("owner"), "Your Config File in ChatWithGroup plugin got a problem");
-                Bot.getApi().sendPrivateMsg(Utils.config.getString("owner"), "Maybe it is 'JoinRequestSelector' 's wrong!");
+                Bot.getApi().sendPrivateMsg(Utils.config.getString("owner"), "ChatWithGroup配置文件出现问题");
+//                Bot.getApi().sendPrivateMsg(Utils.config.getString("owner"), "Maybe it is 'JoinRequestSelector' 's wrong!");
+                Bot.getApi().sendGroupMsg(Utils.config.getString("owner"), "也许是'JoinRequestSelector'的问题");
             }
         });
     }

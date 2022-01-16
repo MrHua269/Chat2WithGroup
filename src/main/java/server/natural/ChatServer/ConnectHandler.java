@@ -13,7 +13,7 @@ import org.bukkit.event.EventHandler;
 import org.bukkit.event.Listener;
 import org.bukkit.event.player.AsyncPlayerChatEvent;
 import server.natural.Utils;
-
+//todo 汉化
 public class ConnectHandler extends SimpleChannelInboundHandler<String> implements Listener {
     //Channels
     public static ChannelGroup channels = new DefaultChannelGroup(GlobalEventExecutor.INSTANCE);

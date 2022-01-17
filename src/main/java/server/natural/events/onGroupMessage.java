@@ -11,9 +11,9 @@ import server.natural.Utils;
 public class onGroupMessage implements Listener {
     @EventHandler
     public void onGroupMessageEvent(GroupMessageEvent event){
-        if(Utils.config.getBoolean("EnableGroupToGame")){
+        if(Utils.config.getBoolean("EnableGroupToGame")){ //判断配置文件是否开启接收群聊消息
         Bukkit.getServer().broadcastMessage(ChatColor.BLUE + "[QQ}" + event.getEvent().getSenderName() +"(" + event.getUserID()
-                + ")" +":"+ ChatColor.GRAY + event.getRawMessage());
+                + ")" +":"+ ChatColor.GRAY + event.getMsg());
         }
     }
 

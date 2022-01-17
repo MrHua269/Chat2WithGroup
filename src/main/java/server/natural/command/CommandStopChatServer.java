@@ -1,6 +1,6 @@
 package server.natural.command;
 
-import org.bukkit.Bukkit;
+//import org.bukkit.Bukkit;
 import org.bukkit.ChatColor;
 import org.bukkit.command.Command;
 import org.bukkit.command.CommandExecutor;
@@ -17,7 +17,7 @@ public class CommandStopChatServer implements CommandExecutor {
             //Stop the chat server
             BaseServer.thread.interrupt();
             commandSender.sendMessage(ChatColor.RED+"聊天服务器暂停!");
-            //start the chat server then start
+            //stop the chat server then start
             new Thread(() -> {
                 try {
                     int sleeptime = Utils.config.getInt("StartAfterStop") * 1000;

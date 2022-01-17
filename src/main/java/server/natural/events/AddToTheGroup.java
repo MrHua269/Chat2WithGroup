@@ -1,7 +1,9 @@
 package server.natural.events;
 
 import me.albert.amazingbot.bot.Bot;
-import me.albert.amazingbot.events.*;
+import me.albert.amazingbot.events.GroupMemberJoinEvent;
+import me.albert.amazingbot.events.GroupMemberLeaveEvent;
+import me.albert.amazingbot.events.TempMessageEvent;
 import org.bukkit.event.EventHandler;
 import org.bukkit.event.Listener;
 import server.natural.Utils;

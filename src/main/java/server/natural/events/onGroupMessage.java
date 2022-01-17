@@ -24,7 +24,11 @@ public class onGroupMessage implements Listener {
                List<Player> players = (List<Player>) Bukkit.getOnlinePlayers();
                for(Player player:players){
                    if(booleans.get(player)) {
-                       player.sendMessage(ChatColor.BLUE + "[QQ}" + event.getEvent().getSenderName() + "(" + event.getUserID() + ")" + ":" + ChatColor.GRAY + event.getRawMessage());
+                       /*
+                       getRawMessage方法已过时
+                       我已更换 -- NaT_Jerry
+                        */
+                       player.sendMessage(ChatColor.BLUE + "[QQ]" + event.getEvent().getSenderName() + "(" + event.getUserID() + ")" + ":" + ChatColor.GRAY + event.getMsg());
                    }
                }
            }

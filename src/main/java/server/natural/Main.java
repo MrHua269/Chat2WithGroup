@@ -6,11 +6,9 @@ import org.bukkit.plugin.java.JavaPlugin;
 import server.natural.ChatServer.ConnectHandler;
 import server.natural.ChatServer.InitChatServer;
 import server.natural.command.*;
-//import server.natural.command.CommandSystemInfo;
 import server.natural.events.AddToTheGroup;
 import server.natural.events.RequestSelectorListener;
 import server.natural.events.onGroupMessage;
-
 
 import java.util.Objects;
 
@@ -48,8 +46,6 @@ public class Main extends JavaPlugin {
 
          }
          getLogger().info(ChatColor.GREEN + "准备就绪!");
-//         getLogger().info(ChatColor.GREEN + "The Version of CWG(ChatWithGroup) is 1.3.2");
-//         getLogger().info(ChatColor.GREEN + "This Version is released by Jerry!");
          //Advise the owner to update the config.yml again
          if(cfver != 2){
              getLogger().warning("ChatWithGroup配置出现问题，请尽快修复");

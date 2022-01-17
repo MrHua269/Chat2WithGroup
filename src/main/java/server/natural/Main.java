@@ -31,7 +31,7 @@ public class Main extends JavaPlugin {
              Bukkit.getPluginManager().registerEvents(new onGroupMessage(), this);
          }
          //Check the "config-ver" and advise the owner to update the config.yml
-         if(cfver != 1){
+         if(cfver != 2){
              getLogger().warning("ChatWithGroup的配置文件出现了问题，请删除配置文件重新启动服务器，插件会重新生成配置文件");
              getLogger().warning("服务器将在10秒后继续运行");
              Thread.sleep(10000);
@@ -51,7 +51,7 @@ public class Main extends JavaPlugin {
 //         getLogger().info(ChatColor.GREEN + "The Version of CWG(ChatWithGroup) is 1.3.2");
 //         getLogger().info(ChatColor.GREEN + "This Version is released by Jerry!");
          //Advise the owner to update the config.yml again
-         if(cfver != 1){
+         if(cfver != 2){
              getLogger().warning("ChatWithGroup配置出现问题，请尽快修复");
          }
         }catch(Exception ignored){}

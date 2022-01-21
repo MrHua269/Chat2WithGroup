@@ -1,4 +1,4 @@
-config-ver: 2
+config-ver: 3
 #进群请求选择，ACCEPT为同意，DROP为拒绝，NOTHING为不做处理，勿更改成其他值
 JoinRequestSelector: "NOTHING"
 #群号，部分指令判断部分引用了该键值
@@ -7,6 +7,8 @@ owner: 3181474546
 ChatServerPort: 192
 EnableGroupToGame: "true"
 EnableInvite: "true"
+#部分命令使用的线程数，不懂建议为默认值
+ThreadCount: 4
 MessageLimitPer1M: 20
 MessageLimitSleepTime: 10000
 #{0}:NameCard,{1}:ID

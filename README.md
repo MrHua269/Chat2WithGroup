@@ -10,4 +10,5 @@ Bukkit / Paper / Spigot
 /smg [说得话] : 将输入在里面的字符发送至对应的QQ群  
 /botinvite : 邀请玩家到服务器玩  
 /stopcs : 暂停聊天服务器  
+/cwgver : 查看服务器版本及CWG信息  
 ...

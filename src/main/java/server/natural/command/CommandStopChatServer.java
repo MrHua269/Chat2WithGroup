@@ -13,7 +13,7 @@ public class CommandStopChatServer implements CommandExecutor {
         if (commandSender.isOp()){
             //Stop the chat server
             BaseServer.thread.interrupt();
-            Utils.executor.shutdown();
+            Utils.executor2.shutdown();
             commandSender.sendMessage(ChatColor.RED+"聊天服务器暂停!");
         }
         return true;

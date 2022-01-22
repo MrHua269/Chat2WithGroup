@@ -15,7 +15,9 @@ public class CommandCWGVer implements CommandExecutor {
             commandSender.sendMessage("Server Version: " + Bukkit.getVersion());
             commandSender.sendMessage("Server Port: " + Bukkit.getPort());
             commandSender.sendMessage("CWG Version: " + Utils.ver);
-            commandSender.sendMessage("ChatWithGroup v1.3.3 was made by Jerry and wangxyper");
+            commandSender.sendMessage("The Group I listen: " + Utils.config.getLong("group"));
+            commandSender.sendMessage("The owner of this robot: " + Utils.config.getLong("owner"));
+            commandSender.sendMessage("ChatWithGroup v" + Utils.ver + " was made by Jerry and wangxyper");
             return true;
         }
         else{

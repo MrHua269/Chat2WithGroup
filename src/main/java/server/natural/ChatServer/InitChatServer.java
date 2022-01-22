@@ -9,9 +9,8 @@ import java.util.concurrent.TimeUnit;
 //todo 汉化
 public class InitChatServer {
     //A simple class can init the server
-    public static void Init(String host,int port){
-        ThreadPoolExecutor executor = new ThreadPoolExecutor(1,1,Long.MAX_VALUE, TimeUnit.DAYS,new ArrayBlockingQueue<>(5));
-        executor.execute(new BaseServer(host,port));
+    public static void Init(String host,int port){   
+        Utils.executor2.execute(new BaseServer(host,port));
         Bukkit.getLogger().info(ChatColor.LIGHT_PURPLE+"Initializing IRC Service");
     }
 }

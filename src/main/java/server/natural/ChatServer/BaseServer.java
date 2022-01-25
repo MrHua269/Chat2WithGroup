@@ -10,6 +10,8 @@ import io.netty.channel.socket.nio.NioServerSocketChannel;
 import io.netty.handler.codec.string.StringDecoder;
 import io.netty.handler.codec.string.StringEncoder;
 import org.bukkit.Bukkit;
+import server.natural.Utils;
+
 //todo 汉化
 public class BaseServer implements Runnable{
     public static Thread thread = null;
@@ -35,21 +37,23 @@ public class BaseServer implements Runnable{
         //Set thread for command "stopcs"
         this.thread = Thread.currentThread();
         try {
+            if(Utils.isOpenChatServer){
+                Thread.currentThread().setName("Chat2WithGroup-NioSocket-ChatServer");
+                Bukkit.getLogger().info("Init thread pool on thread:"+Thread.currentThread().getName()+".");
+                EventLoopGroup BaseWorker = new NioEventLoopGroup();
+                EventLoopGroup WorkerGroup = new NioEventLoopGroup();
+                ServerBootstrap bootstrap = new ServerBootstrap();
+                Bukkit.getLogger().info("Bootstrapping Server.");
+                //Init the bootstrapper
+                bootstrap.group(BaseWorker, WorkerGroup)
+                        .channel(NioServerSocketChannel.class)
+                        .childHandler(channel)
+                        .option(ChannelOption.SO_KEEPALIVE, true);
+                Bukkit.getLogger().info("Binding on:"+this.host+":"+this.port);
+                //Bind port
+                bootstrap.bind(this.host, this.port).sync();}
             //Init the event groups
-            Thread.currentThread().setName("Chat2WithGroup-NioSocket-ChatServer");
-            Bukkit.getLogger().info("Init thread pool on thread:"+Thread.currentThread().getName()+".");
-            EventLoopGroup BaseWorker = new NioEventLoopGroup();
-            EventLoopGroup WorkerGroup = new NioEventLoopGroup();
-            ServerBootstrap bootstrap = new ServerBootstrap();
-            Bukkit.getLogger().info("Bootstrapping Server.");
-            //Init the bootstrapper
-            bootstrap.group(BaseWorker, WorkerGroup)
-                    .channel(NioServerSocketChannel.class)
-                    .childHandler(channel)
-                    .option(ChannelOption.SO_KEEPALIVE, true);
-            Bukkit.getLogger().info("Binding on:"+this.host+":"+this.port);
-            //Bind port
-            bootstrap.bind(this.host, this.port).sync();
+
         }catch (Exception e){e.printStackTrace();}
     }
 }

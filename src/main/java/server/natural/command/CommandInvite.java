@@ -17,6 +17,7 @@ public class CommandInvite implements CommandExecutor {
     public boolean onCommand(@NotNull CommandSender sender, @NotNull Command command, @NotNull String label, @NotNull String[] args){
         if (sender instanceof Player){
 //            Bot.getApi().sendGroupMsg(group,"The Player " + sender.getName() + "invite you guys to our server to play");
+            sender.sendMessage("邀请已成功发送至群");
             Bot.getApi().sendGroupMsg(group,"玩家" + sender.getName() + "邀请你们去服务器玩");
             return true;
 

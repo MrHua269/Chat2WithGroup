@@ -16,20 +16,23 @@ public class Main extends JavaPlugin {
     @Override
     public void onEnable() {
         try{
+         boolean tmp = Boolean.parseBoolean(getConfig().getString("GroupToGame"));
+         boolean tmp1 = Boolean.parseBoolean(getConfig().getString("EnableInvite"));
+         boolean tmp2 = Boolean.parseBoolean(getConfig().getString("EnableChatServer"));
          getLogger().info(ChatColor.GREEN + "欢迎使用!");
          saveDefaultConfig();
          Thread.sleep(3000);
-         Bukkit.getPluginManager().registerEvents(new ConnectHandler(),this);
-         InitChatServer.Init("0.0.0.0",Utils.config.getInt("ChatServerPort"));
-         boolean tmp = Boolean.parseBoolean(getConfig().getString("GroupToGame"));
-         boolean tmp1 = Boolean.parseBoolean(getConfig().getString("EnableInvite"));
+         if(tmp2){
+             Bukkit.getPluginManager().registerEvents(new ConnectHandler(),this);
+             InitChatServer.Init("0.0.0.0",Utils.config.getInt("ChatServerPort"));
+         }
          int cfver = getConfig().getInt("config-ver");
          getLogger().info(ChatColor.LIGHT_PURPLE + "注册插件事件监听器...");
          if(tmp){
              Bukkit.getPluginManager().registerEvents(new onGroupMessage(), this);
          }
          //Check the "config-ver" and advise the owner to update the config.yml
-         if(cfver != 3){
+         if(cfver != 4){
              getLogger().warning("ChatWithGroup的配置文件出现了问题，请删除配置文件重新启动服务器，插件会重新生成配置文件");
              getLogger().warning("服务器将在10秒后继续运行");
              Thread.sleep(10000);
@@ -38,8 +41,10 @@ public class Main extends JavaPlugin {
          Bukkit.getPluginManager().registerEvents(new AddToTheGroup(), this);
          getLogger().info(ChatColor.LIGHT_PURPLE + "注册插件命令");
          Objects.requireNonNull(Bukkit.getPluginCommand("smg")).setExecutor(new CommandSMG());
-         Bukkit.getPluginCommand("stopcs").setExecutor(new CommandStopChatServer());
-         Bukkit.getPluginCommand("startcs").setExecutor(new CommandStartChatServer());
+         if(tmp2){
+             Bukkit.getPluginCommand("stopcs").setExecutor(new CommandStopChatServer());
+             Bukkit.getPluginCommand("startcs").setExecutor(new CommandStartChatServer());
+         }
          Bukkit.getPluginCommand("cwgversion").setExecutor(new CommandCWGVer());
          Bukkit.getPluginCommand("messageforwarding").setExecutor(new CommandStopMessageTrasForwarding());
          if(tmp1){
@@ -48,7 +53,7 @@ public class Main extends JavaPlugin {
          }
          getLogger().info(ChatColor.GREEN + "准备就绪!");
          //Advise the owner to update the config.yml again
-         if(cfver != 3){
+         if(cfver != 4){
              getLogger().warning("ChatWithGroup配置出现问题，请尽快修复");
          }
         }catch(Exception ignored){}

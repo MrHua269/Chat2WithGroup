@@ -16,7 +16,7 @@ public class AddToTheGroup implements Listener {
     @EventHandler
     public void onUserJoinGroup(GroupMemberJoinEvent e) {
         Utils.executor.execute(() -> {
-            if (e.getEvent().getGroupId() == Utils.config.getLong("group")) {
+            if (e.getEvent().getGroupId() == Utils.group) {
                 List list = Utils.config.getList("MessageOfJoinGroup");
                 for (int i = 0; i < list.size(); i++) {
                     //todo Check bugs and fix
@@ -41,7 +41,7 @@ public class AddToTheGroup implements Listener {
     @EventHandler
     public void onUserLeaveGroup(GroupMemberLeaveEvent e){
         Utils.executor.execute(() -> {
-            if (e.getEvent().getGroupId() == Utils.config.getLong("group")) {
+            if (e.getEvent().getGroupId() == Utils.group) {
                 List list = Utils.config.getList("MessageOfQuitGroup");
                 for (int i = 0; i < list.size(); i++) {
                     //todo Check bugs and fix

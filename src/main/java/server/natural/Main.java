@@ -9,9 +9,8 @@ import server.natural.command.*;
 import server.natural.events.AddToTheGroup;
 import server.natural.events.RequestSelectorListener;
 import server.natural.events.onGroupMessage;
-
 import java.util.Objects;
-
+//todo 注释，现在这里写的东西我已经开始看不懂了 --NaT_Jerry
 public class Main extends JavaPlugin {
     @Override
     public void onEnable() {
@@ -41,10 +40,6 @@ public class Main extends JavaPlugin {
          Bukkit.getPluginManager().registerEvents(new AddToTheGroup(), this);
          getLogger().info(ChatColor.LIGHT_PURPLE + "注册插件命令");
          Objects.requireNonNull(Bukkit.getPluginCommand("smg")).setExecutor(new CommandSMG());
-         if(tmp2){
-             Bukkit.getPluginCommand("stopcs").setExecutor(new CommandStopChatServer());
-             Bukkit.getPluginCommand("startcs").setExecutor(new CommandStartChatServer());
-         }
          Bukkit.getPluginCommand("cwgversion").setExecutor(new CommandCWGVer());
          Bukkit.getPluginCommand("messageforwarding").setExecutor(new CommandStopMessageTrasForwarding());
          if(tmp1){

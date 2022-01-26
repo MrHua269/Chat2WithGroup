@@ -13,7 +13,7 @@ public class CommandSMG implements CommandExecutor {
     public boolean onCommand(@NotNull CommandSender commandSender, @NotNull org.bukkit.command.Command command, @NotNull String s, @NotNull String[] args) {
         if(commandSender instanceof Player){
             if(args[0]!=null&&args.length==1){
-            Bot.getApi().sendGroupMsg(String.valueOf(Utils.config.getLong("group")),commandSender.getName() + "->" + args[0]);
+            Bot.getApi().sendGroupMsg(Utils.groupInString,commandSender.getName() + "->" + args[0]);
             commandSender.sendMessage("消息发送成功!");
             return true;
             }else{
@@ -21,7 +21,7 @@ public class CommandSMG implements CommandExecutor {
                 return false;
             }
         }else{
-            Bot.getApi().sendGroupMsg(String.valueOf(Utils.config.getLong("group")),  "服务器闸总(Console)->" + args[0]);
+            Bot.getApi().sendGroupMsg(Utils.groupInString, "服务器闸总(Console)->" + args[0]);
         }
         return true;
     }

@@ -16,17 +16,6 @@
         - "inviteplayeringroup"
       usage: "/botinvite"
       description: "邀请服务器玩家"
-    stopcs:
-      aliases:
-        - "stopcs"
-        - "stopchatserver"
-      usage: "/stopcs"
-      description: "停止聊天服务器."
-    startcs:
-      aliases:
-        - "stopchatserver"
-      usage: "/startcs"
-      description: "Start the ChatServer"
     messageforwarding:
       aliases:
         - "mf"

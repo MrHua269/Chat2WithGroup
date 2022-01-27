@@ -6,9 +6,7 @@ import org.bukkit.plugin.java.JavaPlugin;
 import server.natural.ChatServer.ConnectHandler;
 import server.natural.ChatServer.InitChatServer;
 import server.natural.command.*;
-import server.natural.events.AddToTheGroup;
-import server.natural.events.RequestSelectorListener;
-import server.natural.events.onGroupMessage;
+import server.natural.events.*;
 import java.util.Objects;
 //todo 注释，现在这里写的东西我已经开始看不懂了 --NaT_Jerry
 public class Main extends JavaPlugin {
@@ -37,7 +35,7 @@ public class Main extends JavaPlugin {
              Thread.sleep(10000);
          }
          Bukkit.getPluginManager().registerEvents(new RequestSelectorListener(), this);
-         Bukkit.getPluginManager().registerEvents(new AddToTheGroup(), this);
+         Bukkit.getPluginManager().registerEvents(new onQuitJoinGroupReplyMessageEvent(), this);
          getLogger().info(ChatColor.LIGHT_PURPLE + "注册插件命令");
          Objects.requireNonNull(Bukkit.getPluginCommand("smg")).setExecutor(new CommandSMG());
          Bukkit.getPluginCommand("cwgversion").setExecutor(new CommandCWGVer());
@@ -55,6 +53,7 @@ public class Main extends JavaPlugin {
     }
     @Override
     public void onDisable() {
+        Utils.executor.shutdownNow();
         getLogger().info("再见");
     }
 

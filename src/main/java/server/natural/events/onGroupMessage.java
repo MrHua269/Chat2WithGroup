@@ -20,11 +20,10 @@ public class onGroupMessage implements Listener {
        Utils.executor.execute(()->{
            if(Utils.group==event.getGroupID()){
                if(Utils.config.getBoolean("EnableGroupToGame")){
+                   Bukkit.getLogger().info(ChatColor.BLUE + "[QQ]" + event.getEvent().getSenderName() + "(" + event.getUserID() + ")" + ":" + ChatColor.GRAY + event.getMsg());
                    List<Player> players = (List<Player>) Bukkit.getOnlinePlayers();
                    for(Player player:players){
-                       if(longs.get(player.getName())==1L) {
-                           player.sendMessage(ChatColor.BLUE + "[QQ]" + event.getEvent().getSenderName() + "(" + event.getUserID() + ")" + ":" + ChatColor.GRAY + event.getMsg());
-                       }
+                       if(longs.get(player.getName())==1L) player.sendMessage(ChatColor.BLUE + "[QQ]" + event.getEvent().getSenderName() + "(" + event.getUserID() + ")" + ":" + ChatColor.GRAY + event.getMsg());
                    }
                }
            }

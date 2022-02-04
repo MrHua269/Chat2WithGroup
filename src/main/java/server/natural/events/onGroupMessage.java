@@ -14,7 +14,7 @@ import java.util.List;
 import java.util.concurrent.ConcurrentHashMap;
 import java.util.concurrent.ConcurrentMap;
 public class onGroupMessage implements Listener {
-    private ConcurrentMap<String,Long> longs = new ConcurrentHashMap<>();
+    private ConcurrentHashMap<String,Long> longs = new ConcurrentHashMap<>();
     @EventHandler
     public void onGroupMessageEvent(GroupMessageEvent event){
        Utils.executor.execute(()->{

@@ -32,11 +32,8 @@ public class onGroupMessage implements Listener {
        });
     }
     @EventHandler
-    public void onJoin(PlayerJoinEvent e){
-        if(!longs.containsKey(e.getPlayer().getName())){
-            longs.put(e.getPlayer().getName(),1L);
-        }
-       
+    public void onJoin(PlayerJoinEvent e){     
+        longs.put(e.getPlayer().getName(),1L);
     }
     @EventHandler
     public void onQuit(PlayerQuitEvent e){

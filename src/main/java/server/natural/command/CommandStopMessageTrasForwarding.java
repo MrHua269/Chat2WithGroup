@@ -11,11 +11,11 @@ public class CommandStopMessageTrasForwarding implements CommandExecutor{
     public boolean onCommand(CommandSender commandSender, Command command, String s, String[] strings) {
         if(commandSender instanceof Player){
             Player player = (Player)commandSender;
-            if (onGroupMessage.longs.get(player.getName())==0L){
+            if (!onGroupMessage.longs.containsKey(player.getName())){
                 onGroupMessage.longs.replace(player.getName(),1L);
                 commandSender.sendMessage(ChatColor.GREEN+"Forward started!");
             }else{
-                onGroupMessage.longs.replace(player.getName(),0L);
+                onGroupMessage.longs.remove(player.getName());
                 commandSender.sendMessage(ChatColor.GREEN+"Forward stopped!");
             }
         }

@@ -17,18 +17,16 @@ public class Main extends JavaPlugin {
          boolean tmp1 = Boolean.parseBoolean(getConfig().getString("EnableInvite"));
          boolean tmp2 = Boolean.parseBoolean(getConfig().getString("EnableChatServer"));
          getLogger().info(ChatColor.GREEN + "欢迎使用!");
-            //保存原配置
          saveDefaultConfig();
          Thread.sleep(3000);
          if(tmp2){
-             //启动ChatServer
              Bukkit.getPluginManager().registerEvents(new ConnectHandler(),this);
              InitChatServer.Init("0.0.0.0",Utils.config.getInt("ChatServerPort"));
          }
          int cfver = getConfig().getInt("config-ver");
          getLogger().info(ChatColor.LIGHT_PURPLE + "注册插件事件监听器...");
-         if(tmp){ 
-             Bukkit.getPluginManager().registerEvents(new OnGroupMessage(), this);
+         if(tmp){
+             Bukkit.getPluginManager().registerEvents(new onGroupMessage(), this);
          }
          //Check the "config-ver" and advise the owner to update the config.yml
          if(cfver != 4){
@@ -37,7 +35,7 @@ public class Main extends JavaPlugin {
              Thread.sleep(10000);
          }
          Bukkit.getPluginManager().registerEvents(new RequestSelectorListener(), this);
-         Bukkit.getPluginManager().registerEvents(new OnQuitJoinGroupReplyMessageEvent(), this);
+         Bukkit.getPluginManager().registerEvents(new onQuitJoinGroupReplyMessageEvent(), this);
          getLogger().info(ChatColor.LIGHT_PURPLE + "注册插件命令");
          Objects.requireNonNull(Bukkit.getPluginCommand("smg")).setExecutor(new CommandSMG());
          Bukkit.getPluginCommand("cwgversion").setExecutor(new CommandCWGVer());
@@ -55,10 +53,7 @@ public class Main extends JavaPlugin {
     }
     @Override
     public void onDisable() {
-        Bukkit.getLogger().info("Closing thread pools...");
-        //关闭线程池
-        Utils.executor2.shutdown();
-        Utils.executor.shutdown();
+        Utils.executor.shutdownNow();
         getLogger().info("再见");
     }
 

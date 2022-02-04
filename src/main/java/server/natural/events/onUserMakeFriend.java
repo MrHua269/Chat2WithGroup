@@ -6,7 +6,7 @@ import org.bukkit.event.EventHandler;
 import org.bukkit.event.Listener;
 import server.natural.Utils;
 
-public class onUserMakeFriend implements Listener {
+public class OnUserMakeFriend implements Listener {
     @EventHandler
     public void onUserMakeBotFriendEvent(FriendRequestEvent e){
         Utils.executor.execute(() -> {

@@ -11,7 +11,7 @@ import server.natural.Utils;
 import java.text.MessageFormat;
 import java.util.List;
 
-public class onQuitJoinGroupReplyMessageEvent implements Listener {
+public class OnQuitJoinGroupReplyMessageEvent implements Listener {
     //当有新群员进群时执行
     @EventHandler
     public void onUserJoinGroup(GroupMemberJoinEvent e) {

@@ -14,7 +14,7 @@ import java.util.List;
 import java.util.concurrent.ConcurrentHashMap;
 import java.util.concurrent.ConcurrentMap;
 public class onGroupMessage implements Listener {
-    private ConcurrentHashMap<String,Long> longs = new ConcurrentHashMap<>();
+   
     @EventHandler
     public void onGroupMessageEvent(GroupMessageEvent event){
        Utils.executor.execute(()->{
@@ -23,23 +23,20 @@ public class onGroupMessage implements Listener {
                    Bukkit.getLogger().info(ChatColor.BLUE + "[QQ]" + event.getEvent().getSenderName() + "(" + event.getUserID() + ")" + ":" + ChatColor.GRAY + event.getMsg());
                    List<Player> players = (List<Player>) Bukkit.getOnlinePlayers();
                    for(Player player:players){
-                       if(longs.get(player.getName())==1L) player.sendMessage(ChatColor.BLUE + "[QQ]" + event.getEvent().getSenderName() + "(" + event.getUserID() + ")" + ":" + ChatColor.GRAY + event.getMsg());
+                       if(Utils.forwardList.get(player.getName())==1L) player.sendMessage(ChatColor.BLUE + "[QQ]" + event.getEvent().getSenderName() + "(" + event.getUserID() + ")" + ":" + ChatColor.GRAY + event.getMsg());
                    }
                }
            }
 
        });
     }
-    public ConcurrentHashMap<String,Long> getForwardList(){
-        return this.longs;
-    }
     @EventHandler
     public void onJoin(PlayerJoinEvent e){     
-        longs.put(e.getPlayer().getName(),1L);
+        Utils.forwardList.put(e.getPlayer().getName(),1L);
     }
     @EventHandler
     public void onQuit(PlayerQuitEvent e){
-       longs.remove(e.getPlayer().getName());
+       Utils.forwardList.remove(e.getPlayer().getName());
     }
 
 }

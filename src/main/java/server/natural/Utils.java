@@ -11,7 +11,7 @@ public class Utils {
     //一些事件或指令常用的变量可直接在此调用
     public static FileConfiguration config = Bukkit.getPluginManager().getPlugin("ChatWithGroup").getConfig();
     public static String ver = "1.3.4";
-    public static ConcurrentHashMap<String,Long> forwardList = null;
+    public static ConcurrentHashMap<String,Long> forwardList = new ConcurrentHashMap<>();
     public static long owner = config.getLong("owner");
     public static String ownerInString = String.valueOf(owner);
     public static long group = config.getLong("group");

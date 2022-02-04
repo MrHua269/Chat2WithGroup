@@ -55,7 +55,10 @@ public class Main extends JavaPlugin {
     }
     @Override
     public void onDisable() {
-        Utils.executor.shutdownNow();
+        Bukkit.getLogger().info("Closing thread pools...");
+        //关闭线程池
+        Utils.executor2.shutdown();
+        Utils.executor.shutdown();
         getLogger().info("再见");
     }
 

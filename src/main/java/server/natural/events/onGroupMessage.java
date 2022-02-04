@@ -14,7 +14,7 @@ import java.util.List;
 import java.util.concurrent.ConcurrentHashMap;
 import java.util.concurrent.ConcurrentMap;
 public class onGroupMessage implements Listener {
-    public static ConcurrentMap<String,Long> longs = new ConcurrentHashMap<>();
+    private ConcurrentMap<String,Long> longs = new ConcurrentHashMap<>();
     @EventHandler
     public void onGroupMessageEvent(GroupMessageEvent event){
        Utils.executor.execute(()->{
@@ -29,6 +29,9 @@ public class onGroupMessage implements Listener {
            }
 
        });
+    }
+    public ConcurrentMap<String,Long> getForwardList(){
+        return this.longs;
     }
     @EventHandler
     public void onJoin(PlayerJoinEvent e){     

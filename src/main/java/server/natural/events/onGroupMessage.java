@@ -22,7 +22,7 @@ public class onGroupMessage implements Listener {
                if(Utils.config.getBoolean("EnableGroupToGame")){
                    List<Player> players = (List<Player>) Bukkit.getOnlinePlayers();
                    for(Player player:players){
-                       if(longs.get(player.getName())==1) {
+                       if(longs.get(player.getName())==1L) {
                            player.sendMessage(ChatColor.BLUE + "[QQ]" + event.getEvent().getSenderName() + "(" + event.getUserID() + ")" + ":" + ChatColor.GRAY + event.getMsg());
                        }
                    }
@@ -34,7 +34,7 @@ public class onGroupMessage implements Listener {
     @EventHandler
     public void onJoin(PlayerJoinEvent e){
         if(!longs.containsKey(e.getPlayer().getName())){
-            longs.put(e.getPlayer().getName(),1);
+            longs.put(e.getPlayer().getName(),1L);
         }
        
     }

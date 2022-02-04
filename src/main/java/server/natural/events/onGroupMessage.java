@@ -13,10 +13,8 @@ import server.natural.Utils;
 import java.util.List;
 import java.util.concurrent.ConcurrentHashMap;
 import java.util.concurrent.ConcurrentMap;
-
-//todo make player can open it or stop it
 public class onGroupMessage implements Listener {
-    public static ConcurrentMap<Player,Boolean> booleans = new ConcurrentHashMap<>();
+    public static ConcurrentMap<String,Boolean> booleans = new ConcurrentHashMap<>();
     @EventHandler
     public void onGroupMessageEvent(GroupMessageEvent event){
        Utils.executor.execute(()->{
@@ -24,7 +22,7 @@ public class onGroupMessage implements Listener {
                if(Utils.config.getBoolean("EnableGroupToGame")){
                    List<Player> players = (List<Player>) Bukkit.getOnlinePlayers();
                    for(Player player:players){
-                       if(booleans.get(player)) {
+                       if(booleans.get(player.getName())) {
                            player.sendMessage(ChatColor.BLUE + "[QQ]" + event.getEvent().getSenderName() + "(" + event.getUserID() + ")" + ":" + ChatColor.GRAY + event.getMsg());
                        }
                    }
@@ -35,14 +33,14 @@ public class onGroupMessage implements Listener {
     }
     @EventHandler
     public void onJoin(PlayerJoinEvent e){
-        if(!booleans.containsKey(e.getPlayer())){
-            booleans.put(e.getPlayer(),true);
+        if(!booleans.containsKey(e.getPlayer().getName())){
+            booleans.put(e.getPlayer().getName(),true);
         }
        
     }
     @EventHandler
     public void onQuit(PlayerQuitEvent e){
-        booleans.remove(e.getPlayer());
+        booleans.remove(e.getPlayer().getName());
     }
 
 }

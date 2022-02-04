@@ -53,7 +53,6 @@ public class BaseServer implements Runnable{
                 //Bind port
                 bootstrap.bind(this.host, this.port).sync();}
             //Init the event groups
-
         }catch (Exception e){e.printStackTrace();}
     }
 }

@@ -11,6 +11,5 @@ public class InitChatServer {
             Utils.executor2.execute(new BaseServer(host,port));
             Bukkit.getLogger().info(ChatColor.LIGHT_PURPLE+"Initializing IRC Service");
         }
-
     }
 }

@@ -28,7 +28,7 @@ public class Main extends JavaPlugin {
          int cfver = getConfig().getInt("config-ver");
          getLogger().info(ChatColor.LIGHT_PURPLE + "注册插件事件监听器...");
          if(tmp){ 
-             Bukkit.getPluginManager().registerEvents(new onGroupMessage(), this);
+             Bukkit.getPluginManager().registerEvents(new OnGroupMessage(), this);
          }
          //Check the "config-ver" and advise the owner to update the config.yml
          if(cfver != 4){
@@ -37,7 +37,7 @@ public class Main extends JavaPlugin {
              Thread.sleep(10000);
          }
          Bukkit.getPluginManager().registerEvents(new RequestSelectorListener(), this);
-         Bukkit.getPluginManager().registerEvents(new onQuitJoinGroupReplyMessageEvent(), this);
+         Bukkit.getPluginManager().registerEvents(new OnQuitJoinGroupReplyMessageEvent(), this);
          getLogger().info(ChatColor.LIGHT_PURPLE + "注册插件命令");
          Objects.requireNonNull(Bukkit.getPluginCommand("smg")).setExecutor(new CommandSMG());
          Bukkit.getPluginCommand("cwgversion").setExecutor(new CommandCWGVer());

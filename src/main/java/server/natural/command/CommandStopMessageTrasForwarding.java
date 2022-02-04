@@ -11,7 +11,7 @@ public class CommandStopMessageTrasForwarding implements CommandExecutor{
     public boolean onCommand(CommandSender commandSender, Command command, String s, String[] strings) {
         if(commandSender instanceof Player){
             Player player = (Player)commandSender;
-            if (!onGroupMessage.longs.get(player.getName())){
+            if (onGroupMessage.longs.get(player.getName())!==1){
                 onGroupMessage.longs.replace(player.getName(),1);
                 commandSender.sendMessage(ChatColor.GREEN+"Forward started!");
             }else{

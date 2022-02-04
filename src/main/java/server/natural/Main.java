@@ -28,7 +28,9 @@ public class Main extends JavaPlugin {
          int cfver = getConfig().getInt("config-ver");
          getLogger().info(ChatColor.LIGHT_PURPLE + "注册插件事件监听器...");
          if(tmp){
-             Bukkit.getPluginManager().registerEvents(new onGroupMessage(), this);
+             onGroupMessage groupMessageListener = new onGroupMessage();
+             Bukkit.getPluginManager().registerEvents(groupMessageListener, this);
+             Utils.forwardList = groupMessageListener.getForwardList();
          }
          //Check the "config-ver" and advise the owner to update the config.yml
          if(cfver != 4){

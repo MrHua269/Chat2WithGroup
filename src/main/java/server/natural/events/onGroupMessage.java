@@ -20,15 +20,11 @@ public class onGroupMessage implements Listener {
     @EventHandler
     public void onGroupMessageEvent(GroupMessageEvent event){
        Utils.executor.execute(()->{
-           if(Utils.group == event.getGroupID()){
+           if(Utils.group==event.getGroupID()){
                if(Utils.config.getBoolean("EnableGroupToGame")){
                    List<Player> players = (List<Player>) Bukkit.getOnlinePlayers();
                    for(Player player:players){
                        if(booleans.get(player)) {
-                       /*
-                       getRawMessage方法已过时
-                       我已更换 -- NaT_Jerry
-                        */
                            player.sendMessage(ChatColor.BLUE + "[QQ]" + event.getEvent().getSenderName() + "(" + event.getUserID() + ")" + ":" + ChatColor.GRAY + event.getMsg());
                        }
                    }
@@ -39,7 +35,10 @@ public class onGroupMessage implements Listener {
     }
     @EventHandler
     public void onJoin(PlayerJoinEvent e){
-        booleans.put(e.getPlayer(),true);
+        if(!booleans.containsKey(e.getPlayer())){
+            booleans.put(e.getPlayer(),true);
+        }
+       
     }
     @EventHandler
     public void onQuit(PlayerQuitEvent e){

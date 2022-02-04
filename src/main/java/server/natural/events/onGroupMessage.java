@@ -30,7 +30,7 @@ public class onGroupMessage implements Listener {
 
        });
     }
-    public ConcurrentMap<String,Long> getForwardList(){
+    public ConcurrentHashMap<String,Long> getForwardList(){
         return this.longs;
     }
     @EventHandler

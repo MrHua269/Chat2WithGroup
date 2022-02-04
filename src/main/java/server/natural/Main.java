@@ -17,9 +17,11 @@ public class Main extends JavaPlugin {
          boolean tmp1 = Boolean.parseBoolean(getConfig().getString("EnableInvite"));
          boolean tmp2 = Boolean.parseBoolean(getConfig().getString("EnableChatServer"));
          getLogger().info(ChatColor.GREEN + "欢迎使用!");
+            //保存原配置
          saveDefaultConfig();
          Thread.sleep(3000);
          if(tmp2){
+             //启动ChatServer
              Bukkit.getPluginManager().registerEvents(new ConnectHandler(),this);
              InitChatServer.Init("0.0.0.0",Utils.config.getInt("ChatServerPort"));
          }

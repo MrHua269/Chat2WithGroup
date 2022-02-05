@@ -1,5 +1,4 @@
 package server.natural.command;
-
 import me.albert.amazingbot.bot.Bot;
 import org.bukkit.ChatColor;
 import org.bukkit.command.Command;
@@ -8,8 +7,6 @@ import org.bukkit.command.CommandSender;
 import org.bukkit.entity.Player;
 import org.jetbrains.annotations.NotNull;
 import server.natural.Utils;
-
-import static server.natural.Utils.config;
 //This one need to add the CoolDownTime because some silly bitch may use it to send some useless 's message
 //todo add cooldowntime
 public class CommandInvite implements CommandExecutor {

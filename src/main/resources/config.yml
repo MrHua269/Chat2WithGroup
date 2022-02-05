@@ -1,30 +1,40 @@
 config-ver: 4
-#进群请求选择，YES为同意，NO为拒绝，NOTHING为不做处理，勿更改成其他值
-JoinRequestSelector: "NOTHING"
-#加机器人好友选择，YES为同意，NO为拒绝，NOTHING为不做处理，勿更改成其他值
-AddFriendSelector: "YES"
-#群号，部分指令判断部分引用了该键值
-group: 1073135029
-owner: 3181474546
-ChatServerPort: 192
-EnableGroupToGame: "true"
-EnableChatServer: "false"
-EnableAntiChatSpam: "false"
-EnableInvite: "true"
-#部分事件使用的线程数，不懂建议为默认值
-ThreadCount: 4
-MessageLimitPer1M: 20
-MessageLimitSleepTime: 10000
-#{0}:NameCard,{1}:ID
-MessageOfQuitGroup:
-  - "糟糕了，我们的群丢了一名宝贵的群员，请我们珍惜我们在这个群的每时每秒...."
-  - "离群人的名字:{0}"
-  - "离群人的QQ:{1}"
-#{0}:NameCard,{1}:ID
-MessageOfJoinGroup:
-  - "欢迎我们的一位新成员！:{0}"
-  - "ta的QQ号为:{1}"
-#{0}:NameCard,{1}:ID
-ReplyMessageOnTemp:
-  - "有什么事不能到群里问吗，你这么找我这个傻逼机器人我很为难的好吧"
-MessageRepeatLimit: 50
+CoreConfig:
+  #群号，部分指令判断部分引用了该键值
+  group: 1073135029
+  owner: 3181474546
+  #部分事件使用的线程数，不懂建议为默认值
+  ThreadCount: 4
+Function:
+  EnableGroupToGame: true
+  EnableChatServer: true
+  EnableAntiChatSpam: true
+  EnableInvite: true
+MessageLimit:
+  #单位：毫秒
+  MessageSlotLimit: 20
+RequestHandler:
+  #进群请求选择，YES为同意，NO为拒绝，NOTHING为不做处理，勿更改成其他值
+  JoinRequestSelector: "NOTHING"
+  #加机器人好友选择，YES为同意，NO为拒绝，NOTHING为不做处理，勿更改成其他值
+  AddFriendSelector: "YES"
+ChatServer:
+  MessageSlotLimit: 500
+  Port: 192
+Texts:
+  #{0}:NameCard,{1}:ID
+  MessageOfQuitGroup:
+    - "糟糕了，我们的群丢了一名宝贵的群员，请我们珍惜我们在这个群的每时每秒...."
+    - "离群人的名字:{0}"
+    - "离群人的QQ:{1}"
+  #{0}:NameCard,{1}:ID
+  MessageOfJoinGroup:
+    - "欢迎我们的一位新成员！:{0}"
+    - "ta的QQ号为:{1}"
+  #{0}:NameCard,{1}:ID
+  ReplyMessageOnTemp:
+    - "有什么事不能到群里问吗，你这么找我这个傻逼机器人我很为难的好吧"
+  MessageOutOfLimit: "歇歇吧，你的口水已经到处都是了"
+
+
+

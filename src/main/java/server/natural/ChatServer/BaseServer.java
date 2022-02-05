@@ -14,7 +14,7 @@ import server.natural.Utils;
 
 //todo 汉化
 public class BaseServer implements Runnable{
-    public static Thread thread = null;
+
     ChannelInitializer<SocketChannel> channel = new ChannelInitializer<SocketChannel>() {
         @Override
         public void initChannel(SocketChannel ch) {
@@ -27,19 +27,17 @@ public class BaseServer implements Runnable{
     };
     private String host;
     private int port;
-    public BaseServer(String Host,int Port){
+    public BaseServer(final String Host,final int Port){
         this.host = Host;
         this.port = Port;
     }
     //Init the chat server and bootstrap
     @Override
     public void run(){
-        //Set thread for command "stopcs"
-        this.thread = Thread.currentThread();
         try {
             if(Utils.isOpenChatServer){
                 Thread.currentThread().setName("Chat2WithGroup-NioSocket-ChatServer");
-                Bukkit.getLogger().info("Init thread pool on thread:"+Thread.currentThread().getName()+".");
+                Bukkit.getLogger().info("Init event loop group on thread:"+Thread.currentThread().getName()+".");
                 EventLoopGroup BaseWorker = new NioEventLoopGroup();
                 EventLoopGroup WorkerGroup = new NioEventLoopGroup();
                 ServerBootstrap bootstrap = new ServerBootstrap();

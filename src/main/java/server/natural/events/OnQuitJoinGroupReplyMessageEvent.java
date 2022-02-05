@@ -4,11 +4,14 @@ import me.albert.amazingbot.bot.Bot;
 import me.albert.amazingbot.events.GroupMemberJoinEvent;
 import me.albert.amazingbot.events.GroupMemberLeaveEvent;
 import me.albert.amazingbot.events.TempMessageEvent;
+import org.bukkit.Bukkit;
 import org.bukkit.event.EventHandler;
 import org.bukkit.event.Listener;
+import server.natural.Main;
 import server.natural.Utils;
 
 import java.text.MessageFormat;
+import java.util.ArrayList;
 import java.util.List;
 
 public class OnQuitJoinGroupReplyMessageEvent implements Listener {
@@ -17,10 +20,10 @@ public class OnQuitJoinGroupReplyMessageEvent implements Listener {
     public void onUserJoinGroup(GroupMemberJoinEvent e) {
         Utils.executor.execute(() -> {
             if (e.getEvent().getGroupId() == Utils.group) {
-                List list = Utils.config.getList("MessageOfJoinGroup");
-                for (int i = 0; i < list.size(); i++) {
+                List<String> list = (List<String>)Utils.config.getList("Texts.MessageOfJoinGroup");
+                for (String messages:list) {
                     //todo Check bugs and fix
-                    String s = MessageFormat.format(String.valueOf(list.get(i)), e.getEvent().getUser().getNameCard(), e.getEvent().getUser().getId());
+                    String s = MessageFormat.format(messages, e.getEvent().getUser().getNameCard(), e.getEvent().getUser().getId());
                     Bot.getApi().sendGroupMsg(String.valueOf(e.getEvent().getGroupId()), s);
                 }
             }
@@ -29,10 +32,11 @@ public class OnQuitJoinGroupReplyMessageEvent implements Listener {
     @EventHandler
     public void onReplyMessage(TempMessageEvent e){
         Utils.executor.execute(() -> {
-            List list = Utils.config.getList("ReplyMessageOnTemp");
-            for (int i=0;i<list.size();i++){
+            List<String> list = (List<String>) Utils.config.getList("Texts.ReplyMessageOnTemp");
+            for (String messages:list) {
                 //todo Check bugs and fix
-                e.response(e.getEvent().getSenderName() + list);
+                String s = MessageFormat.format(messages, e.getEvent().getSender().getNameCard(), e.getEvent().getSender().getId());
+                e.response(e.getEvent().getSenderName()+s);
             }
         });
 
@@ -42,10 +46,10 @@ public class OnQuitJoinGroupReplyMessageEvent implements Listener {
     public void onUserLeaveGroup(GroupMemberLeaveEvent e){
         Utils.executor.execute(() -> {
             if (e.getEvent().getGroupId() == Utils.group) {
-                List list = Utils.config.getList("MessageOfQuitGroup");
-                for (int i = 0; i < list.size(); i++) {
+                List<String> list = (List<String>)Utils.config.getList("Texts.MessageOfQuitGroup");
+                for (String messages:list) {
                     //todo Check bugs and fix
-                    String s = MessageFormat.format(String.valueOf(list.get(i)), e.getEvent().getUser().getNameCard(), e.getEvent().getUser().getId());
+                    String s = MessageFormat.format(messages, e.getEvent().getUser().getNameCard(), e.getEvent().getUser().getId());
                     Bot.getApi().sendGroupMsg(String.valueOf(e.getEvent().getGroupId()), s);
                 }
             }

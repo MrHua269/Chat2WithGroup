@@ -10,11 +10,11 @@ public class OnUserMakeFriend implements Listener {
     @EventHandler
     public void onUserMakeBotFriendEvent(FriendRequestEvent e){
         Utils.executor.execute(() -> {
-            if(Utils.config.getString("AddFriendSelector").equals("YES")){
+            if(Utils.config.getString("RequestHandler.AddFriendSelector").equals("YES")){
                 e.getEvent().accept();
-            }else if (Utils.config.getString("AddFriendSelector").equals("NO")){
+            }else if (Utils.config.getString("RequestHandler.AddFriendSelector").equals("NO")){
                 e.getEvent().reject(false);
-            }else if (Utils.config.getString("AddFriendSelector").equals("NOTHING")){
+            }else if (Utils.config.getString("RequestHandler.AddFriendSelector").equals("NOTHING")){
                 e.getEvent().getEventId();
             }else{
                 Bot.getApi().sendPrivateMsg(Utils.ownerInString, "CWG配置文件出现了问题");

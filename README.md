@@ -11,4 +11,6 @@ Bukkit / Paper / Spigot
 /botinvite : 邀请玩家到服务器玩  
 /stopcs : 暂停聊天服务器  
 /cwgver : 查看服务器版本及CWG信息  
-...
+...  
+# 注意
+本插件的依赖插件为:AmazingBot

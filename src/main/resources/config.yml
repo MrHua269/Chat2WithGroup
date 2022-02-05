@@ -7,7 +7,7 @@ CoreConfig:
   ThreadCount: 4
 Function:
   EnableGroupToGame: true
-  EnableChatServer: true
+  EnableChatServer: false
   EnableAntiChatSpam: true
   EnableInvite: true
 MessageLimit:

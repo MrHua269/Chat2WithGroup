@@ -17,6 +17,8 @@ public class Utils {
     public static FileConfiguration config = Bukkit.getPluginManager().getPlugin("ChatWithGroup").getConfig();
     public static final String ver = "1.3.4";
     public static final int configVersion = 4;
+    //留存
+    public static final boolean isBetaVersion = false;
     public static long owner = config.getLong("CoreConfig.owner");
     public static String ownerInString = String.valueOf(owner);
     public static long group = config.getLong("CoreConfig.group");

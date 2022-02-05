@@ -5,14 +5,8 @@ import org.bukkit.ChatColor;
 import org.bukkit.plugin.java.JavaPlugin;
 import server.natural.ChatServer.BaseServer;
 import server.natural.ChatServer.ConnectHandler;
-import server.natural.command.CommandCWGVer;
-import server.natural.command.CommandInvite;
-import server.natural.command.CommandSMG;
-import server.natural.command.CommandStopMessageTrasForwarding;
-import server.natural.events.AntiChatRepeating;
-import server.natural.events.OnGroupMessage;
-import server.natural.events.OnQuitJoinGroupReplyMessageEvent;
-import server.natural.events.RequestSelectorListener;
+import server.natural.command.*;
+import server.natural.events.*;
 
 import java.util.concurrent.LinkedBlockingDeque;
 import java.util.concurrent.ThreadPoolExecutor;
@@ -28,6 +22,7 @@ public class Main extends JavaPlugin {
          Thread.sleep(3000);
          Utils.executor = new ThreadPoolExecutor(getConfig().getInt("CoreConfig.ThreadCount")+1,Integer.MAX_VALUE,Long.MAX_VALUE, TimeUnit.DAYS,new LinkedBlockingDeque<>());
          //Should read the config after saving the default config!
+            // I know ... My darling wangxyper~ mua~
          boolean tmp = getConfig().getBoolean("Function.EnableGroupToGame");
          boolean tmp1 = getConfig().getBoolean("Function.EnableInvite");
          boolean tmp2 = getConfig().getBoolean("Function.EnableChatServer");
@@ -48,6 +43,7 @@ public class Main extends JavaPlugin {
          getLogger().info(ChatColor.LIGHT_PURPLE + "注册插件命令");
          Bukkit.getPluginCommand("smg").setExecutor(new CommandSMG());
          Bukkit.getPluginCommand("cwgversion").setExecutor(new CommandCWGVer());
+         Bukkit.getPluginCommand("cwg").setExecutor(new CommandReloadConfig());
          Bukkit.getPluginCommand("messageforwarding").setExecutor(new CommandStopMessageTrasForwarding());
          if(tmp1) Bukkit.getPluginCommand("botinvite").setExecutor(new CommandInvite());
          getLogger().info(ChatColor.GREEN + "准备就绪!");

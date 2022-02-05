@@ -19,8 +19,8 @@ public class CommandCWGVer implements CommandExecutor {
             commandSender.sendMessage("The Group I listen: " + Utils.config.getLong("CoreConfig.group"));
             commandSender.sendMessage("The owner of this robot: " + Utils.config.getLong("CoreConfig.owner"));
             commandSender.sendMessage("The Thread Number I register: " + Utils.executor.getCorePoolSize());
-            commandSender.sendMessage("The Thread I am using now: " + Utils.executor.getActiveCount());
-            commandSender.sendMessage("ChatWithGroup v" + Utils.ver + " was made by Jerry and wangxyper");
+            commandSender.sendMessage("The Thread I am using now: " + Utils.executor.getTaskCount());
+            commandSender.sendMessage("ChatWithGroup v" + Utils.ver + " was made by NaT_Jerry and wangxyper");
             return true;
         }
         else{

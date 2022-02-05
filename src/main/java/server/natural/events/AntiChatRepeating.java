@@ -23,15 +23,25 @@ public class AntiChatRepeating implements Listener {
 
     public static boolean isOutOfLimit(Player player, long dealy) {
         boolean isOut = false;
-        if (!playerCounts.contains(player)) playerCounts.put(player, System.currentTimeMillis());
-        if (playerCounts.get(player) + dealy > System.currentTimeMillis()) isOut = true;
+        if (!playerCounts.contains(player)){
+            playerCounts.put(player, System.currentTimeMillis());
+            return false;
+        }
+        if (playerCounts.get(player) + dealy > System.currentTimeMillis()){
+            isOut = true;
+        }
         playerCounts.replace(player, System.currentTimeMillis());
         return isOut;
     }
     public static boolean isOutOfLimit(Channel channel, long dealy) {
         boolean isOut = false;
-        if (!channelCounts.contains(channel)) channelCounts.put(channel, System.currentTimeMillis());
-        if (channelCounts.get(channel) + dealy > System.currentTimeMillis()) isOut = true;
+        if (!channelCounts.contains(channel)){
+            channelCounts.put(channel, System.currentTimeMillis());
+            return false;
+        }
+        if (channelCounts.get(channel) + dealy > System.currentTimeMillis()){
+            isOut = true;
+        }
         channelCounts.replace(channel, System.currentTimeMillis());
         return isOut;
     }

@@ -3,8 +3,8 @@ package server.natural;
 import org.bukkit.Bukkit;
 import org.bukkit.ChatColor;
 import org.bukkit.plugin.java.JavaPlugin;
+import server.natural.ChatServer.BaseServer;
 import server.natural.ChatServer.ConnectHandler;
-import server.natural.ChatServer.InitChatServer;
 import server.natural.command.CommandCWGVer;
 import server.natural.command.CommandInvite;
 import server.natural.command.CommandSMG;
@@ -13,6 +13,11 @@ import server.natural.events.AntiChatRepeating;
 import server.natural.events.OnGroupMessage;
 import server.natural.events.OnQuitJoinGroupReplyMessageEvent;
 import server.natural.events.RequestSelectorListener;
+
+import java.util.concurrent.LinkedBlockingDeque;
+import java.util.concurrent.ThreadPoolExecutor;
+import java.util.concurrent.TimeUnit;
+
 //todo 注释，现在这里写的东西我已经开始看不懂了 --NaT_Jerry
 public class Main extends JavaPlugin {
     @Override
@@ -21,6 +26,7 @@ public class Main extends JavaPlugin {
          getLogger().info(ChatColor.GREEN + "欢迎使用!");
          saveDefaultConfig();
          Thread.sleep(3000);
+         Utils.executor = new ThreadPoolExecutor(getConfig().getInt("CoreConfig.ThreadCount")+1,Integer.MAX_VALUE,Long.MAX_VALUE, TimeUnit.DAYS,new LinkedBlockingDeque<>());
          //Should read the config after saving the default config!
          boolean tmp = getConfig().getBoolean("Function.EnableGroupToGame");
          boolean tmp1 = getConfig().getBoolean("Function.EnableInvite");
@@ -28,7 +34,8 @@ public class Main extends JavaPlugin {
          boolean tmp3 = getConfig().getBoolean("Function.EnableAntiChatSpam");
          if(tmp3)Bukkit.getPluginManager().registerEvents(new AntiChatRepeating(),this);
          if(tmp2){
-             InitChatServer.Init("0.0.0.0",Utils.config.getInt("ChatServer.Port"));
+             Bukkit.getLogger().info("Start chat server...");
+             Utils.executor.execute(new BaseServer("0.0.0.0",Utils.config.getInt("ChatServer.Port")));
              Bukkit.getPluginManager().registerEvents(new ConnectHandler(),this);
          }
          int cfver = getConfig().getInt("config-ver");
@@ -57,7 +64,6 @@ public class Main extends JavaPlugin {
     }
     @Override
     public void onDisable() {
-        Utils.executor2.shutdown();
         Utils.executor.shutdown();
         getLogger().info("再见");
     }

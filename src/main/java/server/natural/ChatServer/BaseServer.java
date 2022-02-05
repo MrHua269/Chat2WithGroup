@@ -7,10 +7,10 @@ import io.netty.channel.EventLoopGroup;
 import io.netty.channel.nio.NioEventLoopGroup;
 import io.netty.channel.socket.SocketChannel;
 import io.netty.channel.socket.nio.NioServerSocketChannel;
+import io.netty.handler.codec.LineBasedFrameDecoder;
 import io.netty.handler.codec.string.StringDecoder;
 import io.netty.handler.codec.string.StringEncoder;
 import org.bukkit.Bukkit;
-import server.natural.Utils;
 
 //todo 汉化
 public class BaseServer implements Runnable{
@@ -19,10 +19,13 @@ public class BaseServer implements Runnable{
         @Override
         public void initChannel(SocketChannel ch) {
             System.out.println("Init channel:" + ch);
-            ch.pipeline()
-                    .addLast("decoder", new StringDecoder())
-                    .addLast("encoder", new StringEncoder())
-                    .addLast("handler", new ConnectHandler());
+            try {
+                ch.pipeline()
+                        .addLast("frameDecoder", new LineBasedFrameDecoder(256))
+                        .addLast("decoder", new StringDecoder())
+                        .addLast("encoder", new StringEncoder())
+                        .addLast("handler", new ConnectHandler());
+            }catch (Exception e){e.printStackTrace();}
         }
     };
     private String host;
@@ -33,24 +36,25 @@ public class BaseServer implements Runnable{
     }
     //Init the chat server and bootstrap
     @Override
-    public void run(){
+    public void run() {
         try {
-            if(Utils.isOpenChatServer){
-                Thread.currentThread().setName("Chat2WithGroup-NioSocket-ChatServer");
-                Bukkit.getLogger().info("Init event loop group on thread:"+Thread.currentThread().getName()+".");
-                EventLoopGroup BaseWorker = new NioEventLoopGroup();
-                EventLoopGroup WorkerGroup = new NioEventLoopGroup();
-                ServerBootstrap bootstrap = new ServerBootstrap();
-                Bukkit.getLogger().info("Bootstrapping Server.");
-                //Init the bootstrapper
-                bootstrap.group(BaseWorker, WorkerGroup)
-                        .channel(NioServerSocketChannel.class)
-                        .childHandler(channel)
-                        .option(ChannelOption.SO_KEEPALIVE, true);
-                Bukkit.getLogger().info("Binding on:"+this.host+":"+this.port);
-                //Bind port
-                bootstrap.bind(this.host, this.port).sync();}
+            Thread.currentThread().setName("Chat2WithGroup-NioSocket-ChatServer");
+            Bukkit.getLogger().info("Init event loop group on thread:" + Thread.currentThread().getName() + ".");
+            EventLoopGroup BaseWorker = new NioEventLoopGroup();
+            EventLoopGroup WorkerGroup = new NioEventLoopGroup();
+            ServerBootstrap bootstrap = new ServerBootstrap();
+            Bukkit.getLogger().info("Bootstrapping Server.");
+            //Init the bootstrapper
+            bootstrap.group(BaseWorker, WorkerGroup)
+                    .channel(NioServerSocketChannel.class)
+                    .childHandler(channel)
+                    .option(ChannelOption.SO_KEEPALIVE, true);
+            Bukkit.getLogger().info("Binding on:" + this.host + ":" + this.port);
+            //Bind port
+            bootstrap.bind(this.host, this.port).sync();
             //Init the event groups
-        }catch (Exception e){e.printStackTrace();}
+        } catch (Exception e) {
+            e.printStackTrace();
+        }
     }
 }

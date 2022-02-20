@@ -22,8 +22,6 @@ public class OnGroupMessage implements Listener {
 
                 forwardMap.forEach((player,value)->{
                     if (value){
-                        //No Design , Like a old cow...
-//                   player.sendMessage("<QQ:"+event.getUserID()+">"+event.getMsg());
                         player.sendMessage(ChatColor.BLUE + "[QQ群消息转发]" + event.getEvent().getSenderName() + ChatColor.GRAY
                                 + "(" + event.getUserID() + ")" + ChatColor.GRAY + ">>" + event.getMsg());
                     }

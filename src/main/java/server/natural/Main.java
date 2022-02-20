@@ -21,8 +21,6 @@ public class Main extends JavaPlugin {
          saveDefaultConfig();
          Thread.sleep(3000);
          Utils.executor = new ThreadPoolExecutor(getConfig().getInt("CoreConfig.ThreadCount")+1,Integer.MAX_VALUE,Long.MAX_VALUE, TimeUnit.DAYS,new LinkedBlockingDeque<>());
-         //Should read the config after saving the default config!
-            // I know ... My darling wangxyper~ mua~
          boolean tmp = getConfig().getBoolean("Function.EnableGroupToGame");
          boolean tmp1 = getConfig().getBoolean("Function.EnableInvite");
          boolean tmp2 = getConfig().getBoolean("Function.EnableChatServer");
@@ -38,7 +36,7 @@ public class Main extends JavaPlugin {
          if(tmp){
              Bukkit.getPluginManager().registerEvents(new OnGroupMessage(), this);
          }
-         Bukkit.getPluginManager().registerEvents(new RequestSelectorListener(), this);
+         Bukkit.getPluginManager().registerEvents(new JoinGroupRequestSelectorListener(), this);
          Bukkit.getPluginManager().registerEvents(new OnQuitJoinGroupReplyMessageEvent(), this);
          getLogger().info(ChatColor.LIGHT_PURPLE + "注册插件命令");
          Bukkit.getPluginCommand("smg").setExecutor(new CommandSMG());
@@ -55,6 +53,9 @@ public class Main extends JavaPlugin {
              getLogger().warning("服务器将在10秒后继续运行");
              Thread.sleep(10000);
              getLogger().warning("ChatWithGroup配置出现问题，请尽快修复");
+         }
+         if(Utils.isBetaVersion){
+             getLogger().warning("该版本为测试版本，Bug可能较多，若发现Bug请在Github反馈");
          }
         }catch(Exception ignored){}
     }

@@ -13,7 +13,7 @@ public class OnUserMakeFriend implements Listener {
             if(Utils.config.getString("RequestHandler.AddFriendSelector").equals("YES")){
                 e.getEvent().accept();
             }else if (Utils.config.getString("RequestHandler.AddFriendSelector").equals("NO")){
-                e.getEvent().reject(false);
+                e.getEvent().reject(Utils.config.getBoolean("RequestHandler.AddFriendSelector.BlackList",false));
             }else if (Utils.config.getString("RequestHandler.AddFriendSelector").equals("NOTHING")){
                 e.getEvent().getEventId();
             }else{

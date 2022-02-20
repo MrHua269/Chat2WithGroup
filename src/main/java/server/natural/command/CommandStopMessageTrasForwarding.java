@@ -1,5 +1,6 @@
 package server.natural.command;
 
+import org.bukkit.ChatColor;
 import org.bukkit.command.Command;
 import org.bukkit.command.CommandExecutor;
 import org.bukkit.command.CommandSender;
@@ -16,9 +17,13 @@ public class CommandStopMessageTrasForwarding implements CommandExecutor{
             HashMap<Player,Boolean> forwardMap = OnGroupMessage.getForwardMap();
             if (forwardMap.get(player)){
                 forwardMap.replace(player,false);
+                commandSender.sendMessage(ChatColor.GREEN + "消息转发已关闭");
             }else{
                 forwardMap.replace(player,true);
+                commandSender.sendMessage(ChatColor.GREEN + "消息转发已开启");
             }
+        }else{
+            commandSender.sendMessage("你不是玩家");
         }
         return true;
     }

@@ -1,4 +1,4 @@
-config-ver: 4
+config-ver: 5
 CoreConfig:
   #群号，部分指令判断部分引用了该键值
   group: 1073135029
@@ -16,8 +16,12 @@ MessageLimit:
 RequestHandler:
   #进群请求选择，YES为同意，NO为拒绝，NOTHING为不做处理，勿更改成其他值
   JoinRequestSelector: "NOTHING"
-  #加机器人好友选择，YES为同意，NO为拒绝，NOTHING为不做处理，勿更改成其他值
-  AddFriendSelector: "YES"
+
+  AddFriendSelector:
+    #加机器人好友选择，YES为同意，NO为拒绝，NOTHING为不做处理，勿更改成其他值
+    Action: "YES"
+    #若前面的选项为拒绝，是否将添加好友的用户加入白名单 true为添加，false为不添加
+    BlackList: false
 ChatServer:
   MessageSlotLimit: 500
   Port: 192

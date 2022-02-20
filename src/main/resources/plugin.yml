@@ -27,10 +27,12 @@
         - "cwgver"
         - "chatwithgroupversion"
       usage: "/cwgver"
+      permission: "cwg.ver"
       description: "查看ChatWithGroup插件的信息"
     cwg:
       aliases:
         - "cwg"
         - "chatwithgroup"
       usage: "/cwg reload"
+      permission: "cwg.reload"
       description: "重置CWG插件的配置文件"

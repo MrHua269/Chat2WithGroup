@@ -7,19 +7,28 @@ import org.bukkit.command.CommandSender;
 import org.bukkit.entity.Player;
 import org.jetbrains.annotations.NotNull;
 import server.natural.Utils;
-//todo add cooldown time
+//todo add cool-down time
 public class CommandSMG implements CommandExecutor {
     @Override
     public boolean onCommand(@NotNull CommandSender commandSender, @NotNull org.bukkit.command.Command command, @NotNull String s, @NotNull String[] args) {
         if(commandSender instanceof Player){
-            if(args[0]!=null&&args.length==1){
-            Bot.getApi().sendGroupMsg(Utils.groupInString,commandSender.getName() + "->" + args[0]);
-            commandSender.sendMessage("消息发送成功!");
-            return true;
+            if(Bot.getApi().getUser(((Player) commandSender).getUniqueId()) != null){
+                if(args[0]!=null&&args.length==1){
+                    Bot.getApi().sendGroupMsg(Utils.groupInString,((Player) commandSender).getDisplayName() + "->" + args[0]);
+                    commandSender.sendMessage("消息发送成功!");
+                    return true;
+                }else{
+                    commandSender.sendMessage(ChatColor.RED + "使用方法错误，正确方法为:");
+                    return false;
+                }
             }else{
-                commandSender.sendMessage(ChatColor.RED + "使用方法错误，正确方法为:");
-                return false;
+                commandSender.sendMessage(ChatColor.RED + "无法发送消息至群聊");
+                commandSender.sendMessage(ChatColor.RED + "因为您未与你的QQ绑定");
+                commandSender.sendMessage(ChatColor.RED + "请在群聊用QQ发送'绑定 [您的游戏ID]'后在服务器内进行相关操作后绑定");
+                commandSender.sendMessage(ChatColor.RED + "绑定后即可发送消息");
+                return true;
             }
+
         }else{
             Bot.getApi().sendGroupMsg(Utils.groupInString, "服务器闸总(Console)->" + args[0]);
         }

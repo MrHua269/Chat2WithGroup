@@ -14,7 +14,7 @@ public class CommandReloadConfig implements CommandExecutor {
     //todo 将CWGVer和其整合在一起
     @Override
     public boolean onCommand(@NotNull CommandSender commandSender, @NotNull Command command, @NotNull String s, @NotNull String[] strings) {
-        if (commandSender.isOp()){
+        if (commandSender.hasPermission("cwg.reload")){
             if(strings[0].toLowerCase().equals("reload")&&strings.length==1){
                 try {
                     commandSender.sendMessage(ChatColor.GREEN+"Reloading config file...");
@@ -27,6 +27,8 @@ public class CommandReloadConfig implements CommandExecutor {
                     commandSender.sendMessage(ChatColor.RED+"An Exception happened.Config file can't reload.Exception message:"+e.getMessage());}
             }
 
+        }else{
+            commandSender.sendMessage(ChatColor.RED + "你没有权限");
         }
         return true;
     }

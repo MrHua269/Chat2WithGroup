@@ -1,4 +1,3 @@
-wget https://github.com/NaturalGroup/Natural_Server/releases/download/AmazingBot/AmazingBot-3.2.31.jar && mkdir libs && mv AmazingBot-3.2.31.jar libs/
 apt install maven -y
 apt install default-jdk -y
 mvn clean package

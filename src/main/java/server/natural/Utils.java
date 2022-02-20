@@ -15,14 +15,13 @@ import java.util.concurrent.ThreadPoolExecutor;
 public class Utils {
     //一些事件或指令常用的变量可直接在此调用
     public static FileConfiguration config = Bukkit.getPluginManager().getPlugin("ChatWithGroup").getConfig();
-    public static final String ver = "1.3.4";
-    public static final int configVersion = 4;
-    //留存
-    public static final boolean isBetaVersion = false;
+    public static final String ver = "1.3.5";
+    public static final int configVersion = 5;
     public static long owner = config.getLong("CoreConfig.owner");
     public static String ownerInString = String.valueOf(owner);
     public static long group = config.getLong("CoreConfig.group");
     public static String groupInString = String.valueOf(group);
+    public static final boolean isBetaVersion = true;
     //创建线程池
     public static ThreadPoolExecutor executor = null;
     public static void checkUpdate(String apiURL) throws IOException, InvalidConfigurationException {

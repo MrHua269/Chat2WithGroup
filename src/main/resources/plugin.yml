@@ -28,3 +28,16 @@
         - "chatwithgroup"
       usage: "/cwg [reload/ver]"
       description: "重置CWG插件的配置文件或查看CWG版本"
+  permissions:
+    cwg.*:
+      description: All Permissions of CWG
+      children:
+        cwg.reload: true
+        cwg.ver: true
+      default: op
+    cwg.reload:
+      description: The Player Who Has This Can Reload Config File
+      default: op
+    cwg.ver:
+      description: The Player Who Has This Permission Can Look Up the Version info of CWG
+      default: op

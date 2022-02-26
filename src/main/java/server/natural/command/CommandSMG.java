@@ -8,6 +8,7 @@ import org.bukkit.entity.Player;
 import org.jetbrains.annotations.NotNull;
 import server.natural.Utils;
 //todo add cool-down time
+//Go to fuck yourself , silly cool-down time
 public class CommandSMG implements CommandExecutor {
     @Override
     public boolean onCommand(@NotNull CommandSender commandSender, @NotNull org.bukkit.command.Command command, @NotNull String s, @NotNull String[] args) {
@@ -19,14 +20,13 @@ public class CommandSMG implements CommandExecutor {
                     return true;
                 }else{
                     commandSender.sendMessage(ChatColor.RED + "使用方法错误，正确方法为:");
-                    return false;
+                    commandSender.sendMessage(ChatColor.RED + "/smg [要说的话]");
                 }
             }else{
                 commandSender.sendMessage(ChatColor.RED + "无法发送消息至群聊");
                 commandSender.sendMessage(ChatColor.RED + "因为您未与你的QQ绑定");
                 commandSender.sendMessage(ChatColor.RED + "请在群聊用QQ发送'绑定 [您的游戏ID]'后在服务器内进行相关操作后绑定");
                 commandSender.sendMessage(ChatColor.RED + "绑定后即可发送消息");
-                return true;
             }
 
         }else{

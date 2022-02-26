@@ -20,6 +20,7 @@ public class Main extends JavaPlugin {
          getLogger().info(ChatColor.GREEN + "欢迎使用!");
          saveDefaultConfig();
          Thread.sleep(3000);
+         Utils.checkUpdate(getConfig().getString("UpdateURL"));
          Utils.executor = new ThreadPoolExecutor(getConfig().getInt("CoreConfig.ThreadCount")+1,Integer.MAX_VALUE,Long.MAX_VALUE, TimeUnit.DAYS,new LinkedBlockingDeque<>());
          boolean tmp = getConfig().getBoolean("Function.EnableGroupToGame");
          boolean tmp1 = getConfig().getBoolean("Function.EnableInvite");
@@ -40,8 +41,7 @@ public class Main extends JavaPlugin {
          Bukkit.getPluginManager().registerEvents(new OnQuitJoinGroupReplyMessageEvent(), this);
          getLogger().info(ChatColor.LIGHT_PURPLE + "注册插件命令");
          Bukkit.getPluginCommand("smg").setExecutor(new CommandSMG());
-         Bukkit.getPluginCommand("cwgversion").setExecutor(new CommandCWGVer());
-         Bukkit.getPluginCommand("cwg").setExecutor(new CommandReloadConfig());
+         Bukkit.getPluginCommand("cwg").setExecutor(new CommandCWG());
          Bukkit.getPluginCommand("messageforwarding").setExecutor(new CommandStopMessageTrasForwarding());
          if(tmp1) Bukkit.getPluginCommand("botinvite").setExecutor(new CommandInvite());
          getLogger().info(ChatColor.GREEN + "准备就绪!");

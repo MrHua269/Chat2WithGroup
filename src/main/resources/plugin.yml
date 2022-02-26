@@ -2,7 +2,7 @@
   main: server.natural.Main
   version: "${project.version}"
   api-version: 1.17
-  author: [Jerry , wangxyper]
+  author: [NaT_Jerry , JL_NPE]
   commands:
     smg: # 命令的基本名，请不要使用奇怪的字符！
       aliases: # 别名，方便玩家使用
@@ -22,17 +22,9 @@
         - "forwarding"
       usage: "/mf"
       description: "MessageForwarding"
-    cwgversion:
-      aliases:
-        - "cwgver"
-        - "chatwithgroupversion"
-      usage: "/cwgver"
-      permission: "cwg.ver"
-      description: "查看ChatWithGroup插件的信息"
     cwg:
       aliases:
         - "cwg"
         - "chatwithgroup"
-      usage: "/cwg reload"
-      permission: "cwg.reload"
-      description: "重置CWG插件的配置文件"
+      usage: "/cwg [reload/ver]"
+      description: "重置CWG插件的配置文件或查看CWG版本"

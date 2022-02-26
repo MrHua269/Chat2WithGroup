@@ -1,4 +1,6 @@
 config-ver: 5
+#检查更新的网址，千万，绝对，不要修改
+UpdateURL: "http://jlnpe-static.mc66.club/CWGCheck.yml"
 CoreConfig:
   #群号，部分指令判断部分引用了该键值
   group: 1073135029

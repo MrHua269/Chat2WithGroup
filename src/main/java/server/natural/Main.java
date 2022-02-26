@@ -20,8 +20,7 @@ public class Main extends JavaPlugin {
          getLogger().info(ChatColor.GREEN + "欢迎使用!");
          saveDefaultConfig();
          Thread.sleep(3000);
-         Utils.checkUpdate(getConfig().getString("UpdateURL"));
-         Utils.executor = new ThreadPoolExecutor(getConfig().getInt("CoreConfig.ThreadCount")+1,Integer.MAX_VALUE,Long.MAX_VALUE, TimeUnit.DAYS,new LinkedBlockingDeque<>());
+         Utils.executor = new ThreadPoolExecutor(getConfig().getInt("CoreConfig.ThreadCount"),Integer.MAX_VALUE,Long.MAX_VALUE, TimeUnit.DAYS,new LinkedBlockingDeque<>());
          boolean tmp = getConfig().getBoolean("Function.EnableGroupToGame");
          boolean tmp1 = getConfig().getBoolean("Function.EnableInvite");
          boolean tmp2 = getConfig().getBoolean("Function.EnableChatServer");
@@ -57,7 +56,10 @@ public class Main extends JavaPlugin {
          if(Utils.isBetaVersion){
              getLogger().warning("该版本为测试版本，Bug可能较多，若发现Bug请在Github反馈");
          }
-        }catch(Exception ignored){}
+         Utils.checkUpdate(getConfig().getString("UpdateURL"));
+        }catch(Exception e){
+            e.printStackTrace();
+        }
     }
     @Override
     public void onDisable() {

@@ -26,6 +26,7 @@ public class CommandCWG implements CommandExecutor {
                     if (configFile.exists()) {
                         try {
                             Utils.config.load(configFile);
+                            commandSender.sendMessage(ChatColor.GREEN + "Done!");
                         } catch (Exception e) {
                             commandSender.sendMessage(ChatColor.RED + "An Exception happened. Config file can't reload");
                             commandSender.sendMessage(ChatColor.RED + "Exception Message:");

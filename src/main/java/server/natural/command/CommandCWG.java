@@ -35,6 +35,7 @@ public class CommandCWG implements CommandExecutor {
                 }else {
                     commandSender.sendMessage(ChatColor.RED + "您没有权限");
                 }
+                break;
             }
             case "ver":{
                 if(commandSender.hasPermission("cwg.ver")){
@@ -52,6 +53,7 @@ public class CommandCWG implements CommandExecutor {
                 else{
                     commandSender.sendMessage(ChatColor.RED + "你没有权限");
                 }
+                break;
             }
             default:{
                 if(commandSender.hasPermission("cwg.reload")||commandSender.hasPermission("cwg.ver")){
@@ -60,7 +62,7 @@ public class CommandCWG implements CommandExecutor {
                 }else{
                     commandSender.sendMessage(ChatColor.RED + "您没有权限");
                 }
-
+                break;
             }
         }
         return true;

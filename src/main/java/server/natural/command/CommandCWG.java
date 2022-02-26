@@ -49,7 +49,7 @@ public class CommandCWG implements CommandExecutor {
                     commandSender.sendMessage("The owner of this robot: " + Utils.config.getLong("CoreConfig.owner"));
                     commandSender.sendMessage("The Thread Number I register: " + Utils.executor.getCorePoolSize());
                     commandSender.sendMessage("The Task I Done(Only Count Event Task): " + Utils.executor.getTaskCount());
-                    commandSender.sendMessage("ChatWithGroup v" + Utils.ver + " was made by NaT_Jerry and wangxyper");
+                    commandSender.sendMessage("ChatWithGroup v" + Utils.ver + " was made by NaT_Jerry and JL_NPE");
                 }
                 else{
                     commandSender.sendMessage(ChatColor.RED + "你没有权限");

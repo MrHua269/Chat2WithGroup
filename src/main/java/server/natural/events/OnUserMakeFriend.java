@@ -8,23 +8,23 @@ import server.natural.Utils;
 
 public class OnUserMakeFriend implements Listener {
     @EventHandler
-    public void onUserMakeBotFriendEvent(FriendRequestEvent e){
-        Utils.executor.execute(() -> {
-            if(Utils.config.getString("RequestHandler.AddFriendSelector").equals("YES")){
+    public void onUserMakeBotFriendEvent(FriendRequestEvent e) {
+        switch (Utils.config.getString("RequestHandler.AddFriendSelector")) {
+            case "YES":
                 e.getEvent().accept();
-            }else if (Utils.config.getString("RequestHandler.AddFriendSelector").equals("NO")){
-                e.getEvent().reject(Utils.config.getBoolean("RequestHandler.AddFriendSelector.BlackList",false));
-            }else if (Utils.config.getString("RequestHandler.AddFriendSelector").equals("NOTHING")){
+                break;
+            case "NO":
+                e.getEvent().reject(Utils.config.getBoolean("RequestHandler.AddFriendSelector.BlackList", false));
+                break;
+            case "NOTHING":
                 e.getEvent().getEventId();
-            }else{
+                break;
+            default:
                 Bot.getApi().sendPrivateMsg(Utils.ownerInString, "CWG配置文件出现了问题");
                 Bot.getApi().sendPrivateMsg(Utils.ownerInString, "请在config.yml中仔细检查'AddFriendSelector'");
                 Bot.getApi().sendPrivateMsg(Utils.ownerInString, "正在自动处理...");
                 e.getEvent().accept();
-
-            }
-        });
-
-
+                break;
+        }
     }
 }

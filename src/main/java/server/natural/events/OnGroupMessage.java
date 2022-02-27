@@ -11,26 +11,23 @@ import org.bukkit.event.player.PlayerQuitEvent;
 import server.natural.Utils;
 
 import java.util.HashMap;
+import java.util.concurrent.ConcurrentHashMap;
 
 public class OnGroupMessage implements Listener {
-    private static HashMap<Player,Boolean> forwardMap = new HashMap<>();
+    //Thread safe
+    private static ConcurrentHashMap<Player,Boolean> forwardMap = new ConcurrentHashMap<>();
     @EventHandler
-    public void onGroupMessageSent(GroupMessageEvent event){
-        Utils.executor.execute(() ->{
-            if (Utils.config.getBoolean("Function.EnableGroupToGame")&&event.getGroupID()==Utils.config.getLong("CoreConfig.group"))
-            {
-
-                forwardMap.forEach((player,value)->{
-                    if (value){
-                        player.sendMessage(ChatColor.BLUE + "[QQ群消息转发]" + event.getEvent().getSenderName() + ChatColor.GRAY
-                                + "(" + event.getUserID() + ")" + ChatColor.GRAY + ">>" + event.getMsg());
-                    }
-                });
-            }
-        });
-
+    public void onGroupMessageSent(GroupMessageEvent event) {
+        if (Utils.config.getBoolean("Function.EnableGroupToGame") && event.getGroupID() == Utils.config.getLong("CoreConfig.group")) {
+            forwardMap.forEach((player, value) -> {
+                if (value) {
+                    player.sendMessage(ChatColor.BLUE + "[QQ群消息转发]" + event.getEvent().getSenderName() + ChatColor.GRAY
+                            + "(" + event.getUserID() + ")" + ChatColor.GRAY + ">>" + event.getMsg());
+                }
+            });
+        }
     }
-    public static HashMap getForwardMap(){
+    public static ConcurrentHashMap getForwardMap(){
         return forwardMap;
     }
     @EventHandler
@@ -38,13 +35,11 @@ public class OnGroupMessage implements Listener {
         Utils.executor.execute(()->{
             forwardMap.put(event.getPlayer(),true);
         });
-
     }
     @EventHandler
     public void onPlayerQuit(PlayerQuitEvent event){
         Utils.executor.execute(()->{
             forwardMap.remove(event.getPlayer());
         });
-
     }
 }

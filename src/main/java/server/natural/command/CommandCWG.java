@@ -15,11 +15,11 @@ import java.io.IOException;
 public class CommandCWG implements CommandExecutor {
     @Override
     public boolean onCommand(@NotNull CommandSender commandSender, @NotNull Command command, @NotNull String s, @NotNull String[] strings) {
-        if (strings[0].toLowerCase() == "version") {
+        if (strings[0].equalsIgnoreCase("version")) {
             strings[0] = "ver";
         }
         switch (strings[0].toLowerCase()) {
-            case "reload": {
+            case "reload":
                 if (commandSender.hasPermission("cwg.reload")) {
                     commandSender.sendMessage(ChatColor.GREEN + "Reloading Config File...");
                     File configFile = new File("plugins\\ChatWithGroup\\config.yml");
@@ -37,8 +37,7 @@ public class CommandCWG implements CommandExecutor {
                     commandSender.sendMessage(ChatColor.RED + "您没有权限");
                 }
                 break;
-            }
-            case "ver":{
+            case "ver":
                 if(commandSender.hasPermission("cwg.ver")){
                     commandSender.sendMessage("Server Version: " + Bukkit.getVersion());
                     commandSender.sendMessage("Server Port: " + Bukkit.getPort());
@@ -55,8 +54,7 @@ public class CommandCWG implements CommandExecutor {
                     commandSender.sendMessage(ChatColor.RED + "你没有权限");
                 }
                 break;
-            }
-            default:{
+            default:
                 if(commandSender.hasPermission("cwg.reload")||commandSender.hasPermission("cwg.ver")){
                     commandSender.sendMessage(ChatColor.RED + "你隔着说啥呢");
                     commandSender.sendMessage(ChatColor.RED + "正确使用方法: /cwg [ver/reload]");
@@ -64,7 +62,6 @@ public class CommandCWG implements CommandExecutor {
                     commandSender.sendMessage(ChatColor.RED + "您没有权限");
                 }
                 break;
-            }
         }
         return true;
     }

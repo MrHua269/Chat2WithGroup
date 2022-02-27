@@ -1,10 +1,11 @@
 package server.natural;
 
+import co.novau233.socketServer.Handlers.CacheManager;
+import co.novau233.socketServer.Handlers.MessageHandler;
+import co.novau233.socketServer.SocketServer;
 import org.bukkit.Bukkit;
 import org.bukkit.ChatColor;
 import org.bukkit.plugin.java.JavaPlugin;
-import server.natural.ChatServer.BaseServer;
-import server.natural.ChatServer.ConnectHandler;
 import server.natural.command.*;
 import server.natural.events.*;
 
@@ -14,6 +15,7 @@ import java.util.concurrent.TimeUnit;
 
 //todo 注释，现在这里写的东西我已经开始看不懂了 --NaT_Jerry
 public class Main extends JavaPlugin {
+    SocketServer server = null;
     @Override
     public void onEnable() {
         try{
@@ -28,14 +30,13 @@ public class Main extends JavaPlugin {
          if(tmp3)Bukkit.getPluginManager().registerEvents(new AntiChatRepeating(),this);
          if(tmp2){
              Bukkit.getLogger().info("Start chat server...");
-             Utils.executor.execute(new BaseServer("0.0.0.0",Utils.config.getInt("ChatServer.Port")));
-             Bukkit.getPluginManager().registerEvents(new ConnectHandler(),this);
+             server.start();
+             server = new SocketServer("0.0.0.0",Utils.config.getInt("ChatServer.Port"));
+             Bukkit.getPluginManager().registerEvents(new MessageHandler(),this);
          }
          int cfver = getConfig().getInt("config-ver");
          getLogger().info(ChatColor.LIGHT_PURPLE + "注册插件事件监听器...");
-         if(tmp){
-             Bukkit.getPluginManager().registerEvents(new OnGroupMessage(), this);
-         }
+         if(tmp){Bukkit.getPluginManager().registerEvents(new OnGroupMessage(), this);}
          Bukkit.getPluginManager().registerEvents(new JoinGroupRequestSelectorListener(), this);
          Bukkit.getPluginManager().registerEvents(new OnQuitJoinGroupReplyMessageEvent(), this);
          getLogger().info(ChatColor.LIGHT_PURPLE + "注册插件命令");
@@ -52,18 +53,20 @@ public class Main extends JavaPlugin {
              getLogger().warning("服务器将在10秒后继续运行");
              Thread.sleep(10000);
              getLogger().warning("ChatWithGroup配置出现问题，请尽快修复");
+             Bukkit.getPluginManager().getPlugin("ChatWithGroup").onDisable();
          }
-         if(Utils.isBetaVersion){
-             getLogger().warning("该版本为测试版本，Bug可能较多，若发现Bug请在Github反馈");
-         }
-         Utils.checkUpdate(getConfig().getString("UpdateURL"));
+         if(Utils.isBetaVersion){getLogger().warning("该版本为测试版本，Bug可能较多，若发现Bug请在Github反馈");}
+         //The string apiUrl must be final!
+         Utils.checkUpdate("https://jlnpehub.mc66.club/CWGCheck.yml");
         }catch(Exception e){
             e.printStackTrace();
         }
     }
     @Override
     public void onDisable() {
+        SocketServer.interrupted();
         Utils.executor.shutdown();
+        CacheManager.unLoad();
         getLogger().info("再见");
     }
 

@@ -28,7 +28,6 @@ public class CommandSMG implements CommandExecutor {
                 commandSender.sendMessage(ChatColor.RED + "请在群聊用QQ发送'绑定 [您的游戏ID]'后在服务器内进行相关操作后绑定");
                 commandSender.sendMessage(ChatColor.RED + "绑定后即可发送消息");
             }
-
         }else{
             Bot.getApi().sendGroupMsg(Utils.groupInString, "服务器闸总(Console)->" + args[0]);
         }

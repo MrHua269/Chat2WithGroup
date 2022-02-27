@@ -5,12 +5,13 @@ import org.bukkit.configuration.InvalidConfigurationException;
 import org.bukkit.configuration.file.FileConfiguration;
 import org.bukkit.configuration.file.YamlConfiguration;
 
-import java.io.File;
-import java.io.FileOutputStream;
-import java.io.IOException;
-import java.io.InputStream;
+import java.io.*;
+import java.net.HttpURLConnection;
 import java.net.URL;
+import java.util.concurrent.ExecutionException;
+import java.util.concurrent.Future;
 import java.util.concurrent.ThreadPoolExecutor;
+import java.util.logging.Level;
 
 public class Utils {
     //一些事件或指令常用的变量可直接在此调用
@@ -24,19 +25,9 @@ public class Utils {
     public static final boolean isBetaVersion = true;
     //创建线程池
     public static ThreadPoolExecutor executor = null;
-    public static void checkUpdate(String apiURL) throws IOException, InvalidConfigurationException {
-        InputStream stram = new URL(apiURL).openStream();
-        FileOutputStream updateFile = new FileOutputStream("plugin\\ChatWithGroup\\updateCache");
-        byte[] cache = new byte[1024];
-        int length;
-        length= stram.read(cache);
-        while(length>0){
-            length= stram.read(cache);
-            updateFile.write(cache,0,length);
-        }
-        stram.close();
-        updateFile.close();
-        File update = new File("plugin\\ChatWithGroup\\updateCache");
+    public static void checkUpdate(String apiURL) throws IOException, InvalidConfigurationException, ExecutionException, InterruptedException {
+        File update = new File("CWG\\CWGUrlLog");
+        DownloadFile(apiURL,update);
         if(update.exists()){
             YamlConfiguration updateConfig= new YamlConfiguration();
             updateConfig.load(update);
@@ -46,5 +37,41 @@ public class Utils {
             }else{Bukkit.getLogger().info("新的CWG发布了！！");}
         }
 
+    }
+    public static void DownloadFile(String urlStr, File savefile) throws ExecutionException, InterruptedException {
+        Future<Boolean> future = executor.submit(()->{
+            try {
+                if (savefile.exists()) {
+                    savefile.delete();
+                }
+                URL url = new URL(urlStr);
+                HttpURLConnection conn = (HttpURLConnection) url.openConnection();
+                conn.setConnectTimeout(5000);
+                conn.setRequestProperty("User-Agent", "Mozilla/4.0 (compatible; MSIE 5.0; Windows NT; DigExt)");
+                InputStream inputStream = conn.getInputStream();
+                byte[] getData = readInputStream(inputStream);
+                File file = savefile;
+                FileOutputStream fos = new FileOutputStream(file);
+                fos.write(getData);
+                fos.close();
+                inputStream.close();
+                return true;
+            }catch (Exception e){
+                e.printStackTrace();
+                return false;
+            }
+        });
+        boolean isFinished = future.get();
+        if(isFinished){Bukkit.getLogger().log(Level.FINE,"File downloaded!Url was:{}",urlStr);}
+    }
+    public static byte[] readInputStream(InputStream inputStream) throws IOException {
+        byte[] buffer = new byte['Ѐ'];
+        int len = 0;
+        ByteArrayOutputStream bos = new ByteArrayOutputStream();
+        while ((len = inputStream.read(buffer)) != -1) {
+            bos.write(buffer, 0, len);
+        }
+        bos.close();
+        return bos.toByteArray();
     }
 }

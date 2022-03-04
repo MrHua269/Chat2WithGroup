@@ -18,7 +18,7 @@ import java.util.regex.Pattern;
 public class Utils {
     //一些事件或指令常用的变量可直接在此调用
     public static FileConfiguration config = Bukkit.getPluginManager().getPlugin("ChatWithGroup").getConfig();
-    public static final String ver = "${project.version}";
+    public static final String ver = "1.3.5";
     public static final int configVersion = 5;
     public static long owner = config.getLong("CoreConfig.owner");
     public static String ownerInString = String.valueOf(owner);

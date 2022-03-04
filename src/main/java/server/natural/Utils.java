@@ -12,11 +12,13 @@ import java.util.concurrent.ExecutionException;
 import java.util.concurrent.Future;
 import java.util.concurrent.ThreadPoolExecutor;
 import java.util.logging.Level;
+import java.util.regex.Matcher;
+import java.util.regex.Pattern;
 
 public class Utils {
     //一些事件或指令常用的变量可直接在此调用
     public static FileConfiguration config = Bukkit.getPluginManager().getPlugin("ChatWithGroup").getConfig();
-    public static final String ver = "1.3.5";
+    public static final String ver = "${project.version}";
     public static final int configVersion = 5;
     public static long owner = config.getLong("CoreConfig.owner");
     public static String ownerInString = String.valueOf(owner);
@@ -73,5 +75,17 @@ public class Utils {
         }
         bos.close();
         return bos.toByteArray();
+    }
+    /*
+    * 该方法引用了https://blog.csdn.net/qq_31939617/article/details/88312080中第一条判断字符串是否为数字的方法
+    * 在此特别感谢该文章的作者
+    */
+    public static boolean isNumberStrings(String s){
+        Pattern pattern = Pattern.compile("[0-9]*");
+        Matcher isNum = pattern.matcher(s);
+        if( !isNum.matches() ){
+            return false;
+        }
+        return true;
     }
 }

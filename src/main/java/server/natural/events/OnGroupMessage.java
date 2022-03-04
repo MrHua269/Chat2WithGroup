@@ -18,14 +18,17 @@ public class OnGroupMessage implements Listener {
     private static ConcurrentHashMap<Player,Boolean> forwardMap = new ConcurrentHashMap<>();
     @EventHandler
     public void onGroupMessageSent(GroupMessageEvent event) {
-        if (Utils.config.getBoolean("Function.EnableGroupToGame") && event.getGroupID() == Utils.config.getLong("CoreConfig.group")) {
-            forwardMap.forEach((player, value) -> {
-                if (value) {
-                    player.sendMessage(ChatColor.BLUE + "[QQ群消息转发]" + event.getEvent().getSenderName() + ChatColor.GRAY
-                            + "(" + event.getUserID() + ")" + ChatColor.GRAY + ">>" + event.getMsg());
-                }
-            });
-        }
+        Utils.executor.execute(()->{
+            if (Utils.config.getBoolean("Function.EnableGroupToGame") && event.getGroupID() == Utils.config.getLong("CoreConfig.group")) {
+                forwardMap.forEach((player, value) -> {
+                    if (value) {
+                        player.sendMessage(ChatColor.BLUE + "[QQ群消息转发]" + event.getEvent().getSenderName() + ChatColor.GRAY
+                                + "(" + event.getUserID() + ")" + ChatColor.GRAY + ">>" + event.getMsg());
+                    }
+                });
+            }
+        });
+
     }
     public static ConcurrentHashMap getForwardMap(){
         return forwardMap;

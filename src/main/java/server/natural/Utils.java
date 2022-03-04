@@ -8,6 +8,7 @@ import org.bukkit.configuration.file.YamlConfiguration;
 import java.io.*;
 import java.net.HttpURLConnection;
 import java.net.URL;
+import java.util.List;
 import java.util.concurrent.ExecutionException;
 import java.util.concurrent.Future;
 import java.util.concurrent.ThreadPoolExecutor;
@@ -18,13 +19,13 @@ import java.util.regex.Pattern;
 public class Utils {
     //一些事件或指令常用的变量可直接在此调用
     public static FileConfiguration config = Bukkit.getPluginManager().getPlugin("ChatWithGroup").getConfig();
-    public static final String ver = "1.3.5";
-    public static final int configVersion = 5;
-    public static long owner = config.getLong("CoreConfig.owner");
-    public static String ownerInString = String.valueOf(owner);
-    public static long group = config.getLong("CoreConfig.group");
-    public static String groupInString = String.valueOf(group);
-    public static final boolean isBetaVersion = false;
+    private static File file = new File(Bukkit.getPluginManager().getPlugin("ChatWithGroup").getDataFolder(),"\\cache\\cache.yml");
+    public static FileConfiguration fileConfiguration = YamlConfiguration.loadConfiguration(file);
+    public static final String ver = "1.3.6";
+    public static final int configVersion = 6;
+    public static List<Long> group = (List<Long>) config.getList("group");
+    public static List<Long> owner = (List<Long>) config.getList("owner");
+    public static final boolean isBetaVersion = true;
     //创建线程池
     public static ThreadPoolExecutor executor = null;
     public static void checkUpdate(String apiURL) throws IOException, InvalidConfigurationException, ExecutionException, InterruptedException {
@@ -83,9 +84,6 @@ public class Utils {
     public static boolean isNumberStrings(String s){
         Pattern pattern = Pattern.compile("[0-9]*");
         Matcher isNum = pattern.matcher(s);
-        if( !isNum.matches() ){
-            return false;
-        }
-        return true;
+        return isNum.matches();
     }
 }

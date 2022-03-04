@@ -24,19 +24,24 @@ public class JoinGroupRequestSelectorListener implements Listener {
                     String nick = e.getEvent().getFromNick();
                     String ms = e.getEvent().getMessage();
                     String id = String.valueOf(e.getEvent().getFromId());
-                    Bot.getApi().sendPrivateMsg(Utils.ownerInString, "有玩家申请加入群");
-                    Bot.getApi().sendPrivateMsg(Utils.ownerInString, nick);
-                    Bot.getApi().sendPrivateMsg(Utils.ownerInString, id);
-                    Bot.getApi().sendPrivateMsg(Utils.ownerInString, "该用户提交的申请内容:" + ms);
-                    Bot.getApi().sendPrivateMsg(Utils.ownerInString, "请核实");
-                    if (e.getEvent().getInvitorId() != null) {
-                        Bot.getApi().sendPrivateMsg(Utils.ownerInString, "邀请人:" + e.getEvent().getInvitorId());
-                    }
+                    boolean isBeenInvited = e.getEvent().getInvitorId()!=null;
+                    Utils.owner.forEach(owner->{
+                        Bot.getApi().sendPrivateMsg(String.valueOf(owner), "有玩家申请加入群");
+                        Bot.getApi().sendPrivateMsg(String.valueOf(owner), nick);
+                        Bot.getApi().sendPrivateMsg(String.valueOf(owner), id);
+                        Bot.getApi().sendPrivateMsg(String.valueOf(owner), "该用户提交的申请内容:" + ms);
+                        Bot.getApi().sendPrivateMsg(String.valueOf(owner), "请核实");
+                        if (isBeenInvited) {
+                            Bot.getApi().sendPrivateMsg(String.valueOf(owner), "邀请人:" + e.getEvent().getInvitorId());
+                        }
+                    });
                     break;
                 default:
                     Bukkit.getLogger().warning(ChatColor.RED + "错误的配置文件！");
-                    Bot.getApi().sendPrivateMsg(Utils.ownerInString, "ChatWithGroup配置文件出现问题");
-                    Bot.getApi().sendPrivateMsg(Utils.ownerInString, "也许(肯定)是'JoinRequestSelector'的问题");
+                    Utils.owner.forEach(owner->{
+                        Bot.getApi().sendPrivateMsg(String.valueOf(owner), "ChatWithGroup配置文件出现问题");
+                        Bot.getApi().sendPrivateMsg(String.valueOf(owner), "也许(肯定)是'JoinRequestSelector'的问题");
+                    });
                     break;
             }
         });

@@ -15,7 +15,9 @@ public class CommandInvite implements CommandExecutor {
     public boolean onCommand(@NotNull CommandSender sender, @NotNull Command command, @NotNull String label, @NotNull String[] args){
         if (sender instanceof Player){
             if(Bot.getApi().getUser(((Player) sender).getUniqueId())!=null){
-                Bot.getApi().sendGroupMsg(Utils.groupInString,"玩家" + sender.getName() + "邀请你们去服务器玩");
+                Utils.group.forEach(group->{
+                    Bot.getApi().sendGroupMsg(String.valueOf(group),"玩家" + ((Player) sender).getDisplayName() + "邀请你们去服务器玩");
+                });
                 sender.sendMessage("邀请已成功发送至群");
             }else{
                 sender.sendMessage(ChatColor.RED + "无法发送邀请信息至群聊");

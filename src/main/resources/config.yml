@@ -1,10 +1,12 @@
-config-ver: 5
+config-ver: 6
 #检查更新的网址，千万，绝对，不要修改
 UpdateURL: "http://jlnpe-static.mc66.club/CWGCheck.yml"
 CoreConfig:
   #群号，部分指令判断部分引用了该键值
-  group: 1073135029
-  owner: 3181474546
+  group:
+    - 1073135029
+  owner:
+    - 3181474546
   #部分事件使用的线程数，不懂建议为默认值
   ThreadCount: 4
 Function:
@@ -38,7 +40,7 @@ Texts:
     - "欢迎我们的一位新成员！:{0}"
     - "ta的QQ号为:{1}"
   #{0}:NameCard,{1}:ID
-  ReplyMessageOnTemp:
+  ReplyMessageOnPrivate:
     - "有什么事不能到群里问吗，你这么找我这个傻逼机器人我很为难的好吧"
   MessageOutOfLimit: "歇歇吧，你的口水已经到处都是了"
 

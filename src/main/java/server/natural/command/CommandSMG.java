@@ -15,13 +15,17 @@ public class CommandSMG implements CommandExecutor {
     public boolean onCommand(@NotNull CommandSender commandSender, @NotNull org.bukkit.command.Command command, @NotNull String s, @NotNull String[] args) {
         if(commandSender instanceof Player){
             if(Bot.getApi().getUser(((Player) commandSender).getUniqueId()) != null){
-                if(args[0]!=null&&args.length==1){
-                    Bot.getApi().sendGroupMsg(Utils.groupInString,((Player) commandSender).getDisplayName() + "->" + args[0]);
-                    commandSender.sendMessage("消息发送成功!");
-                    return true;
+                if(args.length>0){
+                    if(args[0]!=null&&args.length==1){
+                        Bot.getApi().sendGroupMsg(Utils.groupInString,((Player) commandSender).getDisplayName() + "->" + args[0]);
+                        commandSender.sendMessage("消息发送成功!");
+                    }else{
+                        commandSender.sendMessage(ChatColor.RED + "使用方法错误，正确方法为:");
+                        commandSender.sendMessage(ChatColor.RED + "/smg [要说的话]");
+                    }
                 }else{
-                    commandSender.sendMessage(ChatColor.RED + "使用方法错误，正确方法为:");
-                    commandSender.sendMessage(ChatColor.RED + "/smg [要说的话]");
+                    commandSender.sendMessage(ChatColor.RED + "格式错误");
+                    commandSender.sendMessage(ChatColor.RED + "正确方法为: /smg [要说的话]");
                 }
             }else{
                 commandSender.sendMessage(ChatColor.RED + "无法发送消息至群聊");

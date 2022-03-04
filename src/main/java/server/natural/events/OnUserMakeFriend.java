@@ -21,9 +21,11 @@ public class OnUserMakeFriend implements Listener {
                     e.getEvent().getEventId();
                     break;
                 default:
-                    Bot.getApi().sendPrivateMsg(Utils.ownerInString, "CWG配置文件出现了问题");
-                    Bot.getApi().sendPrivateMsg(Utils.ownerInString, "请在config.yml中仔细检查'AddFriendSelector'");
-                    Bot.getApi().sendPrivateMsg(Utils.ownerInString, "正在自动处理...");
+                    Utils.owner.forEach(owner ->{
+                        Bot.getApi().sendPrivateMsg(String.valueOf(owner),"CWG配置文件出现问题");
+                        Bot.getApi().sendPrivateMsg(String.valueOf(owner), "请仔细检查'AddFriendSelector'");
+                        Bot.getApi().sendPrivateMsg(String.valueOf(owner),"正在自动处理");
+                    });
                     e.getEvent().accept();
                     break;
             }

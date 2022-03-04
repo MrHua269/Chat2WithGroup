@@ -14,13 +14,13 @@ public class CommandBind implements CommandExecutor {
     @Override
     public boolean onCommand(@NotNull CommandSender sender, @NotNull Command command, @NotNull String label, @NotNull String[] args) {
         if(sender instanceof Player){
-            if(args.length == 1&& args[0]!=null && Utils.isNumberStrings(args[0])){
+            if(args.length == 1&& args[0]!=null && Utils.isNumberStrings(args[0])&&args.length>0){
                 long QQID = Long.parseLong(args[0]);
                 if(sender.hasPermission("cwg.bind.force")){
                     Bot.getApi().setBind(QQID,((Player) sender).getUniqueId());
                     sender.sendMessage(ChatColor.GREEN + "绑定成功");
                 }else{
-
+                    sender.sendMessage(ChatColor.RED + "您没有权限");
                 }
             }else{
                 sender.sendMessage(ChatColor.RED + "格式错误");

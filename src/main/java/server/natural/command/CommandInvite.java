@@ -7,8 +7,9 @@ import org.bukkit.command.CommandSender;
 import org.bukkit.entity.Player;
 import org.jetbrains.annotations.NotNull;
 import server.natural.Utils;
-//This one need to add the CoolDownTime because some silly bitch may use it to send some useless 's message
+
 //todo add cooldowntime
+//todo 使用命令前判断该玩家的QQ是否被禁言
 public class CommandInvite implements CommandExecutor {
     @Override
     public boolean onCommand(@NotNull CommandSender sender, @NotNull Command command, @NotNull String label, @NotNull String[] args){

@@ -8,6 +8,7 @@ import org.bukkit.entity.Player;
 import org.jetbrains.annotations.NotNull;
 import server.natural.Utils;
 //todo add cool-down time
+//todo 使用命令前判断该玩家的QQ是否被禁言
 //Go to fuck yourself , silly cool-down time
 public class CommandSMG implements CommandExecutor {
     @Override

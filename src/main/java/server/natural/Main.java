@@ -42,12 +42,11 @@ public class Main extends JavaPlugin {
          getLogger().info(ChatColor.LIGHT_PURPLE + "注册插件命令");
          Bukkit.getPluginCommand("smg").setExecutor(new CommandSMG());
          Bukkit.getPluginCommand("cwg").setExecutor(new CommandCWG());
+         //尚未完成
+//         Bukkit.getPluginCommand("bind").setExecutor(new CommandBind());
          Bukkit.getPluginCommand("messageforwarding").setExecutor(new CommandStopMessageTrasForwarding());
          if(tmp1) Bukkit.getPluginCommand("botinvite").setExecutor(new CommandInvite());
          getLogger().info(ChatColor.GREEN + "准备就绪!");
-         //todo should disable the plugin on other version config file
-         ////Advise the owner to update the config.yml again
-         //Not again
          if(cfver!=Utils.configVersion){
              getLogger().warning("ChatWithGroup的配置文件出现了问题，请删除配置文件重新启动服务器，插件会重新生成配置文件");
              getLogger().warning("服务器将在10秒后继续运行");
@@ -56,7 +55,6 @@ public class Main extends JavaPlugin {
              Bukkit.getPluginManager().getPlugin("ChatWithGroup").onDisable();
          }
          if(Utils.isBetaVersion){getLogger().warning("该版本为测试版本，Bug可能较多，若发现Bug请在Github反馈");}
-         //The string apiUrl must be final!
          Utils.checkUpdate("https://jlnpehub.mc66.club/CWGCheck.yml");
         }catch(Exception e){
             e.printStackTrace();

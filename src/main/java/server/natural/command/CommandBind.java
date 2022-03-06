@@ -20,7 +20,16 @@ public class CommandBind implements CommandExecutor {
                     Bot.getApi().setBind(QQID,((Player) sender).getUniqueId());
                     sender.sendMessage(ChatColor.GREEN + "绑定成功");
                 }else{
-                    sender.sendMessage(ChatColor.RED + "您没有权限");
+                    Utils.cacheFile.set("players." + sender.getName() + ".QQID",QQID);
+                    Utils.cacheFile.set("players." + sender.getName() + ".ActionDone",false);
+                    Utils.cacheFileSave();
+                    if(Bot.getApi().getBot().getFriendOrFail(QQID) != null){
+                        Bot.getApi().sendPrivateMsg(String.valueOf(QQID),"服务器内有人请求与您的QQ进行绑定");
+                        Bot.getApi().sendPrivateMsg(String.valueOf(QQID),"请求人" + sender.getName());
+                        Bot.getApi().sendPrivateMsg(String.valueOf(QQID),"同意操作请输入: " + Utils.config.getString("BindPrefix","同意绑定") +
+                                " " + sender.getName());
+                    }
+                    sender.sendMessage(ChatColor.RED + "请在QQ内完成相关操作");
                 }
             }else{
                 sender.sendMessage(ChatColor.RED + "格式错误");

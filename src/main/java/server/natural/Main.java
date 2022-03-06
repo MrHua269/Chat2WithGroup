@@ -5,10 +5,13 @@ import co.novau233.socketServer.Handlers.MessageHandler;
 import co.novau233.socketServer.SocketServer;
 import org.bukkit.Bukkit;
 import org.bukkit.ChatColor;
+import org.bukkit.configuration.file.FileConfiguration;
+import org.bukkit.configuration.file.YamlConfiguration;
 import org.bukkit.plugin.java.JavaPlugin;
 import server.natural.command.*;
 import server.natural.events.*;
 
+import java.io.File;
 import java.util.concurrent.LinkedBlockingDeque;
 import java.util.concurrent.ThreadPoolExecutor;
 import java.util.concurrent.TimeUnit;
@@ -21,6 +24,7 @@ public class Main extends JavaPlugin {
         try{
          getLogger().info(ChatColor.GREEN + "欢迎使用!");
          saveDefaultConfig();
+         Utils.LoadFile();
          Thread.sleep(3000);
          Utils.executor = new ThreadPoolExecutor(getConfig().getInt("CoreConfig.ThreadCount"),Integer.MAX_VALUE,Long.MAX_VALUE, TimeUnit.DAYS,new LinkedBlockingDeque<>());
          boolean tmp = getConfig().getBoolean("Function.EnableGroupToGame");

@@ -14,6 +14,7 @@ Function:
   EnableChatServer: false
   EnableAntiChatSpam: true
   EnableInvite: true
+  EnableBindInQQ: true
 MessageLimit:
   #单位：毫秒
   MessageSlotLimit: 20
@@ -43,6 +44,8 @@ Texts:
   ReplyMessageOnPrivate:
     - "有什么事不能到群里问吗，你这么找我这个傻逼机器人我很为难的好吧"
   MessageOutOfLimit: "歇歇吧，你的口水已经到处都是了"
+  BindPrefix: "同意绑定"
+  NoPermission: "您没有权限"
 
 
 

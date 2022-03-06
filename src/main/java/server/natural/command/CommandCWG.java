@@ -17,19 +17,56 @@ public class CommandCWG implements CommandExecutor {
     public boolean onCommand(@NotNull CommandSender commandSender, @NotNull Command command, @NotNull String s, @NotNull String[] strings) {
         if (strings[0].equalsIgnoreCase("version")) {
             strings[0] = "ver";
+        }else if(strings[0].equalsIgnoreCase("rl")){
+            strings[0] = "reload";
+
         }
         if(strings.length>0){
             switch (strings[0].toLowerCase()) {
                 case "reload":
                     if (commandSender.hasPermission("cwg.reload")) {
                         commandSender.sendMessage(ChatColor.GREEN + "Reloading Config File...");
-                        File configFile = new File("plugins\\ChatWithGroup\\config.yml");
+                        File configFile = new File(Bukkit.getPluginManager().getPlugin("ChatWithGroup").getDataFolder(),"config.yml");
                         if (configFile.exists()) {
                             try {
                                 Utils.config.load(configFile);
-                                commandSender.sendMessage(ChatColor.GREEN + "Done!");
+                                commandSender.sendMessage(ChatColor.GREEN + "Config File Reloaded Completed!");
                             } catch (Exception e) {
                                 commandSender.sendMessage(ChatColor.RED + "An Exception happened. Config file can't reload");
+                                commandSender.sendMessage(ChatColor.RED + "Exception Message:");
+                                commandSender.sendMessage(ChatColor.RED + e.getMessage());
+                            }
+                        }
+                        File cacheFile = Utils.Cfile;
+                        commandSender.sendMessage(ChatColor.GREEN + "Reloading Cache File...");
+                        if (cacheFile.exists()){
+                            try {
+                                Utils.cacheFile.load(cacheFile);
+                                commandSender.sendMessage(ChatColor.GREEN + "Cache File Reloaded Completed!");
+                            } catch (Exception e) {
+                                commandSender.sendMessage(ChatColor.RED + "An Exception happened. Cache file can't reload");
+                                commandSender.sendMessage(ChatColor.RED + "Exception Message:");
+                                commandSender.sendMessage(ChatColor.RED + e.getMessage());
+                            }
+                        }
+                        File MFCFile = Utils.MFCFile;
+                        if(MFCFile.exists()){
+                            try {
+                                Utils.mfcfc.load(MFCFile);
+                                commandSender.sendMessage(ChatColor.GREEN + "Cache File Reloaded Completed");
+                            } catch (Exception e) {
+                                commandSender.sendMessage(ChatColor.RED + "An Exception happened. Message Forwarding Cache file can't reload");
+                                commandSender.sendMessage(ChatColor.RED + "Exception Message:");
+                                commandSender.sendMessage(ChatColor.RED + e.getMessage());
+                            }
+                        }
+                        File PCCFile = Utils.PCCFile;
+                        if(PCCFile.exists()){
+                            try {
+                                Utils.pccfc.load(PCCFile);
+                                commandSender.sendMessage(ChatColor.GREEN + "Cache File Reloaded Completed");
+                            } catch (Exception e) {
+                                commandSender.sendMessage(ChatColor.RED + "An Exception happened. Player Chancel Cache file can't reload");
                                 commandSender.sendMessage(ChatColor.RED + "Exception Message:");
                                 commandSender.sendMessage(ChatColor.RED + e.getMessage());
                             }

@@ -19,8 +19,13 @@ import java.util.regex.Pattern;
 public class Utils {
     //一些事件或指令常用的变量可直接在此调用
     public static FileConfiguration config = Bukkit.getPluginManager().getPlugin("ChatWithGroup").getConfig();
-    private static File file = new File(Bukkit.getPluginManager().getPlugin("ChatWithGroup").getDataFolder(),"\\cache\\cache.yml");
-    public static FileConfiguration fileConfiguration = YamlConfiguration.loadConfiguration(file);
+    public static File Cfile = new File(Bukkit.getPluginManager().getPlugin("ChatWithGroup").getDataFolder(),"cache\\cache.yml");
+    public static FileConfiguration cacheFile = YamlConfiguration.loadConfiguration(Cfile);
+    public static File MFCFile = new File(Bukkit.getPluginManager().getPlugin("ChatWithGroup").getDataFolder(),"MsgForwardingChancel.yml");
+    public static File PCCFile = new File(Bukkit.getPluginManager().getPlugin("ChatWithGroup").getDataFolder(),"cache\\PlayerChoosedChancelCache.yml");
+    public static FileConfiguration mfcfc = YamlConfiguration.loadConfiguration(MFCFile);
+    public static FileConfiguration pccfc = YamlConfiguration.loadConfiguration(PCCFile);
+    public static String noPermissionMsg = config.getString("NoPermission","您没有权限");
     public static final String ver = "1.3.6";
     public static final int configVersion = 6;
     public static List<Long> group = (List<Long>) config.getList("group");
@@ -85,5 +90,24 @@ public class Utils {
         Pattern pattern = Pattern.compile("[0-9]*");
         Matcher isNum = pattern.matcher(s);
         return isNum.matches();
+    }
+    public static void cacheFileSave() {
+        try {
+            cacheFile.save(Cfile);
+        } catch (Exception e) {
+            e.printStackTrace();
+        }
+    }
+    public static void PCCCacheFileSave(){
+        try {
+            pccfc.save(PCCFile);
+        } catch (Exception e) {
+            e.printStackTrace();
+        }
+    }
+    public static void LoadFile(){
+        Bukkit.getPluginManager().getPlugin("ChatWithGroup").saveResource("cache/cache.yml",false);
+        Bukkit.getPluginManager().getPlugin("ChatWithGroup").saveResource("MsgForwardingChancel.yml",false);
+        Bukkit.getPluginManager().getPlugin("ChatWithGroup").saveResource("cache/PlayerChoosedChancelCache.yml",false);
     }
 }

@@ -13,11 +13,18 @@ import server.natural.Utils;
 public class CommandSMG implements CommandExecutor {
     @Override
     public boolean onCommand(@NotNull CommandSender commandSender, @NotNull org.bukkit.command.Command command, @NotNull String s, @NotNull String[] args) {
+        String str = null;
+        for(int i = 0;i< args.length;i++){
+            str = str + args[i] + " ";
+        }
+        String s1 = str;
         if(commandSender instanceof Player){
             if(Bot.getApi().getUser(((Player) commandSender).getUniqueId()) != null){
                 if(args.length>0){
                     if(args[0]!=null&&args.length==1){
-                        Bot.getApi().sendGroupMsg(Utils.groupInString,((Player) commandSender).getDisplayName() + "->" + args[0]);
+                        Utils.group.forEach(group->{
+                            Bot.getApi().sendGroupMsg(String.valueOf(group),((Player) commandSender).getDisplayName() + "->" + s1);
+                        });
                         commandSender.sendMessage("消息发送成功!");
                     }else{
                         commandSender.sendMessage(ChatColor.RED + "使用方法错误，正确方法为:");
@@ -34,7 +41,9 @@ public class CommandSMG implements CommandExecutor {
                 commandSender.sendMessage(ChatColor.RED + "绑定后即可发送消息");
             }
         }else{
-            Bot.getApi().sendGroupMsg(Utils.groupInString, "服务器闸总(Console)->" + args[0]);
+            Utils.group.forEach(group->{
+                Bot.getApi().sendGroupMsg(String.valueOf(group), "服务器闸总(Console)->" + s1);
+            });
         }
         return true;
     }

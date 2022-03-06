@@ -58,7 +58,9 @@ public class MessageHandler extends SimpleChannelInboundHandler<Packet> implemen
                     GlobalMSGPacket p = new GlobalMSGPacket();
                     p.setAttachMsg("<" + channelHandlerContext.channel().remoteAddress() + ">" + msg);
                     Bukkit.broadcastMessage("<" + channelHandlerContext.channel().remoteAddress() + ">" + msg);
-                    Bot.getApi().sendGroupMsg(Utils.groupInString,"<" + channelHandlerContext.channel().remoteAddress() + ">" + msg);
+                    Utils.group.forEach(group->{
+                        Bot.getApi().sendGroupMsg(String.valueOf(group),"<" + channelHandlerContext.channel().remoteAddress() + ">" + msg);
+                    });
                     channels.writeAndFlush(p);
                 }
                 break;

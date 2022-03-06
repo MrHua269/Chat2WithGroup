@@ -24,16 +24,17 @@ public class OnQuitJoinGroupReplyMessageEvent implements Listener {
             }
         });
     }
-    @EventHandler
-    public void onReplyMessage(MessageReceiveEvent e) {
-        Utils.executor.execute(()->{
-            if(Utils.owner.contains(e.getEvent().getSender().getId()))
-            Utils.config.getList("Texts.ReplyMessageOnTemp").forEach(msg -> {
-                String s = MessageFormat.format((String) msg, e.getEvent().getSender().getNick(), e.getEvent().getSender().getId());
-                e.response(e.getEvent().getSenderName() + s);
-            });
-        });
-    }
+    //留着防止bug发生不能修复
+//    @EventHandler
+//    public void onReplyMessage(MessageReceiveEvent e) {
+//        Utils.executor.execute(()->{
+//            if(Utils.owner.contains(e.getEvent().getSender().getId()))
+//            Utils.config.getList("Texts.ReplyMessageOnTemp").forEach(msg -> {
+//                String s = MessageFormat.format((String) msg, e.getEvent().getSender().getNick(), e.getEvent().getSender().getId());
+//                e.response(e.getEvent().getSenderName() + s);
+//            });
+//        });
+//    }
     //当群员退群时执行
     @EventHandler
     public void onUserLeaveGroup(GroupMemberLeaveEvent e) {

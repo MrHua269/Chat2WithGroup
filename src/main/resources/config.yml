@@ -18,6 +18,9 @@ Function:
 MessageLimit:
   #单位：毫秒
   MessageSlotLimit: 20
+CacheSettings:
+  #自动清理缓存文件的时间，单位天
+  Auto-Purge-Cache: 30
 RequestHandler:
   #进群请求选择，YES为同意，NO为拒绝，NOTHING为不做处理，勿更改成其他值
   JoinRequestSelector: "NOTHING"

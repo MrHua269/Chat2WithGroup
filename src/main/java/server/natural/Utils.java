@@ -26,7 +26,7 @@ public class Utils {
     public static FileConfiguration mfcfc = YamlConfiguration.loadConfiguration(MFCFile);
     public static FileConfiguration pccfc = YamlConfiguration.loadConfiguration(PCCFile);
     public static String noPermissionMsg = config.getString("NoPermission","您没有权限");
-    public static final String ver = "1.3.6";
+    public static final String ver = "1.4.0";
     public static final int configVersion = 6;
     public static List<Long> group = (List<Long>) config.getList("group");
     public static List<Long> owner = (List<Long>) config.getList("owner");
@@ -109,5 +109,8 @@ public class Utils {
         Bukkit.getPluginManager().getPlugin("ChatWithGroup").saveResource("cache/cache.yml",false);
         Bukkit.getPluginManager().getPlugin("ChatWithGroup").saveResource("MsgForwardingChancel.yml",false);
         Bukkit.getPluginManager().getPlugin("ChatWithGroup").saveResource("cache/PlayerChoosedChancelCache.yml",false);
+    }
+    public static void OnFirstRun(){
+        //todo Completed it
     }
 }

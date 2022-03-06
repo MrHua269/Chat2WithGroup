@@ -24,22 +24,26 @@ public class Main extends JavaPlugin {
         try{
          getLogger().info(ChatColor.GREEN + "欢迎使用!");
          saveDefaultConfig();
+         //加载其他缓存或配置文件
          Utils.LoadFile();
+         //让服务器歇3秒
          Thread.sleep(3000);
+         //初始化线程池
          Utils.executor = new ThreadPoolExecutor(getConfig().getInt("CoreConfig.ThreadCount"),Integer.MAX_VALUE,Long.MAX_VALUE, TimeUnit.DAYS,new LinkedBlockingDeque<>());
+         //一些临时变量
          boolean tmp = getConfig().getBoolean("Function.EnableGroupToGame");
-         boolean tmp1 = getConfig().getBoolean("Function.EnableInvite");
          boolean tmp2 = getConfig().getBoolean("Function.EnableChatServer");
          boolean tmp3 = getConfig().getBoolean("Function.EnableAntiChatSpam");
-         if(tmp3)Bukkit.getPluginManager().registerEvents(new AntiChatRepeating(),this);
-         if(tmp2){
-             Bukkit.getLogger().info("Start chat server...");
-             server.start();
-             server = new SocketServer("0.0.0.0",Utils.config.getInt("ChatServer.Port"));
-             Bukkit.getPluginManager().registerEvents(new MessageHandler(),this);
-         }
          int cfver = getConfig().getInt("config-ver");
          getLogger().info(ChatColor.LIGHT_PURPLE + "注册插件事件监听器...");
+         //如上面info所说
+            if(tmp3)Bukkit.getPluginManager().registerEvents(new AntiChatRepeating(),this);
+            if(tmp2){
+                Bukkit.getLogger().info("Start chat server...");
+                server.start();
+                server = new SocketServer("0.0.0.0",Utils.config.getInt("ChatServer.Port"));
+                Bukkit.getPluginManager().registerEvents(new MessageHandler(),this);
+            }
          if(tmp){Bukkit.getPluginManager().registerEvents(new OnGroupMessage(), this);}
          Bukkit.getPluginManager().registerEvents(new JoinGroupRequestSelectorListener(), this);
          Bukkit.getPluginManager().registerEvents(new OnQuitJoinGroupReplyMessageEvent(), this);
@@ -49,7 +53,7 @@ public class Main extends JavaPlugin {
          //尚未完成
 //         Bukkit.getPluginCommand("bind").setExecutor(new CommandBind());
          Bukkit.getPluginCommand("messageforwarding").setExecutor(new CommandStopMessageTrasForwarding());
-         if(tmp1) Bukkit.getPluginCommand("botinvite").setExecutor(new CommandInvite());
+         Bukkit.getPluginCommand("botinvite").setExecutor(new CommandInvite());
          getLogger().info(ChatColor.GREEN + "准备就绪!");
          if(cfver!=Utils.configVersion){
              getLogger().warning("ChatWithGroup的配置文件出现了问题，请删除配置文件重新启动服务器，插件会重新生成配置文件");

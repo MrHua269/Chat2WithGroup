@@ -63,7 +63,7 @@ public class Main extends JavaPlugin {
              Bukkit.getPluginManager().getPlugin("ChatWithGroup").onDisable();
          }
          if(Utils.isBetaVersion){getLogger().warning("该版本为测试版本，Bug可能较多，若发现Bug请在Github反馈");}
-         Utils.checkUpdate("https://jlnpehub.mc66.club/CWGCheck.yml");
+         Utils.checkUpdate("https://naturalgroup.github.io/CWGCheck/CWGCheck.yml");
         }catch(Exception e){
             e.printStackTrace();
         }

@@ -5,12 +5,10 @@ import org.bukkit.ChatColor;
 import org.bukkit.command.Command;
 import org.bukkit.command.CommandExecutor;
 import org.bukkit.command.CommandSender;
-import org.bukkit.configuration.InvalidConfigurationException;
 import org.jetbrains.annotations.NotNull;
 import server.natural.Utils;
 
 import java.io.File;
-import java.io.IOException;
 
 public class CommandCWG implements CommandExecutor {
     @Override

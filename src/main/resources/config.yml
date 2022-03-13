@@ -33,6 +33,12 @@ RequestHandler:
 ChatServer:
   MessageSlotLimit: 500
   Port: 192
+BindSettings:
+  BindPrefix: "同意绑定"
+  #绑定时间，单位分钟
+  Effective-Time: 2
+  #冷却时间，单位分钟
+  Cooldown-Time: 10
 Texts:
   #{0}:NameCard,{1}:ID
   MessageOfQuitGroup:
@@ -47,7 +53,6 @@ Texts:
   ReplyMessageOnPrivate:
     - "有什么事不能到群里问吗，你这么找我这个傻逼机器人我很为难的好吧"
   MessageOutOfLimit: "歇歇吧，你的口水已经到处都是了"
-  BindPrefix: "同意绑定"
   NoPermission: "您没有权限"
 
 

@@ -1,7 +1,6 @@
 package server.natural.events;
 
 import me.albert.amazingbot.events.GroupMessageEvent;
-import org.bukkit.Bukkit;
 import org.bukkit.ChatColor;
 import org.bukkit.entity.Player;
 import org.bukkit.event.EventHandler;
@@ -10,7 +9,6 @@ import org.bukkit.event.player.PlayerJoinEvent;
 import org.bukkit.event.player.PlayerQuitEvent;
 import server.natural.Utils;
 
-import java.util.HashMap;
 import java.util.concurrent.ConcurrentHashMap;
 
 public class OnGroupMessage implements Listener {

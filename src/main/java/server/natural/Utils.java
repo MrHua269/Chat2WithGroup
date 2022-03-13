@@ -111,6 +111,14 @@ public class Utils {
         Bukkit.getPluginManager().getPlugin("ChatWithGroup").saveResource("cache/PlayerChoosedChancelCache.yml",false);
     }
     public static void OnFirstRun(){
-        //todo Completed it
+        long timestamp = System.currentTimeMillis();
+        if(cacheFile.get("Created-Time")==null){
+            cacheFile.set("Created-Time",timestamp);
+            cacheFileSave();
+        }
+        if(pccfc.get("Created-Time")==null){
+            pccfc.set("Created-Time",timestamp);
+            PCCCacheFileSave();
+        }
     }
 }

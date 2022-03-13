@@ -26,6 +26,7 @@ public class Main extends JavaPlugin {
          saveDefaultConfig();
          //加载其他缓存或配置文件
          Utils.LoadFile();
+         Utils.OnFirstRun();
          //让服务器歇3秒
          Thread.sleep(3000);
          //初始化线程池
@@ -50,8 +51,7 @@ public class Main extends JavaPlugin {
          getLogger().info(ChatColor.LIGHT_PURPLE + "注册插件命令");
          Bukkit.getPluginCommand("smg").setExecutor(new CommandSMG());
          Bukkit.getPluginCommand("cwg").setExecutor(new CommandCWG());
-         //尚未完成
-//         Bukkit.getPluginCommand("bind").setExecutor(new CommandBind());
+         Bukkit.getPluginCommand("bind").setExecutor(new CommandBind());
          Bukkit.getPluginCommand("messageforwarding").setExecutor(new CommandStopMessageTrasForwarding());
          Bukkit.getPluginCommand("botinvite").setExecutor(new CommandInvite());
          getLogger().info(ChatColor.GREEN + "准备就绪!");
@@ -63,7 +63,7 @@ public class Main extends JavaPlugin {
              Bukkit.getPluginManager().getPlugin("ChatWithGroup").onDisable();
          }
          if(Utils.isBetaVersion){getLogger().warning("该版本为测试版本，Bug可能较多，若发现Bug请在Github反馈");}
-         Utils.checkUpdate("https://naturalgroup.github.io/CWGCheck/CWGCheck.yml");
+         Utils.checkUpdate(getConfig().getString("UpdateURL","https://naturalcodeclub.github.io/CWGCheck/CWGCheck.yml"));
         }catch(Exception e){
             e.printStackTrace();
         }

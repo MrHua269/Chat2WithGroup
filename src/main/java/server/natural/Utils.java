@@ -4,6 +4,7 @@ import org.bukkit.Bukkit;
 import org.bukkit.configuration.InvalidConfigurationException;
 import org.bukkit.configuration.file.FileConfiguration;
 import org.bukkit.configuration.file.YamlConfiguration;
+import org.jetbrains.annotations.NotNull;
 
 import java.io.*;
 import java.net.HttpURLConnection;
@@ -105,10 +106,10 @@ public class Utils {
             e.printStackTrace();
         }
     }
-    public static void LoadFile(){
-        Bukkit.getPluginManager().getPlugin("ChatWithGroup").saveResource("cache/cache.yml",false);
-        Bukkit.getPluginManager().getPlugin("ChatWithGroup").saveResource("MsgForwardingChancel.yml",false);
-        Bukkit.getPluginManager().getPlugin("ChatWithGroup").saveResource("cache/PlayerChoosedChancelCache.yml",false);
+    public static void LoadFile(@NotNull boolean b){
+        Bukkit.getPluginManager().getPlugin("ChatWithGroup").saveResource("cache/cache.yml",b);
+        Bukkit.getPluginManager().getPlugin("ChatWithGroup").saveResource("MsgForwardingChancel.yml",b);
+        Bukkit.getPluginManager().getPlugin("ChatWithGroup").saveResource("cache/PlayerChoosedChancelCache.yml",b);
     }
     public static void OnFirstRun(){
         long timestamp = System.currentTimeMillis();

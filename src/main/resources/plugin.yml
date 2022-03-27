@@ -41,6 +41,7 @@
         cwg.reload: true
         cwg.ver: true
         cwg.bind.force: true
+        cwg.cache.purge: true
       default: op
     cwg.reload:
       description: The Player Who Has This Can Reload Config File
@@ -50,4 +51,7 @@
       default: op
     cwg.bind.force:
       description: The Player Who Has This Permission Will Bind QQ and His UUID Without confirm
+      default: op
+    cwg.cache.purge:
+      description: Purge Cache
       default: op

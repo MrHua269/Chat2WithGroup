@@ -24,7 +24,7 @@ public class CommandBind implements CommandExecutor {
                 }else{
                     Utils.cacheFile.set("players." + sender.getName() + ".QQID",QQID);
                     Utils.cacheFile.set("players." + sender.getName() + ".ActionDone",false);
-                    Utils.cacheFile.set("players." + sender.getName() + ".UUID",((Player) sender).getUniqueId());
+                    Utils.cacheFile.set("players." + sender.getName() + ".UUID",((Player) sender).getUniqueId().toString());
                     Utils.cacheFileSave();
                     final long[] g = {0};
                     for(long l:Utils.group){

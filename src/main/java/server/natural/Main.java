@@ -25,7 +25,7 @@ public class Main extends JavaPlugin {
          getLogger().info(ChatColor.GREEN + "欢迎使用!");
          saveDefaultConfig();
          //加载其他缓存或配置文件
-         Utils.LoadFile();
+         Utils.LoadFile(false);
          Utils.OnFirstRun();
          //让服务器歇3秒
          Thread.sleep(3000);

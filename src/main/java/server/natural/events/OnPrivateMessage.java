@@ -13,19 +13,31 @@ public class OnPrivateMessage implements Listener {
     public void PrivateMessage(MessageReceiveEvent event){
         Utils.executor.execute(()->{
             String message = event.getMsg();
-            if(!message.startsWith(Utils.config.getString("BindSettings.BindPrefix","同意绑定"))) return;
-            String[] arr = message.split("\\s+");
-            if(arr.length != 2)return;
-            if(event.getEvent().getSender().getId()!=Utils.cacheFile.getLong("players." + arr[1] + ".QQID")||Utils.cacheFile.get("players." + arr[1])==null||
-            Utils.cacheFile.getBoolean("players." + arr[1] + ".ActionDone"))
-                return;
-            if(arr[1].equals(Utils.cacheFile.getString("players." + arr[1] + ".Name"))){
-                Object ob = Utils.cacheFile.get("players." + arr[1] + ".UUID");
-                UUID uuid = (UUID) ob;
-                Bot.getApi().setBind(event.getEvent().getSender().getId(),uuid);
-                Utils.cacheFile.set("players." + arr[1] + "ActionDone",true);
-                event.response("绑定完成");
+            if(!message.startsWith(Utils.config.getString("BindSettings.BindPrefix","同意绑定"))) {
+                String[] arr = message.split("\\s+");
+                if(arr.length != 2)return;
+                if(event.getEvent().getSender().getId()!=Utils.cacheFile.getLong("players." + arr[1] + ".QQID")||Utils.cacheFile.get("players." + arr[1])==null||
+                        Utils.cacheFile.getBoolean("players." + arr[1] + ".ActionDone"))
+                    return;
+                if(arr[1].equals(Utils.cacheFile.getString("players." + arr[1] + ".Name"))){
+                    UUID uuid = UUID.fromString(Utils.cacheFile.getString("players." + arr[1] + ".UUID"));
+                    Bot.getApi().setBind(event.getEvent().getSender().getId(),uuid);
+                    Utils.cacheFile.set("players." + arr[1] + "ActionDone",true);
+                    event.response("绑定完成");
+                }else{
+                    String str = null;
+                    for(Object s:Utils.config.getList("ReplyMessageOnPrivate")){
+                            String s1 = String.valueOf(s);
+                            if(str!=null){
+                                str = str + s1 + "\n";
+                            }else{
+                                str = s1 + "\n";
+                            }
+                    }
+                    event.response(str);
+                }
             }
+
         });
     }
 }

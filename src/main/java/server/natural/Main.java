@@ -1,7 +1,7 @@
 package server.natural;
 
 import co.novau233.socketServer.Handlers.CacheManager;
-import co.novau233.socketServer.Handlers.MessageHandler;
+import co.novau233.socketServer.Handlers.SocketHandler;
 import co.novau233.socketServer.SocketServer;
 import org.bukkit.Bukkit;
 import org.bukkit.ChatColor;
@@ -43,7 +43,7 @@ public class Main extends JavaPlugin {
                 Bukkit.getLogger().info("Start chat server...");
                 server.start();
                 server = new SocketServer("0.0.0.0",Utils.config.getInt("ChatServer.Port"));
-                Bukkit.getPluginManager().registerEvents(new MessageHandler(),this);
+                Bukkit.getPluginManager().registerEvents(new SocketHandler(),this);
             }
          if(tmp){Bukkit.getPluginManager().registerEvents(new OnGroupMessage(), this);}
          Bukkit.getPluginManager().registerEvents(new JoinGroupRequestSelectorListener(), this);

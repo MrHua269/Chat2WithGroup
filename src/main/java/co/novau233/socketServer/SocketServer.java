@@ -1,7 +1,7 @@
 package co.novau233.socketServer;
 
 import co.novau233.socketServer.Handlers.CacheManager;
-import co.novau233.socketServer.Handlers.MessageHandler;
+import co.novau233.socketServer.Handlers.SocketHandler;
 import io.netty.bootstrap.ServerBootstrap;
 import io.netty.channel.ChannelInitializer;
 import io.netty.channel.ChannelOption;
@@ -27,7 +27,7 @@ public class SocketServer extends Thread{
         this.host=host;
         this.port=port;
         this.setDaemon(true);
-        this.setPriority(5);
+        this.setPriority(6);
         this.setName("NChat-Main-Thread");
     }
     public ChannelInitializer<SocketChannel> channel = new ChannelInitializer<SocketChannel>(){
@@ -36,7 +36,7 @@ public class SocketServer extends Thread{
             ch.pipeline()
                     .addLast("encoder", new ObjectEncoder())
                     .addLast("decoder", new ObjectDecoder(ClassResolvers.cacheDisabled(null)))
-                    .addLast("handler", new MessageHandler());
+                    .addLast("handler", new SocketHandler());
         }
     };
     public AtomicBoolean started = new AtomicBoolean(false);

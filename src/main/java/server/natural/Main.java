@@ -52,7 +52,7 @@ public class Main extends JavaPlugin {
         //终止聊天室线程和线程池
         //如果不为空则终止
         if(server!=null) {
-            server.interrupted();
+            server.stop();
         }
         //休眠线程池
         Utils.executor.shutdown();

@@ -43,6 +43,12 @@ public class AsyncEventHandler {
             sendChat("<[C]"+nickName+">"+chat_message,MessageType.NORMAL,null);
         });
     }
+    public static void broadcastMusic(String mp3URL){
+        HashMap map = new HashMap();
+        map.put("head","MUSIC");
+        map.put("url",mp3URL);
+        channels.writeAndFlush(map);
+    }
     public static void sendChat(String msg,MessageType type,Channel channel){
         HashMap msg1 = new HashMap();
         //消息头

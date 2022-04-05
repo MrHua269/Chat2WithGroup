@@ -41,6 +41,7 @@ public class BootStrap {
             Bukkit.getLogger().info("Start chat server...");
             Main.server = new SocketServer("0.0.0.0",plugin.getConfig().getInt("ChatServer.Port"));
             Main.server.start();
+            Bukkit.getPluginCommand("broadcastmusic").setExecutor(new CommandBroadcastMusic());
             Bukkit.getPluginManager().registerEvents(new MCEventHandler(),plugin);
         }
         //如果启用消息转发则注册改监听器

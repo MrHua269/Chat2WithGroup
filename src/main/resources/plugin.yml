@@ -34,6 +34,11 @@
         - "bangding"
       usage: "/bind [QQ ID]"
       description: "在游戏内绑定QQ号"
+    broadcastmusic:
+      aliases:
+        - "bs"
+        - "bm"
+      usage: "/broadcastmusic <mp3URL>"
   permissions:
     cwg.*:
       description: All Permissions of CWG

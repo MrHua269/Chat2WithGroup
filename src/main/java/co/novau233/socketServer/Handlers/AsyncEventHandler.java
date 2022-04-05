@@ -6,6 +6,7 @@ import io.netty.channel.group.DefaultChannelGroup;
 import io.netty.util.concurrent.GlobalEventExecutor;
 import org.bukkit.Bukkit;
 import java.util.HashMap;
+import java.util.Map;
 import java.util.concurrent.ConcurrentHashMap;
 import java.util.concurrent.Executors;
 import java.util.concurrent.ThreadPoolExecutor;
@@ -21,11 +22,17 @@ public class AsyncEventHandler {
     private static final ChannelGroup channels = new DefaultChannelGroup(GlobalEventExecutor.INSTANCE);
 
     public static void onChannelRemoved(Channel channel){
-        sendChat("Channel "+channelManager.get(channel).get("NickName").toString()+"Disconnected!",MessageType.NORMAL,null);
+        sendChat("Channel "+channelManager.get(channel).get("NickName").toString()+"Disconnected!",MessageType.NORMAL,null,null);
         Bukkit.broadcastMessage("Channel "+channelManager.get(channel).get("NickName").toString()+"Disconnected!");
         //删除频道
         channelManager.remove(channel);
         channels.remove(channel);
+    }
+    public static void broadcastMusic(String mp3URL){
+        HashMap map = new HashMap();
+        map.put("head","MUSIC");
+        map.put("url",mp3URL);
+        channels.writeAndFlush(map);
     }
     public static void handleChat(Channel channel, HashMap message){
         executor.execute(()->{
@@ -40,19 +47,25 @@ public class AsyncEventHandler {
             if(chat_message==null){return;}
             //发送消息
             Bukkit.broadcastMessage("<[C]"+nickName+">"+chat_message);
-            sendChat("<[C]"+nickName+">"+chat_message,MessageType.NORMAL,null);
+            HashMap tmpCopy = new HashMap();
+            //自定义消息
+            message.forEach((key,value)->{
+                 if(key.equals("head")||key.equals("chatmessage")||key.equals("tag")){
+                     return;
+                 }
+                 tmpCopy.put(key,value);
+            });
+            sendChat("<[C]"+nickName+">"+chat_message,MessageType.NORMAL,null,tmpCopy);
         });
     }
-    public static void broadcastMusic(String mp3URL){
-        HashMap map = new HashMap();
-        map.put("head","MUSIC");
-        map.put("url",mp3URL);
-        channels.writeAndFlush(map);
-    }
-    public static void sendChat(String msg,MessageType type,Channel channel){
+    public static void sendChat(String msg, MessageType type, Channel channel, HashMap attach){
         HashMap msg1 = new HashMap();
         //消息头
         msg1.put("head","GOLBALCHAT");
+        //附加消息
+        if (attach!=null) {
+            msg1.put("attach", attach);
+        }
         //标签
         switch(type){
             case NORMAL:
@@ -88,12 +101,12 @@ public class AsyncEventHandler {
             if(login_username==null||login_password==null){return;}
             //检索是否有该用户
             if(!CacheManager.cacheFileYML.contains(login_username)){
-                sendChat("Username doesn't exists!",MessageType.PRIVATE,channel);
+                sendChat("Username doesn't exists!",MessageType.PRIVATE,channel,null);
                 return;
             }
             //判断密码是否正确
             if(!CacheManager.cacheFileYML.get(login_username).equals(login_password)){
-                sendChat("Wrong password or username!",MessageType.PRIVATE,channel);
+                sendChat("Wrong password or username!",MessageType.PRIVATE,channel,null);
                 return;
             }
             //添加到频道中
@@ -119,12 +132,12 @@ public class AsyncEventHandler {
             if(reg_username==null||reg_password==null){return;}
             //判断是否已经被注册
             if(CacheManager.cacheFileYML.contains(reg_username)){
-                sendChat("User was registed!",MessageType.PRIVATE,channel);
+                sendChat("User was registed!",MessageType.PRIVATE,channel,null);
                 return;
             }
             //设置新的用户
             CacheManager.cacheFileYML.set(reg_username,reg_password);
-            sendChat("Completed!",MessageType.PRIVATE,channel);
+            sendChat("Completed!",MessageType.PRIVATE,channel,null);
             //添加到频道
             ConcurrentHashMap<String,Object> channelM = new ConcurrentHashMap<>();
             channelM.put("NickName",reg_username);

@@ -12,19 +12,19 @@ public class MCEventHandler implements Listener {
     //事件监听器
     @EventHandler
     public void onPlayerChat(AsyncPlayerChatEvent event){
-        AsyncEventHandler.sendChat("<"+event.getPlayer().getName()+">"+event.getMessage(), AsyncEventHandler.MessageType.NORMAL,null);
+        AsyncEventHandler.sendChat("<"+event.getPlayer().getName()+">"+event.getMessage(), AsyncEventHandler.MessageType.NORMAL,null,null);
     }
     @EventHandler
     public void onPlayerQuit(PlayerQuitEvent event){
-        AsyncEventHandler.sendChat("player "+event.getPlayer().getName()+" left game", AsyncEventHandler.MessageType.NORMAL,null);
+        AsyncEventHandler.sendChat("player "+event.getPlayer().getName()+" left game", AsyncEventHandler.MessageType.NORMAL,null,null);
     }
     @EventHandler
     public void onPlayerJoin(PlayerJoinEvent event){
-        AsyncEventHandler.sendChat("player "+event.getPlayer().getName()+" joined game", AsyncEventHandler.MessageType.NORMAL,null);
+        AsyncEventHandler.sendChat("player "+event.getPlayer().getName()+" joined game", AsyncEventHandler.MessageType.NORMAL,null,null);
     }
     @EventHandler
     public void onGroupMessage(GroupMessageEvent event){
         AsyncEventHandler.sendChat(ChatColor.BLUE + "[QGroup message forward]" + event.getEvent().getSenderName() + ChatColor.GRAY
-                + "(" + event.getUserID() + ")" + ChatColor.GRAY + ">>" + event.getMsg(), AsyncEventHandler.MessageType.NORMAL,null);
+                + "(" + event.getUserID() + ")" + ChatColor.GRAY + ">>" + event.getMsg(), AsyncEventHandler.MessageType.NORMAL,null,null);
     }
 }

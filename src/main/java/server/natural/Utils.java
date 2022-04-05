@@ -4,6 +4,8 @@ import org.bukkit.Bukkit;
 import org.bukkit.configuration.InvalidConfigurationException;
 import org.bukkit.configuration.file.FileConfiguration;
 import org.bukkit.configuration.file.YamlConfiguration;
+import org.bukkit.plugin.Plugin;
+import org.bukkit.plugin.java.JavaPlugin;
 import org.jetbrains.annotations.NotNull;
 
 import java.io.*;
@@ -18,12 +20,13 @@ import java.util.regex.Matcher;
 import java.util.regex.Pattern;
 
 public class Utils {
-    //一些事件或指令常用的变量可直接在此调用
+    //一些事件或指令常量可直接在此调用
     public static FileConfiguration config = Bukkit.getPluginManager().getPlugin("ChatWithGroup").getConfig();
-    public static File Cfile = new File(Bukkit.getPluginManager().getPlugin("ChatWithGroup").getDataFolder(),"cache\\cache.yml");
+    public static Plugin plugin = Bukkit.getPluginManager().getPlugin("ChatWithGroup");
+    public static File Cfile = new File(plugin.getDataFolder(),"cache\\cache.yml");
     public static FileConfiguration cacheFile = YamlConfiguration.loadConfiguration(Cfile);
-    public static File MFCFile = new File(Bukkit.getPluginManager().getPlugin("ChatWithGroup").getDataFolder(),"MsgForwardingChancel.yml");
-    public static File PCCFile = new File(Bukkit.getPluginManager().getPlugin("ChatWithGroup").getDataFolder(),"cache\\PlayerChoosedChancelCache.yml");
+    public static File MFCFile = new File(plugin.getDataFolder(),"MsgForwardingChancel.yml");
+    public static File PCCFile = new File(plugin.getDataFolder(),"cache\\PlayerChoosedChancelCache.yml");
     public static FileConfiguration mfcfc = YamlConfiguration.loadConfiguration(MFCFile);
     public static FileConfiguration pccfc = YamlConfiguration.loadConfiguration(PCCFile);
     public static String noPermissionMsg = config.getString("NoPermission","您没有权限");
@@ -34,7 +37,7 @@ public class Utils {
     public static final boolean isBetaVersion = true;
     //创建线程池
     public static ThreadPoolExecutor executor = null;
-    public static void checkUpdate(String apiURL) throws IOException, InvalidConfigurationException, ExecutionException, InterruptedException {
+    public static void checkUpdate(final String apiURL) throws IOException, InvalidConfigurationException, ExecutionException, InterruptedException {
         File update = new File("CWG\\CWGUrlLog");
         DownloadFile(apiURL,update);
         if(update.exists()){

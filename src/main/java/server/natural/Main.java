@@ -1,6 +1,7 @@
 package server.natural;
 
 import co.novau233.socketServer.Handlers.CacheManager;
+import co.novau233.socketServer.Handlers.MCEventHandler;
 import co.novau233.socketServer.Handlers.SocketHandler;
 import co.novau233.socketServer.SocketServer;
 import org.bukkit.Bukkit;
@@ -12,65 +13,48 @@ import server.natural.events.JoinGroupRequestSelectorListener;
 import server.natural.events.OnGroupMessage;
 import server.natural.events.OnQuitJoinGroupReplyMessageEvent;
 
+import java.util.concurrent.Executors;
 import java.util.concurrent.LinkedBlockingDeque;
 import java.util.concurrent.ThreadPoolExecutor;
 import java.util.concurrent.TimeUnit;
 
-//todo 注释，现在这里写的东西我已经开始看不懂了 --NaT_Jerry
 public class Main extends JavaPlugin {
-    SocketServer server = null;
+    public static SocketServer server = null;
     @Override
     public void onEnable() {
         try{
          getLogger().info(ChatColor.GREEN + "欢迎使用!");
          saveDefaultConfig();
+         //让服务器歇3秒
+         Thread.sleep(3000);
+         //初始化Util
+         Utils.executor = (ThreadPoolExecutor) Executors.newFixedThreadPool(this.getConfig().getInt("CoreConfig.ThreadCount"));
          //加载其他缓存或配置文件
          Utils.LoadFile(false);
          Utils.OnFirstRun();
-         //让服务器歇3秒
-         Thread.sleep(3000);
-         //初始化线程池
-         Utils.executor = new ThreadPoolExecutor(getConfig().getInt("CoreConfig.ThreadCount"),Integer.MAX_VALUE,Long.MAX_VALUE, TimeUnit.DAYS,new LinkedBlockingDeque<>());
-         //一些临时变量
-         boolean tmp = getConfig().getBoolean("Function.EnableGroupToGame");
-         boolean tmp2 = getConfig().getBoolean("Function.EnableChatServer");
-         boolean tmp3 = getConfig().getBoolean("Function.EnableAntiChatSpam");
-         int cfver = getConfig().getInt("config-ver");
-         getLogger().info(ChatColor.LIGHT_PURPLE + "注册插件事件监听器...");
-         //如上面info所说
-            if(tmp3)Bukkit.getPluginManager().registerEvents(new AntiChatRepeating(),this);
-            if(tmp2){
-                Bukkit.getLogger().info("Start chat server...");
-                server = new SocketServer("0.0.0.0",Utils.config.getInt("ChatServer.Port"));
-                server.start();
-                Bukkit.getPluginManager().registerEvents(new SocketHandler(),this);
-            }
-         if(tmp){Bukkit.getPluginManager().registerEvents(new OnGroupMessage(), this);}
-         Bukkit.getPluginManager().registerEvents(new JoinGroupRequestSelectorListener(), this);
-         Bukkit.getPluginManager().registerEvents(new OnQuitJoinGroupReplyMessageEvent(), this);
-         getLogger().info(ChatColor.LIGHT_PURPLE + "注册插件命令");
-         Bukkit.getPluginCommand("smg").setExecutor(new CommandSMG());
-         Bukkit.getPluginCommand("cwg").setExecutor(new CommandCWG());
-         Bukkit.getPluginCommand("bind").setExecutor(new CommandBind());
-         Bukkit.getPluginCommand("messageforwarding").setExecutor(new CommandStopMessageTrasForwarding());
-         Bukkit.getPluginCommand("botinvite").setExecutor(new CommandInvite());
+         //初始化事件监听器
+         BootStrap.initEventListeners(this);
+         //注册命令
+         BootStrap.initCommands(this);
          getLogger().info(ChatColor.GREEN + "准备就绪!");
-         if(cfver!=Utils.configVersion){
-             getLogger().warning("ChatWithGroup的配置文件出现了问题，请删除配置文件重新启动服务器，插件会重新生成配置文件");
-             getLogger().warning("服务器将在10秒后继续运行");
-             Thread.sleep(10000);
-             getLogger().warning("ChatWithGroup配置出现问题，请尽快修复");
-             Bukkit.getPluginManager().getPlugin("ChatWithGroup").onDisable();
-         }
+         BootStrap.checkIsConfigOldVersion(this);
          if(Utils.isBetaVersion){getLogger().warning("该版本为测试版本，Bug可能较多，若发现Bug请在Github反馈");}
-         Utils.checkUpdate(getConfig().getString("UpdateURL","https://naturalcodeclub.github.io/CWGCheck/CWGCheck.yml"));
+         //更新检查的apiURL必须是常量！
+         if(getConfig().getBoolean("CheckUpdate")) {
+             Utils.checkUpdate("https://naturalcodeclub.github.io/CWGCheck/CWGCheck.yml");
+         }
         }catch(Exception e){
             e.printStackTrace();
         }
     }
     @Override
     public void onDisable() {
-        SocketServer.interrupted();
+        //终止聊天室线程和线程池
+        //如果不为空则终止
+        if(server!=null) {
+            server.interrupted();
+        }
+        //休眠线程池
         Utils.executor.shutdown();
         CacheManager.unLoad();
         getLogger().info("再见");

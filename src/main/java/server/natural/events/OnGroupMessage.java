@@ -33,14 +33,10 @@ public class OnGroupMessage implements Listener {
     }
     @EventHandler
     public void onPlayerJoin(PlayerJoinEvent event){
-        Utils.executor.execute(()->{
-            forwardMap.put(event.getPlayer(),true);
-        });
+        Utils.executor.execute(()-> forwardMap.put(event.getPlayer(),true));
     }
     @EventHandler
     public void onPlayerQuit(PlayerQuitEvent event){
-        Utils.executor.execute(()->{
-            forwardMap.remove(event.getPlayer());
-        });
+        Utils.executor.execute(()-> forwardMap.remove(event.getPlayer()));
     }
 }

@@ -1,6 +1,5 @@
 config-ver: 6
-#检查更新的网址，千万，绝对，不要修改
-UpdateURL: "https://naturalcodeclub.github.io/CWGCheck/CWGCheck.yml"
+CheckUpdate: true
 CoreConfig:
   #群号，部分指令判断部分引用了该键值
   group:

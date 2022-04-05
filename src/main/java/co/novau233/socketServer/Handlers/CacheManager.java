@@ -18,7 +18,6 @@ public class CacheManager {
             if(!cacheFile.exists()){cacheFile.createNewFile();}
             cacheFileYML.load(cacheFile);
             if (!cacheFileYML.contains("Head")) {
-                cacheFileYML.set("Head", "#HEAD USER CACHE");
                 cacheFileYML.set("Version", Utils.ver);
             }
             Bukkit.getLogger().info("User cache file loaded!");

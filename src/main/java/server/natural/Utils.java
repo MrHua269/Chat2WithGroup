@@ -34,7 +34,7 @@ public class Utils {
     public static final int configVersion = 6;
     public static List<Long> group = (List<Long>) config.getList("group");
     public static List<Long> owner = (List<Long>) config.getList("owner");
-    public static final boolean isBetaVersion = true;
+    public static final boolean isBetaVersion = false;
     //创建线程池
     public static ThreadPoolExecutor executor = null;
     public static void checkUpdate(final String apiURL) throws IOException, InvalidConfigurationException, ExecutionException, InterruptedException {
@@ -46,7 +46,10 @@ public class Utils {
             if (updateConfig.getString("version").equals(ver))
             {
                 Bukkit.getLogger().info("您当前处于最新版本，无需更新");
-            }else{Bukkit.getLogger().info("新的CWG发布了！！");}
+            }else{
+                Bukkit.getLogger().warning("新的CWG发布了！！");
+                Bukkit.getLogger().warning("下载地址:https://github.com/NaturalCodeClub/ChatWithGroup/releases");
+            }
         }
 
     }

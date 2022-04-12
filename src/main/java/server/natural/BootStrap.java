@@ -13,6 +13,7 @@ import server.natural.events.JoinGroupRequestSelectorListener;
 import server.natural.events.OnGroupMessage;
 import server.natural.events.OnQuitJoinGroupReplyMessageEvent;
 
+import java.util.List;
 import java.util.concurrent.Executors;
 import java.util.concurrent.ThreadPoolExecutor;
 
@@ -25,6 +26,8 @@ public class BootStrap {
         Bukkit.getPluginCommand("bind").setExecutor(new CommandBind());
         Bukkit.getPluginCommand("messageforwarding").setExecutor(new CommandStopMessageTrasForwarding());
         Bukkit.getPluginCommand("botinvite").setExecutor(new CommandInvite());
+        //An uncompleted method
+//        Bukkit.getPluginCommand("choosechannel").setExecutor(new CommandChooseChannel());
     }
     //初始化事件监听器
     public static void initEventListeners(@NotNull JavaPlugin plugin){
@@ -67,5 +70,8 @@ public class BootStrap {
             plugin.getLogger().warning("ChatWithGroup配置出现问题，请尽快修复");
             Bukkit.getPluginManager().getPlugin("ChatWithGroup").onDisable();
         }
+    }
+    public static void AutoAddChannel(@NotNull List list){
+
     }
 }

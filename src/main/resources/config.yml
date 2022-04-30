@@ -1,4 +1,4 @@
-config-ver: 6
+config-ver: 7
 CheckUpdate: true
 CoreConfig:
   #群号，部分指令判断部分引用了该键值
@@ -21,8 +21,12 @@ CacheSettings:
   #自动清理缓存文件的时间，单位天
   Auto-Purge-Cache: 30
 RequestHandler:
-  #进群请求选择，YES为同意，NO为拒绝，NOTHING为不做处理，勿更改成其他值
-  JoinRequestSelector: "NOTHING"
+  GroupJoinSelector:
+    #进群请求选择，YES为同意，NO为拒绝，NOTHING为不做处理，勿更改成其他值
+    JoinRequestSelector: "NOTHING"
+    #若拒绝，拒绝原因
+    RejectReason: "CWG插件设置为拒绝，若有疑问请联系管理员"
+
 
   AddFriendSelector:
     #加机器人好友选择，YES为同意，NO为拒绝，NOTHING为不做处理，勿更改成其他值
@@ -42,9 +46,8 @@ Texts:
   #{0}:NameCard,{1}:ID
   MessageOfQuitGroup:
     - "糟糕了，我们的群丢了一名宝贵的群员，请我们珍惜我们在这个群的每时每秒...."
-    - "离群人的名字:{0}"
     - "离群人的QQ:{1}"
-  #{0}:NameCard,{1}:ID
+  #{0}:ID
   MessageOfJoinGroup:
     - "欢迎我们的一位新成员！:{0}"
     - "ta的QQ号为:{1}"

@@ -17,7 +17,7 @@ public class CommandInvite implements CommandExecutor {
             if (sender instanceof Player){
                 if(Bot.getApi().getUser(((Player) sender).getUniqueId())!=null){
                     Utils.group.forEach(group->{
-                        Bot.getApi().sendGroupMsg(String.valueOf(group),"玩家" + ((Player) sender).getDisplayName() + "邀请你们去服务器玩");
+                        Bot.getApi().sendGroupMsg(group,"玩家" + ((Player) sender).getDisplayName() + "邀请你们去服务器玩");
                     });
                     sender.sendMessage("邀请已成功发送至群");
                 }else{

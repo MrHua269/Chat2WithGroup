@@ -1,6 +1,6 @@
 package server.natural.events;
 
-import me.albert.amazingbot.events.GroupMessageEvent;
+import me.albert.amazingbot.events.message.GroupMessageEvent;
 import org.bukkit.ChatColor;
 import org.bukkit.entity.Player;
 import org.bukkit.event.EventHandler;
@@ -20,7 +20,7 @@ public class OnGroupMessage implements Listener {
             if (Utils.config.getBoolean("Function.EnableGroupToGame") && Utils.group.contains(event.getGroupID())) {
                 forwardMap.forEach((player, value) -> {
                     if (value) {
-                        player.sendMessage(ChatColor.BLUE + "[QQ群消息转发]" + event.getEvent().getSenderName() + ChatColor.GRAY
+                        player.sendMessage(ChatColor.BLUE + "[QQ群消息转发]" + event.getMember().getDisplayName() + ChatColor.GRAY
                                 + "(" + event.getUserID() + ")" + ChatColor.GRAY + ">>" + event.getMsg());
                     }
                 });

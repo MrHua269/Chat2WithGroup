@@ -28,15 +28,15 @@ public class CommandBind implements CommandExecutor {
                     Utils.cacheFileSave();
                     final long[] g = {0};
                     for(long l:Utils.group){
-                        if(Bot.getApi().getGroup(l).get(QQID)!=null){
+                        if(Bot.getApi().getGroupMemberList(l).contains(QQID)){
                             g[0]=l;
                             break;
                         }
                     }
-                    String str = String.valueOf(g[0]);
-                    Bot.getApi().sendGroupMsg(str,"服务器有人请求与一位QQ用户进行绑定");
-                    Bot.getApi().sendGroupMsg(str,"请求人" + sender.getName());
-                    Bot.getApi().sendGroupMsg(str ,"同意操作请私聊发送或创建临时会话发送" + Utils.config.getString("BindSettings.BindPrefix","同意绑定") +
+                    long lo = g[0];
+                    Bot.getApi().sendGroupMsg(lo,"服务器有人请求与一位QQ用户进行绑定");
+                    Bot.getApi().sendGroupMsg(lo,"请求人" + sender.getName());
+                    Bot.getApi().sendGroupMsg(lo ,"同意操作请私聊发送或创建临时会话发送" + Utils.config.getString("BindSettings.BindPrefix","同意绑定") +
                             " " + sender.getName());
 
                     sender.sendMessage(ChatColor.GREEN + "请在您所在的QQ群内完成相关操作");

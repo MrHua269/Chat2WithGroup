@@ -25,7 +25,7 @@ public class CommandSMG implements CommandExecutor {
             if(Bot.getApi().getUser(((Player) commandSender).getUniqueId()) != null){
                 if(args.length>0){
                         Utils.group.forEach(group->{
-                            Bot.getApi().sendGroupMsg(String.valueOf(group),((Player) commandSender).getDisplayName() + "->" + s1);
+                            Bot.getApi().sendGroupMsg(group,((Player) commandSender).getDisplayName() + "->" + s1);
                         });
                         commandSender.sendMessage("消息发送成功!");
                 }else{
@@ -40,7 +40,7 @@ public class CommandSMG implements CommandExecutor {
             }
         }else{
             Utils.group.forEach(group->{
-                Bot.getApi().sendGroupMsg(String.valueOf(group), "服务器闸总(Console)->" + s1);
+                Bot.getApi().sendGroupMsg(group, "服务器闸总(Console)->" + s1);
             });
         }
         return true;

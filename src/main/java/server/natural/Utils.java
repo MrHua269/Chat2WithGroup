@@ -30,11 +30,11 @@ public class Utils {
     public static FileConfiguration mfcfc = YamlConfiguration.loadConfiguration(MFCFile);
     public static FileConfiguration pccfc = YamlConfiguration.loadConfiguration(PCCFile);
     public static String noPermissionMsg = config.getString("NoPermission","您没有权限");
-    public static final String ver = "1.4.0";
+    public static final String ver = "1.4.1";
     public static final int configVersion = 6;
     public static List<Long> group = (List<Long>) config.getList("group");
     public static List<Long> owner = (List<Long>) config.getList("owner");
-    public static final boolean isBetaVersion = false;
+    public static final boolean isBetaVersion = true;
     //创建线程池
     public static ThreadPoolExecutor executor = null;
     public static void checkUpdate(final String apiURL) throws IOException, InvalidConfigurationException, ExecutionException, InterruptedException {

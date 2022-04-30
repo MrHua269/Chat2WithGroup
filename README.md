@@ -8,10 +8,10 @@
 Bukkit / Paper / Spigot
 # 指令
 /smg [说得话] : 将输入在里面的字符发送至对应的QQ群  
-/botinvite : 邀请玩家到服务器玩  
-/stopcs : 暂停聊天服务器  
-/cwgver : 查看服务器版本及CWG信息  
-/cwg reload : 重载配置文件
+/botinvite : 邀请玩家到服务器玩
+/cwg version : 查看服务器版本及CWG信息  
+/cwg reload : 重载配置文件  
+/bind [QQ号] : 在游戏中绑定QQ号  
 ...  
 # 注意
-本插件的依赖插件为:AmazingBot
+本插件的依赖插件为:AmazingBot 4

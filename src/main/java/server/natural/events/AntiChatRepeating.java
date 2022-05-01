@@ -1,6 +1,5 @@
 package server.natural.events;
 
-import org.apache.logging.log4j.message.StringFormattedMessage;
 import org.bukkit.entity.Player;
 import org.bukkit.event.EventHandler;
 import org.bukkit.event.Listener;
@@ -14,7 +13,7 @@ public class AntiChatRepeating implements Listener {
     @EventHandler
     public void onPlayerMessage(AsyncPlayerChatEvent event) {
         if (isOutOfLimit(event.getPlayer(), Utils.config.getLong("MessageLimit.MessageSlotLimit"))) {
-            event.getPlayer().sendMessage(new StringFormattedMessage(Utils.config.getString("Texts.MessageOutOfLimit")).getFormat());
+            event.getPlayer().sendMessage(Utils.config.getString("Texts.MessageOutOfLimit"));
             event.setCancelled(true);
         }
     }

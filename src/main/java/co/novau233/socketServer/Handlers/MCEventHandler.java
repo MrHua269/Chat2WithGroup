@@ -1,6 +1,6 @@
 package co.novau233.socketServer.Handlers;
 
-import me.albert.amazingbot.events.GroupMessageEvent;
+import me.albert.amazingbot.events.message.GroupMessageEvent;
 import org.bukkit.ChatColor;
 import org.bukkit.event.EventHandler;
 import org.bukkit.event.Listener;
@@ -24,7 +24,7 @@ public class MCEventHandler implements Listener {
     }
     @EventHandler
     public void onGroupMessage(GroupMessageEvent event){
-        AsyncEventHandler.sendChat(ChatColor.BLUE + "[QGroup message forward]" + event.getEvent().getSenderName() + ChatColor.GRAY
+        AsyncEventHandler.sendChat(ChatColor.BLUE + "[QGroup message forward]" + event.getMember().getDisplayName() + ChatColor.GRAY
                 + "(" + event.getUserID() + ")" + ChatColor.GRAY + ">>" + event.getMsg(), AsyncEventHandler.MessageType.NORMAL,null,null);
     }
 }

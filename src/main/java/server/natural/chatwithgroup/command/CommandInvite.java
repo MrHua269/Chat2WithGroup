@@ -1,4 +1,4 @@
-package server.natural.command;
+package server.natural.chatwithgroup.command;
 import me.albert.amazingbot.bot.Bot;
 import org.bukkit.ChatColor;
 import org.bukkit.command.Command;
@@ -6,7 +6,7 @@ import org.bukkit.command.CommandExecutor;
 import org.bukkit.command.CommandSender;
 import org.bukkit.entity.Player;
 import org.jetbrains.annotations.NotNull;
-import server.natural.Utils;
+import server.natural.chatwithgroup.Utils;
 
 //todo add cooldowntime
 //todo 使用命令前判断该玩家的QQ是否被禁言

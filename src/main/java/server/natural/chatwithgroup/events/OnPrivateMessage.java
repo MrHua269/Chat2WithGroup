@@ -1,10 +1,10 @@
-package server.natural.events;
+package server.natural.chatwithgroup.events;
 
 import me.albert.amazingbot.bot.Bot;
 import me.albert.amazingbot.events.message.MessageReceiveEvent;
 import org.bukkit.event.EventHandler;
 import org.bukkit.event.Listener;
-import server.natural.Utils;
+import server.natural.chatwithgroup.Utils;
 
 import java.util.UUID;
 

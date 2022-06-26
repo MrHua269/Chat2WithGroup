@@ -1,4 +1,4 @@
-package server.natural.command;
+package server.natural.chatwithgroup.command;
 
 import org.bukkit.command.Command;
 import org.bukkit.command.CommandExecutor;

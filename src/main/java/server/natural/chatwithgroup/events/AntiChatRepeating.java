@@ -1,10 +1,10 @@
-package server.natural.events;
+package server.natural.chatwithgroup.events;
 
 import org.bukkit.entity.Player;
 import org.bukkit.event.EventHandler;
 import org.bukkit.event.Listener;
 import org.bukkit.event.player.AsyncPlayerChatEvent;
-import server.natural.Utils;
+import server.natural.chatwithgroup.Utils;
 
 import java.util.concurrent.ConcurrentHashMap;
 

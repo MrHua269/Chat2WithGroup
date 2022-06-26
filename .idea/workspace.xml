@@ -4,33 +4,26 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="4a17ca10-156e-48ed-aa5b-d326b107271f" name="变更" comment="">
-      <change beforePath="$PROJECT_DIR$/.idea/.gitignore" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/ChatWithGroup.iml" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/misc.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/misc.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/uiDesigner.xml" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/co/novau233/socketServer/EnumUserState.java" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/co/novau233/socketServer/Handlers/AsyncEventHandler.java" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/co/novau233/socketServer/Handlers/CacheManager.java" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/co/novau233/socketServer/Handlers/MCEventHandler.java" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/co/novau233/socketServer/Handlers/SocketHandler.java" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/co/novau233/socketServer/SocketServer.java" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/server/natural/BootStrap.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/server/natural/BootStrap.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/server/natural/Main.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/server/natural/Main.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/server/natural/Utils.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/server/natural/Utils.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/server/natural/command/CommandBind.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/server/natural/command/CommandBind.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/server/natural/command/CommandBroadcastMusic.java" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/server/natural/command/CommandCWG.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/server/natural/command/CommandCWG.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/server/natural/command/CommandInvite.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/server/natural/command/CommandInvite.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/server/natural/command/CommandSMG.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/server/natural/command/CommandSMG.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/server/natural/command/CommandStopMessageTrasForwarding.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/server/natural/command/CommandStopMessageTrasForwarding.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/server/natural/events/AntiChatRepeating.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/server/natural/events/AntiChatRepeating.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/server/natural/events/JoinGroupRequestSelectorListener.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/server/natural/events/JoinGroupRequestSelectorListener.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/server/natural/events/OnGroupMessage.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/server/natural/events/OnGroupMessage.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/server/natural/events/OnPrivateMessage.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/server/natural/events/OnPrivateMessage.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/server/natural/events/OnQuitJoinGroupReplyMessageEvent.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/server/natural/events/OnQuitJoinGroupReplyMessageEvent.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/server/natural/events/OnUserMakeFriend.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/server/natural/events/OnUserMakeFriend.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/resources/config.yml" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/resources/config.yml" afterDir="false" />
+    <list default="true" id="4a17ca10-156e-48ed-aa5b-d326b107271f" name="变更" comment="Update:使用CraftScheduler处理多线程任务，优化部分源码">
+      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/pom.xml" beforeDir="false" afterPath="$PROJECT_DIR$/pom.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/server/natural/BootStrap.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/server/natural/chatwithgroup/BootStrap.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/server/natural/Main.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/server/natural/chatwithgroup/Main.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/server/natural/Utils.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/server/natural/chatwithgroup/Utils.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/server/natural/command/CommandBind.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/server/natural/chatwithgroup/command/CommandBind.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/server/natural/command/CommandCWG.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/server/natural/chatwithgroup/command/CommandCWG.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/server/natural/command/CommandChooseChannel.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/server/natural/chatwithgroup/command/CommandChooseChannel.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/server/natural/command/CommandInvite.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/server/natural/chatwithgroup/command/CommandInvite.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/server/natural/command/CommandPurgeCache.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/server/natural/chatwithgroup/command/CommandPurgeCache.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/server/natural/command/CommandSMG.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/server/natural/chatwithgroup/command/CommandSMG.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/server/natural/command/CommandStopMessageTrasForwarding.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/server/natural/chatwithgroup/command/CommandStopMessageTrasForwarding.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/server/natural/events/AntiChatRepeating.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/server/natural/chatwithgroup/events/AntiChatRepeating.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/server/natural/events/JoinGroupRequestSelectorListener.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/server/natural/chatwithgroup/events/JoinGroupRequestSelectorListener.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/server/natural/events/OnGroupMessage.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/server/natural/chatwithgroup/events/OnGroupMessage.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/server/natural/events/OnPrivateMessage.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/server/natural/chatwithgroup/events/OnPrivateMessage.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/server/natural/events/OnQuitJoinGroupReplyMessageEvent.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/server/natural/chatwithgroup/events/OnQuitJoinGroupReplyMessageEvent.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/server/natural/events/OnUserMakeFriend.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/server/natural/chatwithgroup/events/OnUserMakeFriend.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/resources/plugin.yml" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/resources/plugin.yml" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -68,6 +61,14 @@
       <option name="presentableId" value="Default" />
       <updated>1656240637686</updated>
     </task>
+    <task id="LOCAL-00001" summary="Update:使用CraftScheduler处理多线程任务，优化部分源码">
+      <created>1656249636228</created>
+      <option name="number" value="00001" />
+      <option name="presentableId" value="LOCAL-00001" />
+      <option name="project" value="LOCAL" />
+      <updated>1656249636228</updated>
+    </task>
+    <option name="localTasksCounter" value="2" />
     <servers />
   </component>
   <component name="Vcs.Log.Tabs.Properties">
@@ -80,5 +81,9 @@
         </entry>
       </map>
     </option>
+  </component>
+  <component name="VcsManagerConfiguration">
+    <MESSAGE value="Update:使用CraftScheduler处理多线程任务，优化部分源码" />
+    <option name="LAST_COMMIT_MESSAGE" value="Update:使用CraftScheduler处理多线程任务，优化部分源码" />
   </component>
 </project>

@@ -1,11 +1,11 @@
-package server.natural.command;
+package server.natural.chatwithgroup.command;
 
 import org.bukkit.ChatColor;
 import org.bukkit.command.Command;
 import org.bukkit.command.CommandExecutor;
 import org.bukkit.command.CommandSender;
 import org.jetbrains.annotations.NotNull;
-import server.natural.Utils;
+import server.natural.chatwithgroup.Utils;
 
 //todo Complete it
 public class CommandPurgeCache implements CommandExecutor {

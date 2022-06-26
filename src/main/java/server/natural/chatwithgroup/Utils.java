@@ -1,4 +1,4 @@
-package server.natural;
+package server.natural.chatwithgroup;
 
 import org.bukkit.Bukkit;
 import org.bukkit.configuration.InvalidConfigurationException;

@@ -1,4 +1,4 @@
-package server.natural.command;
+package server.natural.chatwithgroup.command;
 
 import me.albert.amazingbot.bot.Bot;
 import me.albert.amazingbot.objects.contact.Member;
@@ -8,7 +8,7 @@ import org.bukkit.command.CommandExecutor;
 import org.bukkit.command.CommandSender;
 import org.bukkit.entity.Player;
 import org.jetbrains.annotations.NotNull;
-import server.natural.Utils;
+import server.natural.chatwithgroup.Utils;
 
 public class CommandBind implements CommandExecutor {
     //Date:2022/3/13

@@ -4,7 +4,7 @@
          xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xsd/maven-4.0.0.xsd">
     <modelVersion>4.0.0</modelVersion>
 
-    <groupId>ChatWithGroup</groupId>
+    <groupId>server.natural</groupId>
     <artifactId>ChatWithGroup</artifactId>
     <version>1.4.1 Dev</version>
     <packaging>jar</packaging>
@@ -79,11 +79,6 @@
             <groupId>com.github.mcdoeswhat</groupId>
             <artifactId>AmazingBot-4</artifactId>
             <version>4.0.10</version>
-        </dependency>
-        <dependency>
-            <groupId>io.netty</groupId>
-            <artifactId>netty-all</artifactId>
-            <version>4.1.68.Final</version>
         </dependency>
     </dependencies>
 

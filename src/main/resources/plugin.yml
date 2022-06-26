@@ -1,5 +1,5 @@
   name: ChatWithGroup
-  main: server.natural.Main
+  main: server.natural.chatwithgroup.Main
   version: "${project.version}"
   api-version: 1.17
   author: [NaT_Jerry , JL_NPE]

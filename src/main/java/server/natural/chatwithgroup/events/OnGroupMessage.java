@@ -1,6 +1,5 @@
-package server.natural.events;
+package server.natural.chatwithgroup.events;
 
-import com.sun.org.apache.xpath.internal.operations.Bool;
 import me.albert.amazingbot.events.message.GroupMessageEvent;
 import org.bukkit.ChatColor;
 import org.bukkit.entity.Player;
@@ -8,7 +7,7 @@ import org.bukkit.event.EventHandler;
 import org.bukkit.event.Listener;
 import org.bukkit.event.player.PlayerJoinEvent;
 import org.bukkit.event.player.PlayerQuitEvent;
-import server.natural.Utils;
+import server.natural.chatwithgroup.Utils;
 
 import java.util.concurrent.ConcurrentHashMap;
 

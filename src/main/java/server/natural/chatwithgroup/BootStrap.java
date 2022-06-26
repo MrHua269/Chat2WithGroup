@@ -1,14 +1,14 @@
-package server.natural;
+package server.natural.chatwithgroup;
 
 import org.bukkit.Bukkit;
 import org.bukkit.ChatColor;
 import org.bukkit.plugin.java.JavaPlugin;
 import org.jetbrains.annotations.NotNull;
-import server.natural.command.*;
-import server.natural.events.AntiChatRepeating;
-import server.natural.events.JoinGroupRequestSelectorListener;
-import server.natural.events.OnGroupMessage;
-import server.natural.events.OnQuitJoinGroupReplyMessageEvent;
+import server.natural.chatwithgroup.command.*;
+import server.natural.chatwithgroup.events.AntiChatRepeating;
+import server.natural.chatwithgroup.events.JoinGroupRequestSelectorListener;
+import server.natural.chatwithgroup.events.OnGroupMessage;
+import server.natural.chatwithgroup.events.OnQuitJoinGroupReplyMessageEvent;
 
 public class BootStrap {
     //初始化命令

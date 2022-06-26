@@ -9,7 +9,7 @@ import server.natural.Utils;
 public class OnUserMakeFriend implements Listener {
     @EventHandler
     public void onUserMakeBotFriendEvent(FriendRequestEvent e) {
-        Utils.executor.execute(()->{
+        Utils.executor.runTaskAsynchronously(Utils.plugin,()->{
             switch (Utils.config.getString("RequestHandler.AddFriendSelector")) {
                 case "YES":
                     e.approve(true,null);

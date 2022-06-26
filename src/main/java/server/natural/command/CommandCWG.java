@@ -15,16 +15,17 @@ public class CommandCWG implements CommandExecutor {
     public boolean onCommand(@NotNull CommandSender commandSender, @NotNull Command command, @NotNull String s, @NotNull String[] strings) {
         if (strings[0].equalsIgnoreCase("version")) {
             strings[0] = "ver";
-        }else if(strings[0].equalsIgnoreCase("rl")){
+        } else if (strings[0].equalsIgnoreCase("rl")) {
             strings[0] = "reload";
 
         }
-        if(strings.length>0){
+
+        if (strings.length == 1) {
             switch (strings[0].toLowerCase()) {
                 case "reload":
                     if (commandSender.hasPermission("cwg.reload")) {
                         commandSender.sendMessage(ChatColor.GREEN + "Reloading Config File...");
-                        File configFile = new File(Bukkit.getPluginManager().getPlugin("ChatWithGroup").getDataFolder(),"config.yml");
+                        File configFile = new File(Bukkit.getPluginManager().getPlugin("ChatWithGroup").getDataFolder(), "config.yml");
                         if (configFile.exists()) {
                             try {
                                 Utils.config.load(configFile);
@@ -37,7 +38,7 @@ public class CommandCWG implements CommandExecutor {
                         }
                         File cacheFile = Utils.Cfile;
                         commandSender.sendMessage(ChatColor.GREEN + "Reloading Cache File...");
-                        if (cacheFile.exists()){
+                        if (cacheFile.exists()) {
                             try {
                                 Utils.cacheFile.load(cacheFile);
                                 commandSender.sendMessage(ChatColor.GREEN + "Cache File Reloaded Completed!");
@@ -48,7 +49,7 @@ public class CommandCWG implements CommandExecutor {
                             }
                         }
                         File MFCFile = Utils.MFCFile;
-                        if(MFCFile.exists()){
+                        if (MFCFile.exists()) {
                             try {
                                 Utils.mfcfc.load(MFCFile);
                                 commandSender.sendMessage(ChatColor.GREEN + "Cache File Reloaded Completed");
@@ -59,7 +60,7 @@ public class CommandCWG implements CommandExecutor {
                             }
                         }
                         File PCCFile = Utils.PCCFile;
-                        if(PCCFile.exists()){
+                        if (PCCFile.exists()) {
                             try {
                                 Utils.pccfc.load(PCCFile);
                                 commandSender.sendMessage(ChatColor.GREEN + "Cache File Reloaded Completed");
@@ -69,12 +70,12 @@ public class CommandCWG implements CommandExecutor {
                                 commandSender.sendMessage(ChatColor.RED + e.getMessage());
                             }
                         }
-                    }else {
+                    } else {
                         commandSender.sendMessage(ChatColor.RED + "您没有权限");
                     }
-                    break;
+                    return true;
                 case "ver":
-                    if(commandSender.hasPermission("cwg.ver")){
+                    if (commandSender.hasPermission("cwg.ver")) {
                         commandSender.sendMessage("Server Version: " + Bukkit.getVersion());
                         commandSender.sendMessage("Server Port: " + Bukkit.getPort());
                         commandSender.sendMessage("CWG Version: " + Utils.ver);
@@ -82,28 +83,23 @@ public class CommandCWG implements CommandExecutor {
                         commandSender.sendMessage("The config-ver in the config.yml of CWG is：" + Utils.config.getInt("config-ver"));
                         commandSender.sendMessage("The Group I listen: " + Utils.config.getLong("CoreConfig.group"));
                         commandSender.sendMessage("The owner of this robot: " + Utils.config.getLong("CoreConfig.owner"));
-                        commandSender.sendMessage("The Thread Number I register: " + Utils.executor.getCorePoolSize());
-                        commandSender.sendMessage("The Task I Done(Only Count Event Task): " + Utils.executor.getTaskCount());
                         commandSender.sendMessage("ChatWithGroup v" + Utils.ver + " was made by NaT_Jerry and JL_NPE");
-                    }
-                    else{
+                    } else {
                         commandSender.sendMessage(ChatColor.RED + "你没有权限");
                     }
-                    break;
+                    return true;
                 default:
-                    if(commandSender.hasPermission("cwg.reload")||commandSender.hasPermission("cwg.ver")){
+                    if (commandSender.hasPermission("cwg.reload") || commandSender.hasPermission("cwg.ver")) {
                         commandSender.sendMessage(ChatColor.RED + "你隔着说啥呢");
-                        commandSender.sendMessage(ChatColor.RED + "正确使用方法: /cwg [ver/reload]");
-                    }else{
+                        return false;
+                    } else {
                         commandSender.sendMessage(ChatColor.RED + "您没有权限");
+                        return true;
                     }
-                    break;
             }
-        }else{
+        } else {
             commandSender.sendMessage(ChatColor.RED + "格式错误");
-            commandSender.sendMessage(ChatColor.RED + "/cwg [ver/reload]");
+            return false;
         }
-
-        return true;
     }
 }

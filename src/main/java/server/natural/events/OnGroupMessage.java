@@ -1,5 +1,6 @@
 package server.natural.events;
 
+import com.sun.org.apache.xpath.internal.operations.Bool;
 import me.albert.amazingbot.events.message.GroupMessageEvent;
 import org.bukkit.ChatColor;
 import org.bukkit.entity.Player;
@@ -16,7 +17,7 @@ public class OnGroupMessage implements Listener {
     private static ConcurrentHashMap<Player,Boolean> forwardMap = new ConcurrentHashMap<>();
     @EventHandler
     public void onGroupMessageSent(GroupMessageEvent event) {
-        Utils.executor.execute(()->{
+        Utils.executor.runTaskAsynchronously(Utils.plugin,()->{
             if (Utils.config.getBoolean("Function.EnableGroupToGame") && Utils.group.contains(event.getGroupID())) {
                 forwardMap.forEach((player, value) -> {
                     if (value) {
@@ -28,15 +29,15 @@ public class OnGroupMessage implements Listener {
         });
 
     }
-    public static ConcurrentHashMap getForwardMap(){
+    public static ConcurrentHashMap<Player, Boolean> getForwardMap(){
         return forwardMap;
     }
     @EventHandler
     public void onPlayerJoin(PlayerJoinEvent event){
-        Utils.executor.execute(()-> forwardMap.put(event.getPlayer(),true));
+        Utils.executor.runTaskAsynchronously(Utils.plugin,()-> forwardMap.put(event.getPlayer(),true));
     }
     @EventHandler
     public void onPlayerQuit(PlayerQuitEvent event){
-        Utils.executor.execute(()-> forwardMap.remove(event.getPlayer()));
+        Utils.executor.runTaskAsynchronously(Utils.plugin,()-> forwardMap.remove(event.getPlayer()));
     }
 }

@@ -1,25 +1,9 @@
 package server.natural;
 
-import co.novau233.socketServer.Handlers.CacheManager;
-import co.novau233.socketServer.Handlers.MCEventHandler;
-import co.novau233.socketServer.Handlers.SocketHandler;
-import co.novau233.socketServer.SocketServer;
-import org.bukkit.Bukkit;
 import org.bukkit.ChatColor;
 import org.bukkit.plugin.java.JavaPlugin;
-import server.natural.command.*;
-import server.natural.events.AntiChatRepeating;
-import server.natural.events.JoinGroupRequestSelectorListener;
-import server.natural.events.OnGroupMessage;
-import server.natural.events.OnQuitJoinGroupReplyMessageEvent;
-
-import java.util.concurrent.Executors;
-import java.util.concurrent.LinkedBlockingDeque;
-import java.util.concurrent.ThreadPoolExecutor;
-import java.util.concurrent.TimeUnit;
 
 public class Main extends JavaPlugin {
-    public static SocketServer server = null;
     @Override
     public void onEnable() {
         try{
@@ -27,8 +11,6 @@ public class Main extends JavaPlugin {
          saveDefaultConfig();
          //让服务器歇3秒
          Thread.sleep(3000);
-         //初始化Util
-         Utils.executor = (ThreadPoolExecutor) Executors.newFixedThreadPool(this.getConfig().getInt("CoreConfig.ThreadCount"));
          //加载其他缓存或配置文件
          Utils.LoadFile(false);
          Utils.OnFirstRun();
@@ -49,14 +31,6 @@ public class Main extends JavaPlugin {
     }
     @Override
     public void onDisable() {
-        //终止聊天室线程和线程池
-        //如果不为空则终止
-        if(server!=null) {
-            server.stop();
-        }
-        //休眠线程池
-        Utils.executor.shutdown();
-        CacheManager.unLoad();
         getLogger().info("再见");
     }
 

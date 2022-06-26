@@ -5,16 +5,11 @@ import org.bukkit.configuration.InvalidConfigurationException;
 import org.bukkit.configuration.file.FileConfiguration;
 import org.bukkit.configuration.file.YamlConfiguration;
 import org.bukkit.plugin.Plugin;
-import org.bukkit.plugin.java.JavaPlugin;
-import org.jetbrains.annotations.NotNull;
-
+import org.bukkit.scheduler.BukkitScheduler;
 import java.io.*;
 import java.net.HttpURLConnection;
 import java.net.URL;
 import java.util.List;
-import java.util.concurrent.ExecutionException;
-import java.util.concurrent.Future;
-import java.util.concurrent.ThreadPoolExecutor;
 import java.util.logging.Level;
 import java.util.regex.Matcher;
 import java.util.regex.Pattern;
@@ -29,15 +24,14 @@ public class Utils {
     public static File PCCFile = new File(plugin.getDataFolder(),"cache\\PlayerChoosedChancelCache.yml");
     public static FileConfiguration mfcfc = YamlConfiguration.loadConfiguration(MFCFile);
     public static FileConfiguration pccfc = YamlConfiguration.loadConfiguration(PCCFile);
-    public static String noPermissionMsg = config.getString("NoPermission","您没有权限");
     public static final String ver = "1.4.1";
     public static final int configVersion = 6;
     public static List<Long> group = (List<Long>) config.getList("group");
     public static List<Long> owner = (List<Long>) config.getList("owner");
     public static final boolean isBetaVersion = true;
-    //创建线程池
-    public static ThreadPoolExecutor executor = null;
-    public static void checkUpdate(final String apiURL) throws IOException, InvalidConfigurationException, ExecutionException, InterruptedException {
+    public static BukkitScheduler executor = Bukkit.getScheduler();
+
+    public static void checkUpdate(final String apiURL) throws IOException, InvalidConfigurationException{
         File update = new File("CWG\\CWGUrlLog");
         DownloadFile(apiURL,update);
         if(update.exists()){
@@ -53,8 +47,9 @@ public class Utils {
         }
 
     }
-    public static void DownloadFile(String urlStr, File savefile) throws ExecutionException, InterruptedException {
-        Future<Boolean> future = executor.submit(()->{
+
+    public static void DownloadFile(String urlStr, File savefile) {
+        executor.runTaskAsynchronously(Utils.plugin,()->{
             try {
                 if (savefile.exists()) {
                     savefile.delete();
@@ -65,23 +60,20 @@ public class Utils {
                 conn.setRequestProperty("User-Agent", "Mozilla/4.0 (compatible; MSIE 5.0; Windows NT; DigExt)");
                 InputStream inputStream = conn.getInputStream();
                 byte[] getData = readInputStream(inputStream);
-                File file = savefile;
-                FileOutputStream fos = new FileOutputStream(file);
+                FileOutputStream fos = new FileOutputStream(savefile);
                 fos.write(getData);
                 fos.close();
                 inputStream.close();
-                return true;
+                Bukkit.getLogger().log(Level.FINE,"File downloaded!Url was:{}",urlStr);
             }catch (Exception e){
                 e.printStackTrace();
-                return false;
             }
         });
-        boolean isFinished = future.get();
-        if(isFinished){Bukkit.getLogger().log(Level.FINE,"File downloaded!Url was:{}",urlStr);}
     }
+
     public static byte[] readInputStream(InputStream inputStream) throws IOException {
         byte[] buffer = new byte['Ѐ'];
-        int len = 0;
+        int len;
         ByteArrayOutputStream bos = new ByteArrayOutputStream();
         while ((len = inputStream.read(buffer)) != -1) {
             bos.write(buffer, 0, len);
@@ -89,6 +81,7 @@ public class Utils {
         bos.close();
         return bos.toByteArray();
     }
+
     /*
     * 该方法引用了https://blog.csdn.net/qq_31939617/article/details/88312080中第一条判断字符串是否为数字的方法
     * 在此特别感谢该文章的作者
@@ -98,6 +91,7 @@ public class Utils {
         Matcher isNum = pattern.matcher(s);
         return isNum.matches();
     }
+
     public static void cacheFileSave() {
         try {
             cacheFile.save(Cfile);
@@ -105,6 +99,7 @@ public class Utils {
             e.printStackTrace();
         }
     }
+
     public static void PCCCacheFileSave(){
         try {
             pccfc.save(PCCFile);
@@ -112,11 +107,13 @@ public class Utils {
             e.printStackTrace();
         }
     }
-    public static void LoadFile(@NotNull boolean b){
+
+    public static void LoadFile(boolean b){
         Bukkit.getPluginManager().getPlugin("ChatWithGroup").saveResource("cache/cache.yml",b);
         Bukkit.getPluginManager().getPlugin("ChatWithGroup").saveResource("MsgForwardingChancel.yml",b);
         Bukkit.getPluginManager().getPlugin("ChatWithGroup").saveResource("cache/PlayerChoosedChancelCache.yml",b);
     }
+
     public static void OnFirstRun(){
         long timestamp = System.currentTimeMillis();
         if(cacheFile.get("Created-Time")==null){

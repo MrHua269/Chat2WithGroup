@@ -13,7 +13,7 @@ public class JoinGroupRequestSelectorListener implements Listener {
     @EventHandler
     public void onAddGroupRequest(GroupRequestJoinEvent e) {
         String reason = Utils.config.getString("RequestHandler.GroupJoinSelector.RejectReason");
-        Utils.executor.execute(()->{
+        Utils.executor.runTaskAsynchronously(Utils.plugin,()->{
             switch (Utils.config.getString("RequestHandler.GroupJoinSelector.JoinRequestSelector")) {
                 case "YES":
                     e.approve(true,reason);

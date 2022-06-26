@@ -9,7 +9,7 @@ import server.natural.Utils;
 import java.util.concurrent.ConcurrentHashMap;
 
 public class AntiChatRepeating implements Listener {
-    private static ConcurrentHashMap<Player, Long> playerCounts = new ConcurrentHashMap<>();
+    private static final ConcurrentHashMap<Player, Long> playerCounts = new ConcurrentHashMap<>();
     @EventHandler
     public void onPlayerMessage(AsyncPlayerChatEvent event) {
         if (isOutOfLimit(event.getPlayer(), Utils.config.getLong("MessageLimit.MessageSlotLimit"))) {
@@ -19,7 +19,7 @@ public class AntiChatRepeating implements Listener {
     }
     public static boolean isOutOfLimit(Player player, long dealy) {
         boolean isOut = false;
-        if (!playerCounts.contains(player)){
+        if (!playerCounts.containsKey(player)){
             playerCounts.put(player, System.currentTimeMillis());
             return false;
         }

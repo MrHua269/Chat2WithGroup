@@ -11,7 +11,7 @@ import java.util.UUID;
 public class OnPrivateMessage implements Listener {
     @EventHandler
     public void PrivateMessage(MessageReceiveEvent event){
-        Utils.executor.execute(()->{
+        Utils.executor.runTaskAsynchronously(Utils.plugin,()->{
             String message = event.getMsg();
             if(!message.startsWith(Utils.config.getString("BindSettings.BindPrefix","同意绑定"))) {
                 String[] arr = message.split("\\s+");
@@ -25,16 +25,16 @@ public class OnPrivateMessage implements Listener {
                     Utils.cacheFile.set("players." + arr[1] + "ActionDone",true);
                     event.response("绑定完成");
                 }else{
-                    String str = null;
+                    StringBuilder str = null;
                     for(Object s:Utils.config.getList("ReplyMessageOnPrivate")){
                             String s1 = String.valueOf(s);
                             if(str!=null){
-                                str = str + s1 + "\n";
+                                str.append(s1).append("\n");
                             }else{
-                                str = s1 + "\n";
+                                str = new StringBuilder(s1 + "\n");
                             }
                     }
-                    event.response(str);
+                    event.response(str.toString());
                 }
             }
 

@@ -1,0 +1,84 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project version="4">
+  <component name="AutoImportSettings">
+    <option name="autoReloadType" value="SELECTIVE" />
+  </component>
+  <component name="ChangeListManager">
+    <list default="true" id="4a17ca10-156e-48ed-aa5b-d326b107271f" name="变更" comment="">
+      <change beforePath="$PROJECT_DIR$/.idea/.gitignore" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/ChatWithGroup.iml" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/misc.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/misc.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/uiDesigner.xml" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/co/novau233/socketServer/EnumUserState.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/co/novau233/socketServer/Handlers/AsyncEventHandler.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/co/novau233/socketServer/Handlers/CacheManager.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/co/novau233/socketServer/Handlers/MCEventHandler.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/co/novau233/socketServer/Handlers/SocketHandler.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/co/novau233/socketServer/SocketServer.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/server/natural/BootStrap.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/server/natural/BootStrap.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/server/natural/Main.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/server/natural/Main.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/server/natural/Utils.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/server/natural/Utils.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/server/natural/command/CommandBind.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/server/natural/command/CommandBind.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/server/natural/command/CommandBroadcastMusic.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/server/natural/command/CommandCWG.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/server/natural/command/CommandCWG.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/server/natural/command/CommandInvite.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/server/natural/command/CommandInvite.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/server/natural/command/CommandSMG.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/server/natural/command/CommandSMG.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/server/natural/command/CommandStopMessageTrasForwarding.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/server/natural/command/CommandStopMessageTrasForwarding.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/server/natural/events/AntiChatRepeating.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/server/natural/events/AntiChatRepeating.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/server/natural/events/JoinGroupRequestSelectorListener.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/server/natural/events/JoinGroupRequestSelectorListener.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/server/natural/events/OnGroupMessage.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/server/natural/events/OnGroupMessage.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/server/natural/events/OnPrivateMessage.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/server/natural/events/OnPrivateMessage.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/server/natural/events/OnQuitJoinGroupReplyMessageEvent.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/server/natural/events/OnQuitJoinGroupReplyMessageEvent.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/server/natural/events/OnUserMakeFriend.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/server/natural/events/OnUserMakeFriend.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/resources/config.yml" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/resources/config.yml" afterDir="false" />
+    </list>
+    <option name="SHOW_DIALOG" value="false" />
+    <option name="HIGHLIGHT_CONFLICTS" value="true" />
+    <option name="HIGHLIGHT_NON_ACTIVE_CHANGELIST" value="false" />
+    <option name="LAST_RESOLUTION" value="IGNORE" />
+  </component>
+  <component name="Git.Settings">
+    <option name="RECENT_GIT_ROOT_PATH" value="$PROJECT_DIR$" />
+  </component>
+  <component name="MarkdownSettingsMigration">
+    <option name="stateVersion" value="1" />
+  </component>
+  <component name="MavenImportPreferences">
+    <option name="generalSettings">
+      <MavenGeneralSettings>
+        <option name="useMavenConfig" value="true" />
+      </MavenGeneralSettings>
+    </option>
+  </component>
+  <component name="ProjectId" id="2B6y4LsHfOb7z4e3LCR62CNzRvx" />
+  <component name="ProjectViewState">
+    <option name="hideEmptyMiddlePackages" value="true" />
+    <option name="showLibraryContents" value="true" />
+  </component>
+  <component name="PropertiesComponent">
+    <property name="RunOnceActivity.OpenProjectViewOnStart" value="true" />
+    <property name="RunOnceActivity.ShowReadmeOnStart" value="true" />
+  </component>
+  <component name="SpellCheckerSettings" RuntimeDictionaries="0" Folders="0" CustomDictionaries="0" DefaultDictionary="应用程序级" UseSingleDictionary="true" transferred="true" />
+  <component name="TaskManager">
+    <task active="true" id="Default" summary="默认任务">
+      <changelist id="4a17ca10-156e-48ed-aa5b-d326b107271f" name="变更" comment="" />
+      <created>1656240637686</created>
+      <option name="number" value="Default" />
+      <option name="presentableId" value="Default" />
+      <updated>1656240637686</updated>
+    </task>
+    <servers />
+  </component>
+  <component name="Vcs.Log.Tabs.Properties">
+    <option name="TAB_STATES">
+      <map>
+        <entry key="MAIN">
+          <value>
+            <State />
+          </value>
+        </entry>
+      </map>
+    </option>
+  </component>
+</project>

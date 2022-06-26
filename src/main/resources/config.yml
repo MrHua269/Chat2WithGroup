@@ -26,16 +26,11 @@ RequestHandler:
     JoinRequestSelector: "NOTHING"
     #若拒绝，拒绝原因
     RejectReason: "CWG插件设置为拒绝，若有疑问请联系管理员"
-
-
   AddFriendSelector:
     #加机器人好友选择，YES为同意，NO为拒绝，NOTHING为不做处理，勿更改成其他值
     Action: "YES"
     #若前面的选项为拒绝，是否将添加好友的用户加入白名单 true为添加，false为不添加
     BlackList: false
-ChatServer:
-  MessageSlotLimit: 500
-  Port: 192
 BindSettings:
   BindPrefix: "同意绑定"
   #绑定时间，单位分钟

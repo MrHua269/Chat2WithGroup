@@ -13,7 +13,7 @@ public class OnQuitJoinGroupReplyMessageEvent implements Listener {
     //当有新群员进群时执行
     @EventHandler
     public void onUserJoinGroup(GroupMemberIncreaseEvent e) {
-        Utils.executor.execute(()->{
+        Utils.executor.runTaskAsynchronously(Utils.plugin,()->{
             if (Utils.group.contains(e.getGroupID())) {
                 Utils.config.getList("Texts.MessageOfJoinGroup").forEach(message -> {
                     String s = MessageFormat.format((String) message, e.getMember().getCard(), e.getMember().getUserID());
@@ -36,12 +36,10 @@ public class OnQuitJoinGroupReplyMessageEvent implements Listener {
     //当群员退群时执行
     @EventHandler
     public void onUserLeaveGroup(GroupMemberDecreaseEvent e) {
-        Utils.executor.execute(()->{
-            Utils.config.getList("Texts.MessageOfQuitGroup").forEach(msg -> {
-                String s = MessageFormat.format((String) msg, e.getUserID());
-                Bot.getApi().sendGroupMsg(e.getGroupID(), s);
-            });
-        });
+        Utils.executor.runTaskAsynchronously(Utils.plugin,()-> Utils.config.getList("Texts.MessageOfQuitGroup").forEach(msg -> {
+            String s = MessageFormat.format((String) msg, e.getUserID());
+            Bot.getApi().sendGroupMsg(e.getGroupID(), s);
+        }));
 
     }
 }

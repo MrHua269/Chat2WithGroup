@@ -16,9 +16,7 @@ public class CommandInvite implements CommandExecutor {
         if(Utils.config.getBoolean("EnableInvite",true)){
             if (sender instanceof Player){
                 if(Bot.getApi().getUser(((Player) sender).getUniqueId())!=null){
-                    Utils.group.forEach(group->{
-                        Bot.getApi().sendGroupMsg(group,"玩家" + ((Player) sender).getDisplayName() + "邀请你们去服务器玩");
-                    });
+                    Utils.executor.runTaskAsynchronously(Utils.plugin,()-> Utils.group.forEach(group-> Bot.getApi().sendGroupMsg(group,"玩家" + ((Player) sender).getDisplayName() + "邀请你们去服务器玩")));
                     sender.sendMessage("邀请已成功发送至群");
                 }else{
                     sender.sendMessage(ChatColor.RED + "无法发送邀请信息至群聊");

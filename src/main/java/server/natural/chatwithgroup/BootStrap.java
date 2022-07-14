@@ -29,6 +29,9 @@ public class BootStrap {
         //TODO Complete the unfinished code block
         //Bukkit.getPluginCommand("choosechannel").setExecutor(new CommandChooseChannel());
     }
+    public static void ChannelAddAutomatic(@NotNull JavaPlugin plugin){
+        //todo 思考思路中
+    }
 
     //初始化事件监听器
     public static void initEventListeners(@NotNull JavaPlugin plugin){

@@ -5,15 +5,9 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="4a17ca10-156e-48ed-aa5b-d326b107271f" name="变更" comment="Update:使用CraftScheduler处理多线程任务，优化部分源码">
-      <change afterPath="$PROJECT_DIR$/.idea/ChatWithGroup.iml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/main/java/server/natural/chatwithgroup/BootStrap.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/server/natural/chatwithgroup/BootStrap.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/server/natural/chatwithgroup/Main.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/server/natural/chatwithgroup/Main.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/main/java/server/natural/chatwithgroup/Utils.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/server/natural/chatwithgroup/Utils.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/server/natural/chatwithgroup/command/CommandBind.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/server/natural/chatwithgroup/command/CommandBind.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/server/natural/chatwithgroup/command/CommandCWG.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/server/natural/chatwithgroup/command/CommandCWG.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/server/natural/chatwithgroup/command/CommandSMG.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/server/natural/chatwithgroup/command/CommandSMG.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/server/natural/chatwithgroup/events/OnQuitJoinGroupReplyMessageEvent.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/server/natural/chatwithgroup/events/OnQuitJoinGroupReplyMessageEvent.java" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -22,6 +16,9 @@
   </component>
   <component name="Git.Settings">
     <option name="RECENT_GIT_ROOT_PATH" value="$PROJECT_DIR$" />
+  </component>
+  <component name="MacroExpansionManager">
+    <option name="directoryName" value="x4vwfa9x" />
   </component>
   <component name="MarkdownSettingsMigration">
     <option name="stateVersion" value="1" />
@@ -41,14 +38,7 @@
   <component name="PropertiesComponent"><![CDATA[{
   "keyToString": {
     "RunOnceActivity.OpenProjectViewOnStart": "true",
-    "RunOnceActivity.ShowReadmeOnStart": "true",
-    "SHARE_PROJECT_CONFIGURATION_FILES": "true",
-    "WebServerToolWindowFactoryState": "false",
-    "last_opened_file_path": "C:/Users/Mr.Zhang/Desktop/ChatWithGroup",
-    "node.js.detected.package.eslint": "true",
-    "node.js.detected.package.tslint": "true",
-    "node.js.selected.package.eslint": "(autodetect)",
-    "node.js.selected.package.tslint": "(autodetect)"
+    "RunOnceActivity.ShowReadmeOnStart": "true"
   }
 }]]></component>
   <component name="SpellCheckerSettings" RuntimeDictionaries="0" Folders="0" CustomDictionaries="0" DefaultDictionary="应用程序级" UseSingleDictionary="true" transferred="true" />
@@ -59,7 +49,6 @@
       <option name="number" value="Default" />
       <option name="presentableId" value="Default" />
       <updated>1656240637686</updated>
-      <workItem from="1658538160107" duration="2586000" />
     </task>
     <task id="LOCAL-00001" summary="Update:使用CraftScheduler处理多线程任务，优化部分源码">
       <created>1656249636228</created>
@@ -70,9 +59,6 @@
     </task>
     <option name="localTasksCounter" value="2" />
     <servers />
-  </component>
-  <component name="TypeScriptGeneratedFilesManager">
-    <option name="version" value="3" />
   </component>
   <component name="Vcs.Log.Tabs.Properties">
     <option name="TAB_STATES">

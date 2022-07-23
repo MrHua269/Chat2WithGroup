@@ -2,6 +2,9 @@ package server.natural.chatwithgroup;
 
 import org.bukkit.Bukkit;
 import org.bukkit.ChatColor;
+import org.bukkit.configuration.file.FileConfiguration;
+import org.bukkit.configuration.file.YamlConfiguration;
+import org.bukkit.plugin.Plugin;
 import org.bukkit.plugin.java.JavaPlugin;
 import org.jetbrains.annotations.NotNull;
 import server.natural.chatwithgroup.command.*;
@@ -9,6 +12,9 @@ import server.natural.chatwithgroup.events.AntiChatRepeating;
 import server.natural.chatwithgroup.events.JoinGroupRequestSelectorListener;
 import server.natural.chatwithgroup.events.OnGroupMessage;
 import server.natural.chatwithgroup.events.OnQuitJoinGroupReplyMessageEvent;
+
+import java.io.File;
+import java.util.List;
 
 public class BootStrap {
     //初始化命令
@@ -40,6 +46,23 @@ public class BootStrap {
         //必须要注册的监听器
         Bukkit.getPluginManager().registerEvents(new JoinGroupRequestSelectorListener(), plugin);
         Bukkit.getPluginManager().registerEvents(new OnQuitJoinGroupReplyMessageEvent(), plugin);
+    }
+
+    public static void initConfig(JavaPlugin plugin){
+        FileConfiguration currentConfig = plugin.getConfig();
+        Utils.config = currentConfig;
+        Utils.noNoPermission = currentConfig.getString("Text.NoPermission");
+        Utils.group = (List<Long>) currentConfig.getList("group");
+        Utils.owner = (List<Long>) currentConfig.getList("owner");
+    }
+
+    public static void initFiles(JavaPlugin plugin){
+        Utils.Cfile = new File(plugin.getDataFolder(),"cache\\cache.yml");
+        Utils.cacheFile = YamlConfiguration.loadConfiguration(Utils.Cfile);
+        Utils.MFCFile = new File(plugin.getDataFolder(),"MsgForwardingChancel.yml");
+        Utils.PCCFile = new File(plugin.getDataFolder(),"cache\\PlayerChoosedChancelCache.yml");
+        Utils.mfcfc = YamlConfiguration.loadConfiguration(Utils.MFCFile);
+        Utils.pccfc = YamlConfiguration.loadConfiguration(Utils.PCCFile);
     }
 
     //检查配置文件是否为旧版本或其他版本

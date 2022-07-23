@@ -16,7 +16,7 @@ public class CommandBind implements CommandExecutor {
     @Override
     public boolean onCommand(@NotNull CommandSender sender, @NotNull Command command, @NotNull String label, @NotNull String[] args) {
         if(sender instanceof Player){
-            if(args.length == 1&& args[0]!=null && Utils.isNumberStrings(args[0])&&args.length>0){
+            if(args.length == 1 && Utils.isNumberStrings(args[0])){
                 Utils.executor.runTaskAsynchronously(Utils.plugin,()->{
                     long QQID = Long.parseLong(args[0]);
                     if(sender.hasPermission("cwg.bind.force")){

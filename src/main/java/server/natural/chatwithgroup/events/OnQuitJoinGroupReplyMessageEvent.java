@@ -22,6 +22,7 @@ public class OnQuitJoinGroupReplyMessageEvent implements Listener {
             }
         });
     }
+
     //留着防止bug发生不能修复
    /*@EventHandler
     public void onReplyMessage(MessageReceiveEvent e) {
@@ -34,6 +35,7 @@ public class OnQuitJoinGroupReplyMessageEvent implements Listener {
         });
     }*/
     //当群员退群时执行
+
     @EventHandler
     public void onUserLeaveGroup(GroupMemberDecreaseEvent e) {
         Utils.executor.runTaskAsynchronously(Utils.plugin,()-> Utils.config.getList("Texts.MessageOfQuitGroup").forEach(msg -> {

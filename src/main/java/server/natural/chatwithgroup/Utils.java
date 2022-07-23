@@ -5,6 +5,7 @@ import org.bukkit.configuration.InvalidConfigurationException;
 import org.bukkit.configuration.file.FileConfiguration;
 import org.bukkit.configuration.file.YamlConfiguration;
 import org.bukkit.plugin.Plugin;
+import org.bukkit.plugin.java.JavaPlugin;
 import org.bukkit.scheduler.BukkitScheduler;
 import java.io.*;
 import java.net.HttpURLConnection;
@@ -14,61 +15,69 @@ import java.util.logging.Level;
 import java.util.regex.Matcher;
 import java.util.regex.Pattern;
 
+/**
+ * Emmm,我想不出任何关于这个类的东西了，或许我们应该把它分开?
+ */
 public class Utils {
     //一些事件或指令常量可直接在此调用
-    public static FileConfiguration config = Bukkit.getPluginManager().getPlugin("ChatWithGroup").getConfig();
-    public static Plugin plugin = Bukkit.getPluginManager().getPlugin("ChatWithGroup");
-    public static File Cfile = new File(plugin.getDataFolder(),"cache\\cache.yml");
-    public static FileConfiguration cacheFile = YamlConfiguration.loadConfiguration(Cfile);
-    public static File MFCFile = new File(plugin.getDataFolder(),"MsgForwardingChancel.yml");
-    public static File PCCFile = new File(plugin.getDataFolder(),"cache\\PlayerChoosedChancelCache.yml");
-    public static FileConfiguration mfcfc = YamlConfiguration.loadConfiguration(MFCFile);
-    public static FileConfiguration pccfc = YamlConfiguration.loadConfiguration(PCCFile);
+    public static FileConfiguration config = null;
+    public static Plugin plugin = null;
+    public static File Cfile = null;
+    public static FileConfiguration cacheFile = null;
+    public static File MFCFile = null;
+    public static File PCCFile = null;
+    public static FileConfiguration mfcfc = null;
+    public static FileConfiguration pccfc = null;
     public static final String ver = "1.4.1";
     public static final int configVersion = 6;
-    public static List<Long> group = (List<Long>) config.getList("group");
-    public static List<Long> owner = (List<Long>) config.getList("owner");
+    public static List<Long> group = null;
+    public static List<Long> owner = null;
     public static final boolean isBetaVersion = true;
     public static BukkitScheduler executor = Bukkit.getScheduler();
+    public static String noNoPermission = null;
 
-    public static void checkUpdate(final String apiURL) throws IOException, InvalidConfigurationException{
-        File update = new File("CWG\\CWGUrlLog");
-        DownloadFile(apiURL,update);
-        if(update.exists()){
-            YamlConfiguration updateConfig= new YamlConfiguration();
-            updateConfig.load(update);
-            if (updateConfig.getString("version").equals(ver))
-            {
-                Bukkit.getLogger().info("您当前处于最新版本，无需更新");
-            }else{
-                Bukkit.getLogger().warning("新的CWG发布了！！");
-                Bukkit.getLogger().warning("下载地址:https://github.com/NaturalCodeClub/ChatWithGroup/releases");
-            }
-        }
-
-    }
-
-    public static void DownloadFile(String urlStr, File savefile) {
-        executor.runTaskAsynchronously(Utils.plugin,()->{
-            try {
-                if (savefile.exists()) {
-                    savefile.delete();
+    public static void checkUpdate(final String apiURL, JavaPlugin plugin1) throws IOException, InvalidConfigurationException{
+        executor.runTaskAsynchronously(plugin1,()->{
+            try{
+                File update = new File("CWG\\CWGUrlLog");
+                downloadFile(apiURL,update);
+                if(update.exists()){
+                    YamlConfiguration updateConfig= new YamlConfiguration();
+                    updateConfig.load(update);
+                    if (updateConfig.getString("version").equals(ver))
+                    {
+                        Bukkit.getLogger().info("您当前处于最新版本，无需更新");
+                    }else{
+                        Bukkit.getLogger().warning("新的CWG发布了！！");
+                        Bukkit.getLogger().warning("下载地址:https://github.com/NaturalCodeClub/ChatWithGroup/releases");
+                    }
                 }
-                URL url = new URL(urlStr);
-                HttpURLConnection conn = (HttpURLConnection) url.openConnection();
-                conn.setConnectTimeout(5000);
-                conn.setRequestProperty("User-Agent", "Mozilla/4.0 (compatible; MSIE 5.0; Windows NT; DigExt)");
-                InputStream inputStream = conn.getInputStream();
-                byte[] getData = readInputStream(inputStream);
-                FileOutputStream fos = new FileOutputStream(savefile);
-                fos.write(getData);
-                fos.close();
-                inputStream.close();
-                Bukkit.getLogger().log(Level.FINE,"File downloaded!Url was:{}",urlStr);
+
             }catch (Exception e){
-                e.printStackTrace();
+                Bukkit.getLogger().warning("Error in checking update:"+e.getMessage());
             }
         });
+    }
+
+    public static void downloadFile(String urlStr, File savefile) {
+        try {
+            if (savefile.exists()) {
+                savefile.delete();
+            }
+            URL url = new URL(urlStr);
+            HttpURLConnection conn = (HttpURLConnection) url.openConnection();
+            conn.setConnectTimeout(5000);
+            conn.setRequestProperty("User-Agent", "Mozilla/4.0 (compatible; MSIE 5.0; Windows NT; DigExt)");
+            InputStream inputStream = conn.getInputStream();
+            byte[] getData = readInputStream(inputStream);
+            FileOutputStream fos = new FileOutputStream(savefile);
+            fos.write(getData);
+            fos.close();
+            inputStream.close();
+            Bukkit.getLogger().log(Level.FINE, "File downloaded!Url was:{}", urlStr);
+        } catch (Exception e) {
+            e.printStackTrace();
+        }
     }
 
     public static byte[] readInputStream(InputStream inputStream) throws IOException {

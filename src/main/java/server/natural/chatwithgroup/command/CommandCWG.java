@@ -13,6 +13,10 @@ import java.io.File;
 public class CommandCWG implements CommandExecutor {
     @Override
     public boolean onCommand(@NotNull CommandSender commandSender, @NotNull Command command, @NotNull String s, @NotNull String[] strings) {
+        if(strings.length != 1){
+            return true;
+        }
+
         if (strings[0].equalsIgnoreCase("version")) {
             strings[0] = "ver";
         } else if (strings[0].equalsIgnoreCase("rl")) {

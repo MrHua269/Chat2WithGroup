@@ -6,6 +6,7 @@ import org.bukkit.configuration.file.FileConfiguration;
 import org.bukkit.configuration.file.YamlConfiguration;
 import org.bukkit.plugin.Plugin;
 import org.bukkit.scheduler.BukkitScheduler;
+import org.jetbrains.annotations.NotNull;
 
 import java.io.*;
 import java.net.HttpURLConnection;
@@ -113,15 +114,19 @@ public class Utils {
         Bukkit.getPluginManager().getPlugin("ChatWithGroup").saveResource("cache/PlayerChoosedChancelCache.yml",b);
     }
 
-    public static void OnFirstRun(){
+    public static void OnFirstRun(@NotNull boolean isForce){
         long timestamp = System.currentTimeMillis();
-        if(cacheFile.get("Created-Time")==null){
+        if(cacheFile.get("Created-Time")==null||isForce){
             cacheFile.set("Created-Time",timestamp);
             cacheFileSave();
         }
-        if(pccfc.get("Created-Time")==null){
+        if(pccfc.get("Created-Time")==null||isForce){
             pccfc.set("Created-Time",timestamp);
             PCCCacheFileSave();
         }
+    }
+    //TODO Finish it
+    public static void reloadCache(){
+
     }
 }

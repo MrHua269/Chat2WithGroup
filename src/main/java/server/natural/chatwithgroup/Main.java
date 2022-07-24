@@ -16,7 +16,7 @@ public class Main extends JavaPlugin {
             BootStrap.initConfig(this);
             //加载其他缓存或配置文件
             Utils.LoadFile(false);
-            Utils.OnFirstRun();
+            Utils.OnFirstRun(false);
             //初始化事件监听器
             BootStrap.initEventListeners(this);
             //注册命令

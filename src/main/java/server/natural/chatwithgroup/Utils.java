@@ -25,7 +25,7 @@ public class Utils {
     public static FileConfiguration mfcfc = YamlConfiguration.loadConfiguration(MFCFile);
     public static FileConfiguration pccfc = YamlConfiguration.loadConfiguration(PCCFile);
     public static final String ver = "1.4.1";
-    public static final int configVersion = 6;
+    public static final int configVersion = 7;
     public static List<Long> group = (List<Long>) config.getList("group");
     public static List<Long> owner = (List<Long>) config.getList("owner");
     public static final boolean isBetaVersion = true;

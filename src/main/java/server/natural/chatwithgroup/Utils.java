@@ -30,8 +30,9 @@ public class Utils {
     public static List<Long> owner = (List<Long>) config.getList("owner");
     public static final boolean isBetaVersion = true;
     public static BukkitScheduler executor = Bukkit.getScheduler();
+    public static String noNoPermission;
 
-    public static void checkUpdate(final String apiURL) throws IOException, InvalidConfigurationException{
+    public static void checkUpdate(final String apiURL, Main main) throws IOException, InvalidConfigurationException{
         File update = new File("CWG/CWGUrlLog");
         DownloadFile(apiURL,update);
         if(update.exists()){

@@ -6,7 +6,7 @@
 
     <groupId>server.natural</groupId>
     <artifactId>ChatWithGroup</artifactId>
-    <version>1.4.1 Dev</version>
+    <version>1.4.1-Dev</version>
     <packaging>jar</packaging>
 
     <name>ChatWithGroup</name>

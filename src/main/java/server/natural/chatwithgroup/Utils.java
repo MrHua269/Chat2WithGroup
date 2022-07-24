@@ -33,7 +33,7 @@ public class Utils {
     public static BukkitScheduler executor = Bukkit.getScheduler();
 
     public static void checkUpdate(final String apiURL, Main main) throws IOException, InvalidConfigurationException{
-        File update = new File("CWG/CWGUrlLog");
+        File update = new File(plugin.getDataFolder(),"CWG/CWGUrlLog.yml");
         DownloadFile(apiURL,update);
         if(update.exists()){
             YamlConfiguration updateConfig= new YamlConfiguration();

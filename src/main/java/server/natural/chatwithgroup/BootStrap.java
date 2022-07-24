@@ -54,6 +54,7 @@ public class BootStrap {
     public static void initConfig(JavaPlugin plugin){
         FileConfiguration currentConfig = plugin.getConfig();
         Utils.config = currentConfig;
+        Utils.plugin = plugin;
         Utils.NoPermission = currentConfig.getString("Text.NoPermission");
         Utils.group = (List<Long>) currentConfig.getList("CoreConfig.group");
         Utils.owner = (List<Long>) currentConfig.getList("CoreConfig.owner");

@@ -39,6 +39,11 @@
         - "bs"
         - "bm"
       usage: "/broadcastmusic <mp3URL>"
+    purgecache:
+      aliases:
+        - "purgecache"
+      usage: "/purgecache"
+      description: "清理CWG缓存"
   permissions:
     cwg.*:
       description: All Permissions of CWG

@@ -40,6 +40,7 @@ public class CommandCWG implements CommandExecutor {
                                 commandSender.sendMessage(ChatColor.RED + e.getMessage());
                             }
                         }
+                        //TODO 下面重载缓存yml文件写入Utils方法内
                         File cacheFile = Utils.Cfile;
                         commandSender.sendMessage(ChatColor.GREEN + "Reloading Cache File...");
                         if (cacheFile.exists()) {
@@ -81,11 +82,11 @@ public class CommandCWG implements CommandExecutor {
                 case "ver":
                     String group = null;
                     String owner = null;
-                    for(long l:Utils.group){
+                    for(Long l:Utils.group){
                         if(group==null) group= String.valueOf(l);
                         else group = group + "," + l;
                     }
-                    for(long l:Utils.owner){
+                    for(Long l:Utils.owner){
                         if(owner==null)owner = String.valueOf(l);
                         else owner = owner + "," + l;
                     }

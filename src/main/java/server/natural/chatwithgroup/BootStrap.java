@@ -4,7 +4,6 @@ import org.bukkit.Bukkit;
 import org.bukkit.ChatColor;
 import org.bukkit.configuration.file.FileConfiguration;
 import org.bukkit.configuration.file.YamlConfiguration;
-import org.bukkit.plugin.Plugin;
 import org.bukkit.plugin.java.JavaPlugin;
 import org.jetbrains.annotations.NotNull;
 import server.natural.chatwithgroup.command.*;
@@ -25,6 +24,7 @@ public class BootStrap {
         Bukkit.getPluginCommand("bind").setExecutor(new CommandBind());
         Bukkit.getPluginCommand("messageforwarding").setExecutor(new CommandStopMessageTrasForwarding());
         Bukkit.getPluginCommand("botinvite").setExecutor(new CommandInvite());
+        Bukkit.getPluginCommand("purgecache").setExecutor(new CommandPurgeCache());
         //An uncompleted method
         //TODO Complete the unfinished code block
         //Bukkit.getPluginCommand("choosechannel").setExecutor(new CommandChooseChannel());

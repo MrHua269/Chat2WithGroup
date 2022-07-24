@@ -32,7 +32,10 @@ public class CommandSMG implements CommandExecutor {
         if (commandSender instanceof Player) {
             if (Bot.getApi().getUser(((Player) commandSender).getUniqueId()) != null) {
                 Utils.executor.runTaskAsynchronously(Utils.plugin, () -> {
-                    Utils.group.forEach(group -> Bot.getApi().sendGroupMsg(group, ((Player) commandSender).getDisplayName() + "->" + s1));
+//                    Utils.group.forEach(group -> Bot.getApi().sendGroupMsg(group, ((Player) commandSender).getDisplayName() + "->" + s1));
+                    for(Long l : Utils.group){
+                        Bot.getApi().sendGroupMsg(l,((Player) commandSender).getDisplayName() + ">>" + s1);
+                    }
                     commandSender.sendMessage("消息发送成功!");
                 });
             } else {
@@ -42,7 +45,11 @@ public class CommandSMG implements CommandExecutor {
                 commandSender.sendMessage(ChatColor.RED + "绑定后即可发送消息");
             }
         } else {
-            Utils.executor.runTaskAsynchronously(Utils.plugin, () -> Utils.group.forEach(group -> Bot.getApi().sendGroupMsg(group, "服务器闸总(Console)->" + s1)));
+//            Utils.executor.runTaskAsynchronously(Utils.plugin, () ->
+//                    Utils.group.forEach(group -> Bot.getApi().sendGroupMsg(group, "服务器闸总(Console)->" + s1)));
+            for(Long l: Utils.group){
+                Bot.getApi().sendGroupMsg(l,"Console>>" + s1);
+            }
         }
         return true;
     }

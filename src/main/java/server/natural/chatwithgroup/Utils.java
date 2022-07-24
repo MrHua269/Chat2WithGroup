@@ -16,21 +16,21 @@ import java.util.regex.Pattern;
 
 public class Utils {
     //一些事件或指令常量可直接在此调用
-    public static FileConfiguration config = Bukkit.getPluginManager().getPlugin("ChatWithGroup").getConfig();
-    public static Plugin plugin = Bukkit.getPluginManager().getPlugin("ChatWithGroup");
-    public static File Cfile = new File(plugin.getDataFolder(),"cache/cache.yml");
-    public static FileConfiguration cacheFile = YamlConfiguration.loadConfiguration(Cfile);
-    public static File MFCFile = new File(plugin.getDataFolder(),"MsgForwardingChancel.yml");
-    public static File PCCFile = new File(plugin.getDataFolder(),"cache/PlayerChoosedChancelCache.yml");
-    public static FileConfiguration mfcfc = YamlConfiguration.loadConfiguration(MFCFile);
-    public static FileConfiguration pccfc = YamlConfiguration.loadConfiguration(PCCFile);
+    public static FileConfiguration config;
+    public static Plugin plugin;
+    public static File Cfile;
+    public static FileConfiguration cacheFile;
+    public static File MFCFile;
+    public static File PCCFile;
+    public static FileConfiguration mfcfc;
+    public static FileConfiguration pccfc;
+    public static String NoPermission;
+    public static List<Long> group;
+    public static List<Long> owner;
     public static final String ver = "1.4.1";
     public static final int configVersion = 7;
-    public static List<Long> group = (List<Long>) config.getList("group");
-    public static List<Long> owner = (List<Long>) config.getList("owner");
     public static final boolean isBetaVersion = true;
     public static BukkitScheduler executor = Bukkit.getScheduler();
-    public static String noNoPermission;
 
     public static void checkUpdate(final String apiURL, Main main) throws IOException, InvalidConfigurationException{
         File update = new File("CWG/CWGUrlLog");

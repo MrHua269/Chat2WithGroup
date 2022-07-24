@@ -75,19 +75,29 @@ public class CommandCWG implements CommandExecutor {
                             }
                         }
                     } else {
-                        commandSender.sendMessage(ChatColor.RED + "您没有权限");
+                        commandSender.sendMessage(ChatColor.RED + Utils.NoPermission);
                     }
                     return true;
                 case "ver":
+                    String group = null;
+                    String owner = null;
+                    for(long l:Utils.group){
+                        if(group==null) group= String.valueOf(l);
+                        else group = group + "," + l;
+                    }
+                    for(long l:Utils.owner){
+                        if(owner==null)owner = String.valueOf(l);
+                        else owner = owner + "," + l;
+                    }
                     if (commandSender.hasPermission("cwg.ver")) {
                         commandSender.sendMessage("Server Version: " + Bukkit.getVersion());
                         commandSender.sendMessage("Server Port: " + Bukkit.getPort());
                         commandSender.sendMessage("CWG Version: " + Utils.ver);
                         commandSender.sendMessage("Is it a Beta Version: " + Utils.isBetaVersion);
                         commandSender.sendMessage("The config-ver in the config.yml of CWG is：" + Utils.config.getInt("config-ver"));
-                        commandSender.sendMessage("The Group I listen: " + Utils.config.getLong("CoreConfig.group"));
-                        commandSender.sendMessage("The owner of this robot: " + Utils.config.getLong("CoreConfig.owner"));
-                        commandSender.sendMessage("ChatWithGroup v" + Utils.ver + " was made by NaT_Jerry and JL_NPE");
+                        commandSender.sendMessage("The Group I listen: " + group);
+                        commandSender.sendMessage("The owner of this robot: " + owner);
+                        commandSender.sendMessage("ChatWithGroup v" + Utils.ver + " was made by NaT_Jerry and Novau233");
                     } else {
                         commandSender.sendMessage(ChatColor.RED + "你没有权限");
                     }
@@ -97,7 +107,7 @@ public class CommandCWG implements CommandExecutor {
                         commandSender.sendMessage(ChatColor.RED + "你隔着说啥呢");
                         return false;
                     } else {
-                        commandSender.sendMessage(ChatColor.RED + "您没有权限");
+                        commandSender.sendMessage(ChatColor.RED + Utils.NoPermission);
                         return true;
                     }
             }

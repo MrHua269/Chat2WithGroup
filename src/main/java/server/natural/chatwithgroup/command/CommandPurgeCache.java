@@ -16,7 +16,7 @@ public class CommandPurgeCache implements CommandExecutor {
             Utils.OnFirstRun();
             sender.sendMessage(ChatColor.GREEN + "缓存清理完成");
         }else{
-            sender.sendMessage(ChatColor.RED + "你没有权限");
+            sender.sendMessage(ChatColor.RED + Utils.NoPermission);
         }
         return true;
     }

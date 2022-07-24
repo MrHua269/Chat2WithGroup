@@ -14,15 +14,16 @@ public class JoinGroupRequestSelectorListener implements Listener {
     public void onAddGroupRequest(GroupRequestJoinEvent e) {
         String reason = Utils.config.getString("RequestHandler.GroupJoinSelector.RejectReason");
         Utils.executor.runTaskAsynchronously(Utils.plugin, () -> {
-            switch (Utils.config.getString("RequestHandler.GroupJoinSelector.JoinRequestSelector")) {
-                case "YES":
-                    e.approve(true, reason);
-                    break;
-                case "NO":
-                    e.approve(false, reason);
-                    break;
-                case "NOTHING":
-                    e.getGroupID();
+            if(Utils.group.contains(e.getGroupID())){
+                switch (Utils.config.getString("RequestHandler.GroupJoinSelector.JoinRequestSelector")) {
+                    case "YES":
+                        e.approve(true, reason);
+                        break;
+                    case "NO":
+                        e.approve(false, reason);
+                        break;
+                    case "NOTHING":
+                        e.getGroupID();
                     /*
                     下方为过时的代码
                     2022/4/30 17:50 NaT_Jerry
@@ -43,15 +44,17 @@ public class JoinGroupRequestSelectorListener implements Listener {
                         }
                     });
                      */
-                    break;
-                default:
-                    Bukkit.getLogger().warning(ChatColor.RED + "错误的配置文件！");
-                    Utils.owner.forEach(owner -> {
-                        Bot.getApi().sendPrivateMsg(owner, "ChatWithGroup配置文件出现问题");
-                        Bot.getApi().sendPrivateMsg(owner, "也许(肯定)是'JoinRequestSelector'的问题");
-                    });
-                    break;
+                        break;
+                    default:
+                        Bukkit.getLogger().warning(ChatColor.RED + "错误的配置文件！");
+                        Utils.owner.forEach(owner -> {
+                            Bot.getApi().sendPrivateMsg(owner, "ChatWithGroup配置文件出现问题");
+                            Bot.getApi().sendPrivateMsg(owner, "也许(肯定)是'JoinRequestSelector'的问题");
+                        });
+                        break;
+                }
             }
+
         });
 
     }

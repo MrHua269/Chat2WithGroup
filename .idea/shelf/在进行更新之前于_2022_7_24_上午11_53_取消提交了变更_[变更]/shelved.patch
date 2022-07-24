@@ -1,0 +1,66 @@
+Index: .idea/workspace.xml
+IDEA additional info:
+Subsystem: com.intellij.openapi.diff.impl.patch.BaseRevisionTextPatchEP
+<+><?xml version=\"1.0\" encoding=\"UTF-8\"?>\n<project version=\"4\">\n  <component name=\"AutoImportSettings\">\n    <option name=\"autoReloadType\" value=\"SELECTIVE\" />\n  </component>\n  <component name=\"ChangeListManager\">\n    <list default=\"true\" id=\"4a17ca10-156e-48ed-aa5b-d326b107271f\" name=\"变更\" comment=\"Update:使用CraftScheduler处理多线程任务，优化部分源码\">\n      <change beforePath=\"$PROJECT_DIR$/.idea/workspace.xml\" beforeDir=\"false\" afterPath=\"$PROJECT_DIR$/.idea/workspace.xml\" afterDir=\"false\" />\n      <change beforePath=\"$PROJECT_DIR$/src/main/java/server/natural/chatwithgroup/BootStrap.java\" beforeDir=\"false\" afterPath=\"$PROJECT_DIR$/src/main/java/server/natural/chatwithgroup/BootStrap.java\" afterDir=\"false\" />\n      <change beforePath=\"$PROJECT_DIR$/src/main/java/server/natural/chatwithgroup/Utils.java\" beforeDir=\"false\" afterPath=\"$PROJECT_DIR$/src/main/java/server/natural/chatwithgroup/Utils.java\" afterDir=\"false\" />\n    </list>\n    <option name=\"SHOW_DIALOG\" value=\"false\" />\n    <option name=\"HIGHLIGHT_CONFLICTS\" value=\"true\" />\n    <option name=\"HIGHLIGHT_NON_ACTIVE_CHANGELIST\" value=\"false\" />\n    <option name=\"LAST_RESOLUTION\" value=\"IGNORE\" />\n  </component>\n  <component name=\"Git.Settings\">\n    <option name=\"RECENT_GIT_ROOT_PATH\" value=\"$PROJECT_DIR$\" />\n  </component>\n  <component name=\"MacroExpansionManager\">\n    <option name=\"directoryName\" value=\"x4vwfa9x\" />\n  </component>\n  <component name=\"MarkdownSettingsMigration\">\n    <option name=\"stateVersion\" value=\"1\" />\n  </component>\n  <component name=\"MavenImportPreferences\">\n    <option name=\"generalSettings\">\n      <MavenGeneralSettings>\n        <option name=\"useMavenConfig\" value=\"true\" />\n      </MavenGeneralSettings>\n    </option>\n  </component>\n  <component name=\"ProjectId\" id=\"2B6y4LsHfOb7z4e3LCR62CNzRvx\" />\n  <component name=\"ProjectViewState\">\n    <option name=\"hideEmptyMiddlePackages\" value=\"true\" />\n    <option name=\"showLibraryContents\" value=\"true\" />\n  </component>\n  <component name=\"PropertiesComponent\"><![CDATA[{\n  \"keyToString\": {\n    \"RunOnceActivity.OpenProjectViewOnStart\": \"true\",\n    \"RunOnceActivity.ShowReadmeOnStart\": \"true\"\n  }\n}]]></component>\n  <component name=\"SpellCheckerSettings\" RuntimeDictionaries=\"0\" Folders=\"0\" CustomDictionaries=\"0\" DefaultDictionary=\"应用程序级\" UseSingleDictionary=\"true\" transferred=\"true\" />\n  <component name=\"TaskManager\">\n    <task active=\"true\" id=\"Default\" summary=\"默认任务\">\n      <changelist id=\"4a17ca10-156e-48ed-aa5b-d326b107271f\" name=\"变更\" comment=\"\" />\n      <created>1656240637686</created>\n      <option name=\"number\" value=\"Default\" />\n      <option name=\"presentableId\" value=\"Default\" />\n      <updated>1656240637686</updated>\n    </task>\n    <task id=\"LOCAL-00001\" summary=\"Update:使用CraftScheduler处理多线程任务，优化部分源码\">\n      <created>1656249636228</created>\n      <option name=\"number\" value=\"00001\" />\n      <option name=\"presentableId\" value=\"LOCAL-00001\" />\n      <option name=\"project\" value=\"LOCAL\" />\n      <updated>1656249636228</updated>\n    </task>\n    <option name=\"localTasksCounter\" value=\"2\" />\n    <servers />\n  </component>\n  <component name=\"Vcs.Log.Tabs.Properties\">\n    <option name=\"TAB_STATES\">\n      <map>\n        <entry key=\"MAIN\">\n          <value>\n            <State />\n          </value>\n        </entry>\n      </map>\n    </option>\n  </component>\n  <component name=\"VcsManagerConfiguration\">\n    <MESSAGE value=\"Update:使用CraftScheduler处理多线程任务，优化部分源码\" />\n    <option name=\"LAST_COMMIT_MESSAGE\" value=\"Update:使用CraftScheduler处理多线程任务，优化部分源码\" />\n  </component>\n</project>
+Subsystem: com.intellij.openapi.diff.impl.patch.CharsetEP
+<+>UTF-8
+===================================================================
+diff --git a/.idea/workspace.xml b/.idea/workspace.xml
+--- a/.idea/workspace.xml	(revision 13fc2770101aad2681b03d0f4bdeb39f5997b96d)
++++ b/.idea/workspace.xml	(date 1657853669584)
+@@ -4,10 +4,8 @@
+     <option name="autoReloadType" value="SELECTIVE" />
+   </component>
+   <component name="ChangeListManager">
+-    <list default="true" id="4a17ca10-156e-48ed-aa5b-d326b107271f" name="变更" comment="Update:使用CraftScheduler处理多线程任务，优化部分源码">
++    <list default="true" id="4a17ca10-156e-48ed-aa5b-d326b107271f" name="变更" comment="Update:Method's added">
+       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+-      <change beforePath="$PROJECT_DIR$/src/main/java/server/natural/chatwithgroup/BootStrap.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/server/natural/chatwithgroup/BootStrap.java" afterDir="false" />
+-      <change beforePath="$PROJECT_DIR$/src/main/java/server/natural/chatwithgroup/Utils.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/server/natural/chatwithgroup/Utils.java" afterDir="false" />
+     </list>
+     <option name="SHOW_DIALOG" value="false" />
+     <option name="HIGHLIGHT_CONFLICTS" value="true" />
+@@ -35,12 +33,12 @@
+     <option name="hideEmptyMiddlePackages" value="true" />
+     <option name="showLibraryContents" value="true" />
+   </component>
+-  <component name="PropertiesComponent"><![CDATA[{
+-  "keyToString": {
+-    "RunOnceActivity.OpenProjectViewOnStart": "true",
+-    "RunOnceActivity.ShowReadmeOnStart": "true"
++  <component name="PropertiesComponent">{
++  &quot;keyToString&quot;: {
++    &quot;RunOnceActivity.OpenProjectViewOnStart&quot;: &quot;true&quot;,
++    &quot;RunOnceActivity.ShowReadmeOnStart&quot;: &quot;true&quot;
+   }
+-}]]></component>
++}</component>
+   <component name="SpellCheckerSettings" RuntimeDictionaries="0" Folders="0" CustomDictionaries="0" DefaultDictionary="应用程序级" UseSingleDictionary="true" transferred="true" />
+   <component name="TaskManager">
+     <task active="true" id="Default" summary="默认任务">
+@@ -57,7 +55,14 @@
+       <option name="project" value="LOCAL" />
+       <updated>1656249636228</updated>
+     </task>
+-    <option name="localTasksCounter" value="2" />
++    <task id="LOCAL-00002" summary="Update:Method's added">
++      <created>1657790760464</created>
++      <option name="number" value="00002" />
++      <option name="presentableId" value="LOCAL-00002" />
++      <option name="project" value="LOCAL" />
++      <updated>1657790760464</updated>
++    </task>
++    <option name="localTasksCounter" value="3" />
+     <servers />
+   </component>
+   <component name="Vcs.Log.Tabs.Properties">
+@@ -73,6 +78,7 @@
+   </component>
+   <component name="VcsManagerConfiguration">
+     <MESSAGE value="Update:使用CraftScheduler处理多线程任务，优化部分源码" />
+-    <option name="LAST_COMMIT_MESSAGE" value="Update:使用CraftScheduler处理多线程任务，优化部分源码" />
++    <MESSAGE value="Update:Method's added" />
++    <option name="LAST_COMMIT_MESSAGE" value="Update:Method's added" />
+   </component>
+ </project>
+\ No newline at end of file

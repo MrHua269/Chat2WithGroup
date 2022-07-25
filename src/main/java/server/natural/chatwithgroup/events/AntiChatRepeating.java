@@ -10,6 +10,7 @@ import java.util.concurrent.ConcurrentHashMap;
 
 public class AntiChatRepeating implements Listener {
     private static final ConcurrentHashMap<Player, Long> playerCounts = new ConcurrentHashMap<>();
+
     @EventHandler
     public void onPlayerMessage(AsyncPlayerChatEvent event) {
         if (isOutOfLimit(event.getPlayer(), Utils.config.getLong("MessageLimit.MessageSlotLimit"))) {
@@ -17,6 +18,7 @@ public class AntiChatRepeating implements Listener {
             event.setCancelled(true);
         }
     }
+
     public static boolean isOutOfLimit(Player player, long dealy) {
         boolean isOut = false;
         if (!playerCounts.containsKey(player)){

@@ -2,11 +2,17 @@ package server.natural.chatwithgroup;
 
 import org.bukkit.ChatColor;
 import org.bukkit.plugin.java.JavaPlugin;
+import server.natural.chatwithgroup.util.MainThreadExecutor;
+
+import java.util.concurrent.Executor;
 
 public class Main extends JavaPlugin {
+    private static MainThreadExecutor executor;
+
     @Override
     public void onEnable() {
         try {
+            executor = new MainThreadExecutor(this);
             BootStrap.initFiles(this);
             getLogger().info(ChatColor.GREEN + "欢迎使用!");
             saveDefaultConfig();
@@ -34,10 +40,14 @@ public class Main extends JavaPlugin {
             e.printStackTrace();
         }
     }
+
     @Override
     public void onDisable() {
         getLogger().info("再见");
     }
 
+    public static Executor getMainThreadExecutor(){
+        return executor;
+    }
 
 }

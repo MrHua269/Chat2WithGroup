@@ -34,6 +34,13 @@ public class Utils {
     public static final boolean isBetaVersion = true;
     public static BukkitScheduler executor = Bukkit.getScheduler();
 
+    /**
+     * 检查更新
+     * @param apiURL
+     * @param main
+     * @throws IOException
+     * @throws InvalidConfigurationException
+     */
     public static void checkUpdate(final String apiURL, Main main) throws IOException, InvalidConfigurationException{
         File update = new File(plugin.getDataFolder(),"CWG/CWGUrlLog.yml");
         DownloadFile(apiURL,update);
@@ -52,6 +59,11 @@ public class Utils {
 
     }
 
+    /**
+     * 下载文件
+     * @param urlStr
+     * @param savefile
+     */
     public static void DownloadFile(String urlStr, File savefile) {
         executor.runTaskAsynchronously(Utils.plugin,()->{
             try {

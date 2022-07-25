@@ -4,30 +4,17 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="4a17ca10-156e-48ed-aa5b-d326b107271f" name="变更" comment="Update:添加了主线程执行器">
-      <change afterPath="$PROJECT_DIR$/src/main/java/server/natural/chatwithgroup/util/MainThreadExecutor.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/shelf/_2022_7_24_11_53____.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/shelf/_2022_7_24_11_53____.xml" afterDir="false" />
+    <list default="true" id="4a17ca10-156e-48ed-aa5b-d326b107271f" name="变更" comment="Fix:接着改">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/server/natural/chatwithgroup/Main.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/server/natural/chatwithgroup/Main.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/server/natural/chatwithgroup/Utils.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/server/natural/chatwithgroup/Utils.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/server/natural/chatwithgroup/command/CommandSMG.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/server/natural/chatwithgroup/command/CommandSMG.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/server/natural/chatwithgroup/events/AntiChatRepeating.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/server/natural/chatwithgroup/events/AntiChatRepeating.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/server/natural/chatwithgroup/events/OnPrivateMessage.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/server/natural/chatwithgroup/events/OnPrivateMessage.java" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
     <option name="HIGHLIGHT_NON_ACTIVE_CHANGELIST" value="false" />
     <option name="LAST_RESOLUTION" value="IGNORE" />
   </component>
-  <component name="FileTemplateManagerImpl">
-    <option name="RECENT_TEMPLATES">
-      <list>
-        <option value="Class" />
-      </list>
-    </option>
-  </component>
   <component name="Git.Settings">
     <option name="RECENT_GIT_ROOT_PATH" value="$PROJECT_DIR$" />
-    <option name="UPDATE_TYPE" value="REBASE" />
   </component>
   <component name="MacroExpansionManager">
     <option name="directoryName" value="x4vwfa9x" />
@@ -51,12 +38,6 @@
   &quot;keyToString&quot;: {
     &quot;RunOnceActivity.OpenProjectViewOnStart&quot;: &quot;true&quot;,
     &quot;RunOnceActivity.ShowReadmeOnStart&quot;: &quot;true&quot;,
-    &quot;WebServerToolWindowFactoryState&quot;: &quot;false&quot;,
-    &quot;last_opened_file_path&quot;: &quot;C:/Users/Mr.Zhang/Desktop/ChatWithGroup&quot;,
-    &quot;node.js.detected.package.eslint&quot;: &quot;true&quot;,
-    &quot;node.js.detected.package.tslint&quot;: &quot;true&quot;,
-    &quot;node.js.selected.package.eslint&quot;: &quot;(autodetect)&quot;,
-    &quot;node.js.selected.package.tslint&quot;: &quot;(autodetect)&quot;,
     &quot;settings.editor.selected.configurable&quot;: &quot;IntelliLang.Configuration&quot;
   }
 }</component>
@@ -68,9 +49,6 @@
       <option name="number" value="Default" />
       <option name="presentableId" value="Default" />
       <updated>1656240637686</updated>
-      <workItem from="1658668217310" duration="2006000" />
-      <workItem from="1658671054438" duration="37000" />
-      <workItem from="1658708710428" duration="325000" />
     </task>
     <task id="LOCAL-00001" summary="Update:使用CraftScheduler处理多线程任务，优化部分源码">
       <created>1656249636228</created>
@@ -131,9 +109,6 @@
     <option name="localTasksCounter" value="9" />
     <servers />
   </component>
-  <component name="TypeScriptGeneratedFilesManager">
-    <option name="version" value="3" />
-  </component>
   <component name="Vcs.Log.Tabs.Properties">
     <option name="TAB_STATES">
       <map>
@@ -153,7 +128,6 @@
     <MESSAGE value="Update:修改了配置文件里关闭QQ内绑定仍然能绑定的Bug" />
     <MESSAGE value="Fix:应该把剩下的空指针错误修好了" />
     <MESSAGE value="Fix:接着改" />
-    <MESSAGE value="Update:添加了主线程执行器" />
-    <option name="LAST_COMMIT_MESSAGE" value="Update:添加了主线程执行器" />
+    <option name="LAST_COMMIT_MESSAGE" value="Fix:接着改" />
   </component>
 </project>

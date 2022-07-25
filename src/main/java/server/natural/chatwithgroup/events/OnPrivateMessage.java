@@ -13,7 +13,7 @@ public class OnPrivateMessage implements Listener {
     public void PrivateMessage(MessageReceiveEvent event){
         Utils.executor.runTaskAsynchronously(Utils.plugin,()->{
             String message = event.getMsg();
-            if(!message.startsWith(Utils.config.getString("BindSettings.BindPrefix","同意绑定"))) {
+            if(message.startsWith(Utils.config.getString("BindSettings.BindPrefix","同意绑定"))) {
                 String[] arr = message.split("\\s+");
                 if(arr.length != 2)return;
                 if(event.getUserID()!=Utils.cacheFile.getLong("players." + arr[1] + ".QQID")||Utils.cacheFile.get("players." + arr[1])==null||

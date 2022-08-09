@@ -41,10 +41,10 @@ Texts:
   #{0}:NameCard,{1}:ID
   MessageOfQuitGroup:
     - "糟糕了，我们的群丢了一名宝贵的群员，请我们珍惜我们在这个群的每时每秒...."
-    - "离群人的QQ:{1}"
+    - "离群人的QQ:{0}"
   #{0}:ID
   MessageOfJoinGroup:
-    - "欢迎我们的一位新成员！:{0}"
+    - "欢迎我们的一位新成员！"
     - "ta的QQ号为:{1}"
   #{0}:NameCard,{1}:ID
   ReplyMessageOnPrivate:

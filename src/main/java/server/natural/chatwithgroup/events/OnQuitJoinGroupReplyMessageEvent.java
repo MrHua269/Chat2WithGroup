@@ -39,7 +39,7 @@ public class OnQuitJoinGroupReplyMessageEvent implements Listener {
     @EventHandler
     public void onUserLeaveGroup(GroupMemberDecreaseEvent e) {
         Utils.executor.runTaskAsynchronously(Utils.plugin,()-> Utils.config.getList("Texts.MessageOfQuitGroup").forEach(msg -> {
-            String s = MessageFormat.format((String) msg, e.getUserID(),e.getUserID());
+            String s = MessageFormat.format((String) msg,e.getUserID());
             Bot.getApi().sendGroupMsg(e.getGroupID(), s);
         }));
 

@@ -4,7 +4,11 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="4a17ca10-156e-48ed-aa5b-d326b107271f" name="变更" comment="Update:调整了配置文件" />
+    <list default="true" id="4a17ca10-156e-48ed-aa5b-d326b107271f" name="变更" comment="Update:调整了配置文件">
+      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/server/natural/chatwithgroup/Utils.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/server/natural/chatwithgroup/Utils.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/server/natural/chatwithgroup/command/CommandCWG.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/server/natural/chatwithgroup/command/CommandCWG.java" afterDir="false" />
+    </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
     <option name="HIGHLIGHT_NON_ACTIVE_CHANGELIST" value="false" />
@@ -13,6 +17,15 @@
   <component name="Git.Settings">
     <option name="RECENT_GIT_ROOT_PATH" value="$PROJECT_DIR$" />
     <option name="SET_USER_NAME_GLOBALLY" value="false" />
+  </component>
+  <component name="GitRewordedCommitMessages">
+    <option name="commitMessagesMapping">
+      <RewordedCommitMessageMapping>
+        <option name="originalMessage" value="Update:调整了配置文件" />
+        <option name="rewordedMessage" value="Update:调整了配置文件" />
+      </RewordedCommitMessageMapping>
+    </option>
+    <option name="onto" value="adad0d26955559893c283233ed52df1a026a3119" />
   </component>
   <component name="MacroExpansionManager">
     <option name="directoryName" value="x4vwfa9x" />
@@ -135,7 +148,14 @@
       <option name="project" value="LOCAL" />
       <updated>1660018358812</updated>
     </task>
-    <option name="localTasksCounter" value="11" />
+    <task id="LOCAL-00011" summary="Update:调整了配置文件">
+      <created>1660019477208</created>
+      <option name="number" value="00011" />
+      <option name="presentableId" value="LOCAL-00011" />
+      <option name="project" value="LOCAL" />
+      <updated>1660019477208</updated>
+    </task>
+    <option name="localTasksCounter" value="12" />
     <servers />
   </component>
   <component name="Vcs.Log.Tabs.Properties">

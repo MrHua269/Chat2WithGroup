@@ -14,7 +14,7 @@ public class CommandCWG implements CommandExecutor {
     @Override
     public boolean onCommand(@NotNull CommandSender commandSender, @NotNull Command command, @NotNull String s, @NotNull String[] strings) {
         if(strings.length != 1){
-            return true;
+            return false;
         }
 
         if (strings[0].equalsIgnoreCase("version")) {
@@ -40,41 +40,41 @@ public class CommandCWG implements CommandExecutor {
                                 commandSender.sendMessage(ChatColor.RED + e.getMessage());
                             }
                         }
-                        //TODO 下面重载缓存yml文件写入Utils方法内
-                        File cacheFile = Utils.Cfile;
-                        commandSender.sendMessage(ChatColor.GREEN + "Reloading Cache File...");
-                        if (cacheFile.exists()) {
-                            try {
-                                Utils.cacheFile.load(cacheFile);
-                                commandSender.sendMessage(ChatColor.GREEN + "Cache File Reloaded Completed!");
-                            } catch (Exception e) {
-                                commandSender.sendMessage(ChatColor.RED + "An Exception happened. Cache file can't reload");
-                                commandSender.sendMessage(ChatColor.RED + "Exception Message:");
-                                commandSender.sendMessage(ChatColor.RED + e.getMessage());
-                            }
-                        }
-                        File MFCFile = Utils.MFCFile;
-                        if (MFCFile.exists()) {
-                            try {
-                                Utils.mfcfc.load(MFCFile);
-                                commandSender.sendMessage(ChatColor.GREEN + "Cache File Reloaded Completed");
-                            } catch (Exception e) {
-                                commandSender.sendMessage(ChatColor.RED + "An Exception happened. Message Forwarding Cache file can't reload");
-                                commandSender.sendMessage(ChatColor.RED + "Exception Message:");
-                                commandSender.sendMessage(ChatColor.RED + e.getMessage());
-                            }
-                        }
-                        File PCCFile = Utils.PCCFile;
-                        if (PCCFile.exists()) {
-                            try {
-                                Utils.pccfc.load(PCCFile);
-                                commandSender.sendMessage(ChatColor.GREEN + "Cache File Reloaded Completed");
-                            } catch (Exception e) {
-                                commandSender.sendMessage(ChatColor.RED + "An Exception happened. Player Chancel Cache file can't reload");
-                                commandSender.sendMessage(ChatColor.RED + "Exception Message:");
-                                commandSender.sendMessage(ChatColor.RED + e.getMessage());
-                            }
-                        }
+                        commandSender.sendMessage(Utils.reloadCache());
+//                        File cacheFile = Utils.Cfile;
+//                        commandSender.sendMessage(ChatColor.GREEN + "Reloading Cache File...");
+//                        if (cacheFile.exists()) {
+//                            try {
+//                                Utils.cacheFile.load(cacheFile);
+//                                commandSender.sendMessage(ChatColor.GREEN + "Cache File Reloaded Completed!");
+//                            } catch (Exception e) {
+//                                commandSender.sendMessage(ChatColor.RED + "An Exception happened. Cache file can't reload");
+//                                commandSender.sendMessage(ChatColor.RED + "Exception Message:");
+//                                commandSender.sendMessage(ChatColor.RED + e.getMessage());
+//                            }
+//                        }
+//                        File MFCFile = Utils.MFCFile;
+//                        if (MFCFile.exists()) {
+//                            try {
+//                                Utils.mfcfc.load(MFCFile);
+//                                commandSender.sendMessage(ChatColor.GREEN + "Cache File Reloaded Completed");
+//                            } catch (Exception e) {
+//                                commandSender.sendMessage(ChatColor.RED + "An Exception happened. Message Forwarding Cache file can't reload");
+//                                commandSender.sendMessage(ChatColor.RED + "Exception Message:");
+//                                commandSender.sendMessage(ChatColor.RED + e.getMessage());
+//                            }
+//                        }
+//                        File PCCFile = Utils.PCCFile;
+//                        if (PCCFile.exists()) {
+//                            try {
+//                                Utils.pccfc.load(PCCFile);
+//                                commandSender.sendMessage(ChatColor.GREEN + "Cache File Reloaded Completed");
+//                            } catch (Exception e) {
+//                                commandSender.sendMessage(ChatColor.RED + "An Exception happened. Player Chancel Cache file can't reload");
+//                                commandSender.sendMessage(ChatColor.RED + "Exception Message:");
+//                                commandSender.sendMessage(ChatColor.RED + e.getMessage());
+//                            }
+//                        }
                     } else {
                         commandSender.sendMessage(ChatColor.RED + Utils.NoPermission);
                     }

@@ -13,7 +13,7 @@ public class CommandPurgeCache implements CommandExecutor {
         if(sender.hasPermission("cwg.cache.purge")){
             Utils.LoadFile(true);
             Utils.OnFirstRun(true);
-            //TODO 在此重新载入硬盘内缓存yml文件入内存中
+            sender.sendMessage(Utils.reloadCache());
             sender.sendMessage(ChatColor.GREEN + "缓存清理完成");
         }else{
             sender.sendMessage(ChatColor.RED + Utils.NoPermission);

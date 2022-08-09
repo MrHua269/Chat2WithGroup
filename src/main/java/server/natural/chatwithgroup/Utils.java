@@ -1,6 +1,7 @@
 package server.natural.chatwithgroup;
 
 import org.bukkit.Bukkit;
+import org.bukkit.ChatColor;
 import org.bukkit.configuration.InvalidConfigurationException;
 import org.bukkit.configuration.file.FileConfiguration;
 import org.bukkit.configuration.file.YamlConfiguration;
@@ -138,7 +139,49 @@ public class Utils {
         }
     }
     //TODO Finish it
-    public static void reloadCache(){
-
+    public static String reloadCache(){
+        String error = null;
+        File cacheFile = Utils.Cfile;
+//        commandSender.sendMessage(ChatColor.GREEN + "Reloading Cache File...");
+        if (cacheFile.exists()) {
+            try {
+                Utils.cacheFile.load(cacheFile);
+//                commandSender.sendMessage(ChatColor.GREEN + "Cache File Reloaded Completed!");
+            } catch (Exception e) {
+//                commandSender.sendMessage(ChatColor.RED + "An Exception happened. Cache file can't reload");
+//                commandSender.sendMessage(ChatColor.RED + "Exception Message:");
+//                commandSender.sendMessage(ChatColor.RED + e.getMessage());
+                error="Cache File cannot reload successfully,A Exception Message is Caught:" + e.getMessage();
+            }
+        }
+        File MFCFile = Utils.MFCFile;
+        if (MFCFile.exists()) {
+            try {
+                Utils.mfcfc.load(MFCFile);
+//                commandSender.sendMessage(ChatColor.GREEN + "Cache File Reloaded Completed");
+            } catch (Exception e) {
+//                commandSender.sendMessage(ChatColor.RED + "An Exception happened. Message Forwarding Cache file can't reload");
+//                commandSender.sendMessage(ChatColor.RED + "Exception Message:");
+//                commandSender.sendMessage(ChatColor.RED + e.getMessage());
+                error = error + "Message Forwarding Cache File cannot reload successfully,A Exception Message is Caught:" + e.getMessage();
+            }
+        }
+        File PCCFile = Utils.PCCFile;
+        if (PCCFile.exists()) {
+            try {
+                Utils.pccfc.load(PCCFile);
+//                commandSender.sendMessage(ChatColor.GREEN + "Cache File Reloaded Completed");
+            } catch (Exception e) {
+//                commandSender.sendMessage(ChatColor.RED + "An Exception happened. Player Chancel Cache file can't reload");
+//                commandSender.sendMessage(ChatColor.RED + "Exception Message:");
+//                commandSender.sendMessage(ChatColor.RED + e.getMessage());
+                error = error + "Player Channel Cache File cannot reload successfully,A Exception Message is Caught:" + e.getMessage();
+            }
+        }
+        if(error!=null){
+            return "Cache File reload successfully";
+        }else{
+            return error;
+        }
     }
 }

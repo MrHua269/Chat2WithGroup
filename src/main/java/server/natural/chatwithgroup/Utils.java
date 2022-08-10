@@ -1,7 +1,6 @@
 package server.natural.chatwithgroup;
 
 import org.bukkit.Bukkit;
-import org.bukkit.ChatColor;
 import org.bukkit.configuration.InvalidConfigurationException;
 import org.bukkit.configuration.file.FileConfiguration;
 import org.bukkit.configuration.file.YamlConfiguration;
@@ -12,6 +11,7 @@ import org.jetbrains.annotations.NotNull;
 import java.io.*;
 import java.net.HttpURLConnection;
 import java.net.URL;
+import java.util.HashMap;
 import java.util.List;
 import java.util.logging.Level;
 import java.util.regex.Matcher;
@@ -23,13 +23,14 @@ public class Utils {
     public static Plugin plugin;
     public static File Cfile;
     public static FileConfiguration cacheFile;
-    public static File MFCFile;
+    public static File MFFile;
     public static File PCCFile;
-    public static FileConfiguration mfcfc;
+    public static FileConfiguration mffc;
     public static FileConfiguration pccfc;
     public static String NoPermission;
     public static List<Long> group;
     public static List<Long> owner;
+    public static HashMap<Integer,Long> ChannelID;
     public static final String ver = "1.4.1";
     public static final int configVersion = 7;
     public static final boolean isBetaVersion = true;
@@ -121,7 +122,7 @@ public class Utils {
         }
     }
 
-    public static void LoadFile(boolean b){
+    public static void LoadFile(@NotNull boolean b){
         Bukkit.getPluginManager().getPlugin("ChatWithGroup").saveResource("cache/cache.yml",b);
         Bukkit.getPluginManager().getPlugin("ChatWithGroup").saveResource("MsgForwardingChancel.yml",b);
         Bukkit.getPluginManager().getPlugin("ChatWithGroup").saveResource("cache/PlayerChoosedChancelCache.yml",b);
@@ -138,7 +139,6 @@ public class Utils {
             PCCCacheFileSave();
         }
     }
-    //TODO Finish it
     public static String reloadCache(){
         String error = null;
         File cacheFile = Utils.Cfile;
@@ -154,10 +154,10 @@ public class Utils {
                 error="Cache File cannot reload successfully,A Exception Message is Caught:" + e.getMessage();
             }
         }
-        File MFCFile = Utils.MFCFile;
-        if (MFCFile.exists()) {
+        File MFFile = Utils.MFFile;
+        if (MFFile.exists()) {
             try {
-                Utils.mfcfc.load(MFCFile);
+                Utils.mffc.load(MFFile);
 //                commandSender.sendMessage(ChatColor.GREEN + "Cache File Reloaded Completed");
             } catch (Exception e) {
 //                commandSender.sendMessage(ChatColor.RED + "An Exception happened. Message Forwarding Cache file can't reload");
@@ -183,5 +183,25 @@ public class Utils {
         }else{
             return error;
         }
+    }
+    public static void InitChannelData(){
+        executor.runTaskAsynchronously(Bukkit.getPluginManager().getPlugin("ChatWithGroup"),()->{
+            int time = 1;
+            for(Long i : group){
+                if(config.get("group." + i)!=null){
+                    ChannelID.put(mffc.getInt("group." + i + ".id"),i);
+                }else{
+                    mffc.set("group." + i + ".id",time);
+                    mffc.set("group." + i + ".name","Channel " + time);
+                    ChannelID.put(time,i);
+                    try {
+                        mffc.save(MFFile);
+                    } catch (IOException e) {
+                        throw new RuntimeException(e);
+                    }
+                }
+                time++;
+            }
+        });
     }
 }

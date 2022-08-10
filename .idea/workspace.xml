@@ -4,10 +4,13 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="4a17ca10-156e-48ed-aa5b-d326b107271f" name="变更" comment="Update:调整了配置文件">
+    <list default="true" id="4a17ca10-156e-48ed-aa5b-d326b107271f" name="变更" comment="Update:完善了PurgeCache 命令">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/server/natural/chatwithgroup/BootStrap.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/server/natural/chatwithgroup/BootStrap.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/server/natural/chatwithgroup/Main.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/server/natural/chatwithgroup/Main.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/main/java/server/natural/chatwithgroup/Utils.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/server/natural/chatwithgroup/Utils.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/server/natural/chatwithgroup/command/CommandCWG.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/server/natural/chatwithgroup/command/CommandCWG.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/server/natural/chatwithgroup/util/MainThreadExecutor.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/server/natural/chatwithgroup/util/MainThreadExecutor.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/resources/MsgForwardingChancel.yml" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/resources/MsgForwardingChancel.yml" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -155,7 +158,14 @@
       <option name="project" value="LOCAL" />
       <updated>1660019477208</updated>
     </task>
-    <option name="localTasksCounter" value="12" />
+    <task id="LOCAL-00012" summary="Update:完善了PurgeCache 命令">
+      <created>1660027826910</created>
+      <option name="number" value="00012" />
+      <option name="presentableId" value="LOCAL-00012" />
+      <option name="project" value="LOCAL" />
+      <updated>1660027826910</updated>
+    </task>
+    <option name="localTasksCounter" value="13" />
     <servers />
   </component>
   <component name="Vcs.Log.Tabs.Properties">
@@ -179,6 +189,7 @@
     <MESSAGE value="Fix:接着改" />
     <MESSAGE value="Fix:改了个小bug" />
     <MESSAGE value="Update:调整了配置文件" />
-    <option name="LAST_COMMIT_MESSAGE" value="Update:调整了配置文件" />
+    <MESSAGE value="Update:完善了PurgeCache 命令" />
+    <option name="LAST_COMMIT_MESSAGE" value="Update:完善了PurgeCache 命令" />
   </component>
 </project>

@@ -63,9 +63,9 @@ public class BootStrap {
     public static void initFiles(JavaPlugin plugin){
         Utils.Cfile = new File(plugin.getDataFolder(),"cache/cache.yml");
         Utils.cacheFile = YamlConfiguration.loadConfiguration(Utils.Cfile);
-        Utils.MFCFile = new File(plugin.getDataFolder(),"MsgForwardingChancel.yml");
+        Utils.MFFile = new File(plugin.getDataFolder(),"MsgForwardingChancel.yml");
         Utils.PCCFile = new File(plugin.getDataFolder(),"cache/PlayerChoosedChancelCache.yml");
-        Utils.mfcfc = YamlConfiguration.loadConfiguration(Utils.MFCFile);
+        Utils.mffc = YamlConfiguration.loadConfiguration(Utils.MFFile);
         Utils.pccfc = YamlConfiguration.loadConfiguration(Utils.PCCFile);
     }
 

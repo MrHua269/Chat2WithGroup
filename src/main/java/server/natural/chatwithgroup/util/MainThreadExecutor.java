@@ -15,18 +15,16 @@ public class MainThreadExecutor implements Executor {
         tasks.add(command);
     }
 
-    public MainThreadExecutor(Plugin pluginIn){
-        Bukkit.getScheduler().scheduleSyncRepeatingTask(pluginIn,()->{
-            for (;;){
-                try {
-                    Runnable task = tasks.poll();
-                    if (task!=null){
-                        task.run();
-                    }
-                }catch (Exception e){
-                    e.printStackTrace();
+    public MainThreadExecutor(Plugin pluginIn) {
+        Bukkit.getScheduler().scheduleSyncRepeatingTask(pluginIn, () -> {
+            try {
+                Runnable task = tasks.poll();
+                if (task != null) {
+                    task.run();
                 }
+            } catch (Exception e) {
+                e.printStackTrace();
             }
-        },0,1);
+        }, 0, 1);
     }
 }

@@ -28,7 +28,7 @@ public class Main extends JavaPlugin {
             //注册命令
             BootStrap.initCommands(this);
             getLogger().info(ChatColor.GREEN + "准备就绪!");
-            Utils.InitChannelData();
+            Utils.InitChannelData(this);
             BootStrap.checkIsConfigOldVersion(this);
             if (Utils.isBetaVersion) {
                 getLogger().warning("该版本为测试版本，Bug可能较多，若发现Bug请在Github反馈");

@@ -13,6 +13,7 @@ import java.net.HttpURLConnection;
 import java.net.URL;
 import java.util.HashMap;
 import java.util.List;
+import java.util.concurrent.ConcurrentHashMap;
 import java.util.logging.Level;
 import java.util.regex.Matcher;
 import java.util.regex.Pattern;
@@ -30,7 +31,7 @@ public class Utils {
     public static String NoPermission;
     public static List<Long> group;
     public static List<Long> owner;
-    public static HashMap<Integer,Long> ChannelID;
+    public static ConcurrentHashMap<Integer,Long> ChannelID;
     public static final String ver = "1.4.1";
     public static final int configVersion = 7;
     public static final boolean isBetaVersion = true;
@@ -184,8 +185,8 @@ public class Utils {
             return error;
         }
     }
-    public static void InitChannelData(){
-        executor.runTaskAsynchronously(Bukkit.getPluginManager().getPlugin("ChatWithGroup"),()->{
+    public static void InitChannelData(@NotNull Plugin p){
+        executor.runTaskAsynchronously(p,()->{
             int time = 1;
             for(Long i : group){
                 if(config.get("group." + i)!=null){

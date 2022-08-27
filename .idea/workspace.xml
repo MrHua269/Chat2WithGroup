@@ -4,13 +4,11 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="4a17ca10-156e-48ed-aa5b-d326b107271f" name="变更" comment="Update:完善了PurgeCache 命令">
+    <list default="true" id="4a17ca10-156e-48ed-aa5b-d326b107271f" name="变更" comment="Update:增加了InitChannelData方法">
+      <change beforePath="$PROJECT_DIR$/.idea/ChatWithGroup.iml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/ChatWithGroup.iml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/server/natural/chatwithgroup/BootStrap.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/server/natural/chatwithgroup/BootStrap.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/main/java/server/natural/chatwithgroup/Main.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/server/natural/chatwithgroup/Main.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/main/java/server/natural/chatwithgroup/Utils.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/server/natural/chatwithgroup/Utils.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/server/natural/chatwithgroup/util/MainThreadExecutor.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/server/natural/chatwithgroup/util/MainThreadExecutor.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/resources/MsgForwardingChancel.yml" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/resources/MsgForwardingChancel.yml" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -29,6 +27,15 @@
       </RewordedCommitMessageMapping>
     </option>
     <option name="onto" value="adad0d26955559893c283233ed52df1a026a3119" />
+  </component>
+  <component name="HighlightingSettingsPerFile">
+    <setting file="file://$PROJECT_DIR$/src/main/java/server/natural/chatwithgroup/BootStrap.java" root0="FORCE_HIGHLIGHTING" />
+    <setting file="file://$PROJECT_DIR$/src/main/java/server/natural/chatwithgroup/Main.java" root0="FORCE_HIGHLIGHTING" />
+    <setting file="file://$PROJECT_DIR$/src/main/java/server/natural/chatwithgroup/Utils.java" root0="FORCE_HIGHLIGHTING" />
+    <setting file="file://$PROJECT_DIR$/src/main/java/server/natural/chatwithgroup/command/CommandChooseChannel.java" root0="FORCE_HIGHLIGHTING" />
+    <setting file="file://$PROJECT_DIR$/src/main/java/server/natural/chatwithgroup/util/MainThreadExecutor.java" root0="FORCE_HIGHLIGHTING" />
+    <setting file="file://$PROJECT_DIR$/src/main/resources/MsgForwardingChancel.yml" root0="FORCE_HIGHLIGHTING" />
+    <setting file="file://$PROJECT_DIR$/src/main/resources/config.yml" root0="FORCE_HIGHLIGHTING" />
   </component>
   <component name="MacroExpansionManager">
     <option name="directoryName" value="x4vwfa9x" />
@@ -52,26 +59,13 @@
   &quot;keyToString&quot;: {
     &quot;RunOnceActivity.OpenProjectViewOnStart&quot;: &quot;true&quot;,
     &quot;RunOnceActivity.ShowReadmeOnStart&quot;: &quot;true&quot;,
-    &quot;last_opened_file_path&quot;: &quot;/home/Jerry/HDD/Projects/ChatWithGroup&quot;,
+    &quot;last_opened_file_path&quot;: &quot;/home/Jerry/HDD/Projects/MilkShakeServer&quot;,
     &quot;project.structure.last.edited&quot;: &quot;项目&quot;,
     &quot;project.structure.proportion&quot;: &quot;0.0&quot;,
     &quot;project.structure.side.proportion&quot;: &quot;0.2&quot;,
-    &quot;settings.editor.selected.configurable&quot;: &quot;IntelliLang.Configuration&quot;
+    &quot;settings.editor.selected.configurable&quot;: &quot;project.propGUI&quot;
   }
 }</component>
-  <component name="RunManager">
-    <configuration default="true" type="JetRunConfigurationType">
-      <method v="2">
-        <option name="Make" enabled="true" />
-      </method>
-    </configuration>
-    <configuration default="true" type="KotlinStandaloneScriptRunConfigurationType">
-      <option name="filePath" />
-      <method v="2">
-        <option name="Make" enabled="true" />
-      </method>
-    </configuration>
-  </component>
   <component name="SpellCheckerSettings" RuntimeDictionaries="0" Folders="0" CustomDictionaries="0" DefaultDictionary="应用程序级" UseSingleDictionary="true" transferred="true" />
   <component name="TaskManager">
     <task active="true" id="Default" summary="默认任务">
@@ -165,7 +159,28 @@
       <option name="project" value="LOCAL" />
       <updated>1660027826910</updated>
     </task>
-    <option name="localTasksCounter" value="13" />
+    <task id="LOCAL-00013" summary="Update:增加了InitChannelData方法">
+      <created>1660109205440</created>
+      <option name="number" value="00013" />
+      <option name="presentableId" value="LOCAL-00013" />
+      <option name="project" value="LOCAL" />
+      <updated>1660109205440</updated>
+    </task>
+    <task id="LOCAL-00014" summary="Update:增加了InitChannelData方法">
+      <created>1660109234354</created>
+      <option name="number" value="00014" />
+      <option name="presentableId" value="LOCAL-00014" />
+      <option name="project" value="LOCAL" />
+      <updated>1660109234354</updated>
+    </task>
+    <task id="LOCAL-00015" summary="Update:增加了InitChannelData方法">
+      <created>1660109252576</created>
+      <option name="number" value="00015" />
+      <option name="presentableId" value="LOCAL-00015" />
+      <option name="project" value="LOCAL" />
+      <updated>1660109252576</updated>
+    </task>
+    <option name="localTasksCounter" value="16" />
     <servers />
   </component>
   <component name="Vcs.Log.Tabs.Properties">
@@ -190,6 +205,7 @@
     <MESSAGE value="Fix:改了个小bug" />
     <MESSAGE value="Update:调整了配置文件" />
     <MESSAGE value="Update:完善了PurgeCache 命令" />
-    <option name="LAST_COMMIT_MESSAGE" value="Update:完善了PurgeCache 命令" />
+    <MESSAGE value="Update:增加了InitChannelData方法" />
+    <option name="LAST_COMMIT_MESSAGE" value="Update:增加了InitChannelData方法" />
   </component>
 </project>
